@@ -2,15 +2,15 @@
 - Docker 
     - [Docker](https://www.docker.com/)
     - [Docker github](https://github.com/docker)
+    - [Portainer](https://www.portainer.io/installation/)
 - Kubernetes 
      - [kubernetes](https://kubernetes.io/)
      - [Kubernetes github](https://github.com/kubernetes/kubernetes)
-
+     
 #### 2. Conferences  dockercon and kubecon
      - [kubecon](https://www.cncf.io/community/kubecon-cloudnativecon-events/)
      - [dockercon](https://www.docker.com/dockercon/)
-
- 
+     
 #### 3. Certifications  and study guide  for docker
 - [Docker Certification](https://success.docker.com/certification)
 - [Docker study Guide](https://github.com/DevOps-Academy-Org/dca-prep-guide)
@@ -35,3 +35,8 @@
 #### 6. slack channels
    - [docker slack](https://dockercommunity.slack.com/join/shared_invite/enQtNzgzMzcwNDMwMzExLTVmNjY1OGY2ODVlZDA2MjhhY2Y4NTg5NDhhZmViNTk1YjMwOWY4ZWQyN2U2Yzg5YzljMjVhNjg5MTdmNjgwOGU)
    - [Kubernetes Slack](https://slack.k8s.io/)
+
+
+#### 2. Conferences  dockercon and kubecon
+     - [kubecon](https://www.cncf.io/community/kubecon-cloudnativecon-events/)
+     - [dockercon](https://www.docker.com/dockercon/)
