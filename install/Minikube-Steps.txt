@@ -1,0 +1,60 @@
+
+*******************************************************************
+.
+. Demo: MiniKube  
+.
+
+*******************************************************************
+
+# 1. Download & Install "VirtualBox"
+
+Source: https://www.virtualbox.org/
+
+
+*******************************************************************
+
+# 2. Download “minikube-windows-amd64”
+
+C:\>mkdir Kubernetes
+
+source:  https://github.com/kubernetes/minikube/releases
+
+
+*******************************************************************
+
+# 3. Download “kubectl”
+
+C:\Kubernetes> curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.11.0/bin/windows/amd64/kubectl.exe
+
+
+*******************************************************************
+
+# 4. Start Minikube
+
+C:\Kubernetes>minikube.exe start
+
+
+*******************************************************************
+
+# 5. Testing
+
+C:\Kubernetes>minikube status
+
+C:\Kubernetes>minikube version
+
+C:\Kubernetes>kubectl get nodes
+
+C:\Kubernetes>kubectl run kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1 --port=8080
+
+C:\Kubernetes>kubectl get po
+
+C:\Kubernetes>minikube stop
+
+
+*******************************************************************
+
+
+
+
+
+ 

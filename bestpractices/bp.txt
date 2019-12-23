@@ -1,0 +1,1 @@
+https://srcco.de/posts/web-service-on-kubernetes-production-checklist-2019.html
