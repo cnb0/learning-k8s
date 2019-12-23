@@ -9,7 +9,7 @@
      
 #### 2. Conferences  dockercon and kubecon
      - [kubecon](https://www.cncf.io/community/kubecon-cloudnativecon-events/)
-     - [dockercon](https://www.docker.com/dockercon/)
+     - [dockercon](https://www.docker.com/dockercon/)https://github.com/docker/for-linux/issues
      
 #### 3. Certifications  and study guide  for docker
 - [Docker Certification](https://success.docker.com/certification)
@@ -36,5 +36,7 @@
    - [docker slack](https://dockercommunity.slack.com/join/shared_invite/enQtNzgzMzcwNDMwMzExLTVmNjY1OGY2ODVlZDA2MjhhY2Y4NTg5NDhhZmViNTk1YjMwOWY4ZWQyN2U2Yzg5YzljMjVhNjg5MTdmNjgwOGU)
    - [Kubernetes Slack](https://slack.k8s.io/)
 
-
+#### 7. Docker and Kubernetes issues 
+  - [Docker issues ](https://github.com/docker/for-linux/issues)
+  - [Kubernetes Issues](https://github.com/kubernetes/kubernetes/issues)
 
