@@ -37,6 +37,4 @@
    - [Kubernetes Slack](https://slack.k8s.io/)
 
 
-#### 2. Conferences  dockercon and kubecon
-     - [kubecon](https://www.cncf.io/community/kubecon-cloudnativecon-events/)
-     - [dockercon](https://www.docker.com/dockercon/)
+
