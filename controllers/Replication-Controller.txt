@@ -1,7 +1,7 @@
 
 *******************************************************************
 .
-. Demo: Replication Controller  |  youtube.com/SrinathChalla
+. Demo: Replication Controller  | 
 .
 
 *******************************************************************
