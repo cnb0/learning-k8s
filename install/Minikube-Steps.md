@@ -44,6 +44,7 @@ kubectl delete pod <POD_NAME> # Delete pod
 kubectl scale --replicas=5 rc <RC_NAME> # Scale up or down no. of replicas of pods
 kubectl exec -it <POD_NAME> -c <1st_Container> -- bash # Get into the container within a pod
 kubectl expose pod mc3 --type=NodePort --port=80 # Create a service by exposing pods
+kubectl run kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1 --port=8080
 ```
 
 * Troubleshooting
@@ -57,60 +58,18 @@ kubectl create svc nodeport sample --tcp=8080:8080
 
 ```
 kubectl delete pod,rc,svc,deployment,ns -l app=kickstart-app
-```
-*******************************************************************
-.
-. Demo: MiniKube  
-.
-
-*******************************************************************
-
-# 1. Download & Install "VirtualBox"
-
-Source: https://www.virtualbox.org/
 
 
-*******************************************************************
-
-# 2. Download “minikube-windows-amd64”
-
-C:\>mkdir Kubernetes
-
-source:  https://github.com/kubernetes/minikube/releases
 
 
-*******************************************************************
+ 
 
-# 3. Download “kubectl”
+ 
 
-C:\Kubernetes> curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.11.0/bin/windows/amd64/kubectl.exe
+ 
 
-
-*******************************************************************
-
-# 4. Start Minikube
-
-C:\Kubernetes>minikube.exe start
-
-
-*******************************************************************
-
-# 5. Testing
-
-C:\Kubernetes>minikube status
-
-C:\Kubernetes>minikube version
-
-C:\Kubernetes>kubectl get nodes
-
-C:\Kubernetes>kubectl run kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1 --port=8080
-
-C:\Kubernetes>kubectl get po
-
-C:\Kubernetes>minikube stop
-
-
-*******************************************************************
+ 
+ 
 
 
 
