@@ -6,7 +6,6 @@
   
 - An Introduction to Kubernetes
 - How To Create a Kubernetes Cluster Using Kubeadm on Ubuntu 18.04
-- Webinar Series: A Closer Look at Kubernetes
 - An Introduction to Helm, the Package Manager for Kubernetes
 - How To Install Software on Kubernetes Clusters with the Helm Package Manager
 
