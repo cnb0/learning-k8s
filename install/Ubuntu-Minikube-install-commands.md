@@ -1,8 +1,6 @@
+## minikube 
 
-
-
-
-
+```
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88
 sudo add-apt-repository \
@@ -23,3 +21,4 @@ sudo chown -R $USER $HOME/.kube
 sudo chgrp -R $USER $HOME/.kube
 sudo chown -R $USER $HOME/.minikube
 sudo chgrp -R $USER $HOME/.minikube
+```
