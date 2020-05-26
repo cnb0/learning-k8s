@@ -1,7 +1,7 @@
-Kubernetes setup Document
+## Kubernetes setup process
  
 
-Kubernetes releases minor version updates of its distribution every 3 months
+### Kubernetes releases minor version updates of its distribution every 3 months
  
  
 
@@ -53,7 +53,7 @@ If you’re planning to deploy on AWS / Google / Azure, use the tools that are f
 
 If you have an unsupported cloud platform, and you still want Kubernetes, you can install it manually
 
-CoreOS + Kubernetes: ###a href="https://coreos.com/kubernetes/docs/latest/getting-started.html">https://coreos.com/kubernetes/docs/latest/getting-started.html
+(CoreOS + Kubernetes)[https://coreos.com/kubernetes/docs/latest/getting-started.html]
 
 ### Docker
 You can download Docker Engine for:
@@ -63,12 +63,13 @@ You can download Docker Engine for:
 - Linux: https://docs.docker.com/engine/installation/linux/
 
 ### DevOps box
-Virtualbox: http://www.virtualbox.org
-Vagrant: http://www.vagrantup.com
+- Virtualbox: http://www.virtualbox.org
+- Vagrant: http://www.vagrantup.com
 
 
 
 Cheatsheet: Kubernetes commands
+```
 - kubectl get pod: Get information about all running pods
 - kubectl describe pod <pod>: Describe one pod
 - kubectl expose pod <pod> --port=444 --name=frontend: Expose the port of a pod (creates a new service)
@@ -87,7 +88,7 @@ Cheatsheet: Kubernetes commands
 - kubectl rollout history deployment/helloworld-deployment: Get the rollout history
 - kubectl rollout undo deployment/helloworld-deployment: Rollback to previous version
 - kubectl rollout undo deployment/helloworld-deployment --to-revision=n: Rollback to any version version`
-
+```
  
 Certificates
 - Creating a new key for a new user: openssl genrsa -out myuser.pem 2048
