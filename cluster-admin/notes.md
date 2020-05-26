@@ -1,0 +1,1 @@
+- [K8s Bootstrapping Step by Step Advanced](https://github.com/kelseyhightower/kubernetes-the-hard-way)
