@@ -1,9 +1,9 @@
 ```
-1. services for K8s 
+1. services for K8s - services_explained.sh
 
-2. service discovery and routing
+2. service discovery and routing - service_discovery.sh
 
-3. ingress resources 
+3. ingress resources - ingress_resources.sh
 
 4. Troubleshooting application issues 
 
