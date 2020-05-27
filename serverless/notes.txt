@@ -1,0 +1,4 @@
+Additional Workshops :
+
+1. https://github.com/TrainingByPackt/Serverless-Architectures-with-Kubernetes
+2. https://github.com/TrainingByPackt/Kubernetes-Workshop.git
