@@ -1,7 +1,5 @@
-
+```
 $ kubectl explain
-
-
 Did something weird happen when your pod deployed?
 $ kubectl get pods
 $ kubectl describe pods my-pod
@@ -43,3 +41,4 @@ pod (1 container case)
 (multi-container case)
 # Show metrics for a given pod
 and its containers## k8s troubleshooting 
+```
