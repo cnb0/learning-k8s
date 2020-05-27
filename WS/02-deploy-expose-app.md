@@ -1,4 +1,4 @@
-[Reference](https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro/)
+[DeployApp Reference](https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro/)
 
 ```
 1. Deploy an App            - Using kubectl to Create a Deployment
