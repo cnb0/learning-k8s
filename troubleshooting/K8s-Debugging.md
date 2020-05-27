@@ -1,4 +1,7 @@
-```Application Introspection and Debugging
+
+### Monitoring , Debugging and Logging
+```
+Application Introspection and Debugging
 Auditing
 Auditing with Falco
 Debug a StatefulSet
