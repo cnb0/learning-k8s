@@ -1,3 +1,4 @@
+## K8s Troubleshooting commands 
 ```
 $ kubectl explain
 Did something weird happen when your pod deployed?
