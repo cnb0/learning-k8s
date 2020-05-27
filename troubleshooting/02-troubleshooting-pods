@@ -1,3 +1,4 @@
+```
 # Troubleshooting Pods
 
 This chapter is about pods troubleshooting, which are applications deployed into Kubernetes.
@@ -260,3 +261,4 @@ Kubelet monitors changes under `/etc/kubernetes/manifests`  (configured by kubel
 ## References
 
 - [Troubleshoot Applications](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/)
+```
