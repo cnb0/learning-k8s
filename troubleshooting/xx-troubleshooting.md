@@ -1,5 +1,8 @@
 ## K8s Troubleshooting commands 
 ```
+To verify that the kube-scheduler component is healthy
+$kubectl get componentstatuses
+
 $ kubectl explain
 Did something weird happen when your pod deployed?
 $ kubectl get pods
