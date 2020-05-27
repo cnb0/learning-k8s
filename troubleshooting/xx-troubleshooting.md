@@ -19,7 +19,7 @@ $ kubectl logs -f my-pod -c my-container
 
 Interactive debugging
 $ kubectl run -i --tty alpine --image=alpine -- sh
-$ telepresence
+$ telepresence #https://www.telepresence.io/discussion/overview
 $ kubectl attach my-pod -i
 $ kubectl port-forward my-pod 5000:6000
 $ kubectl exec my-pod -- ls /
