@@ -1,0 +1,2 @@
+$HOME/minikube start --memory=8192 --cpus=6 --kubernetes-version=v1.18.0 --vm-driver=virtualbox -p istio-devnation
+#$HOME/minikube start --memory=8192 --cpus=6 --kubernetes-version=v1.17.4 --vm-driver=virtualbox -p istio-devnation
