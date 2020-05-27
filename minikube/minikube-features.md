@@ -4,6 +4,9 @@
 ## Cheatsheet
 [Minikube cheat sheet](https://cheatsheet.dennyzhang.com/cheatsheet-minikube-a4)
 
+
+[getting started minikube](https://docs.bitnami.com/kubernetes/get-started-kubernetes/)
+
 minikube runs the latest stable release of Kubernetes, with support for standard Kubernetes features like:
 
 * [LoadBalancer](https://minikube.sigs.k8s.io/docs/handbook/accessing/#loadbalancer-access) - using `minikube tunnel`
@@ -34,6 +37,8 @@ See https://minikube.sigs.k8s.io/docs/
 ## More Examples
 
 See minikube in action [here](https://minikube.sigs.k8s.io/docs/handbook/controls/)
+
+
 
 
 ```
