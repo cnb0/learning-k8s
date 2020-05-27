@@ -1,0 +1,8 @@
+# Docker
+kubelet-> Kubernetes CRI-> Docker-> containerd-> OCI-> runC->container image
+# cri-o 
+kubelet-> Kubernetes CRI-> cri-o-> OCI-> runC-> container image
+# containerd
+kubelet-> Kubernetes CRI-> cri-containerd-> gRPC-> containerd-> OCI-> runC-> container image
+# Kubernetes 1.10
+kubelet-> Kubernetes CRI-> containerd-> OCI-> runC-> container image
