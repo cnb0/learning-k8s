@@ -1,6 +1,6 @@
 # Troubleshooting Kubernetes Cluster
 
-This chapter is about kubernetes cluster (kubernetes service itself) troubleshooting, including issues of kubernetes core components and addons. For network related issues, please refer to [Troubleshooting Network](network.md).
+  kubernetes cluster (kubernetes service itself) troubleshooting, including issues of kubernetes core components and addons.  
 
 ## Overview
 
