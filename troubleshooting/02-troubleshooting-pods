@@ -1,7 +1,6 @@
-```
 # Troubleshooting Pods
 
-This chapter is about pods troubleshooting, which are applications deployed into Kubernetes.
+  pods troubleshooting, which are applications deployed into Kubernetes.
 
 Usually, no matter which errors are you run into, the first step is getting pod's current state and its logs
 
@@ -261,4 +260,3 @@ Kubelet monitors changes under `/etc/kubernetes/manifests`  (configured by kubel
 ## References
 
 - [Troubleshoot Applications](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/)
-```
