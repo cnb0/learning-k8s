@@ -40,6 +40,7 @@
   - [Docker issues ](https://github.com/docker/for-linux/issues)
   - [Kubernetes Issues](https://github.com/kubernetes/kubernetes/issues)
   
-#### 8 . K8s Tools 
-      -[k8s tools](http://dockerlabs.collabnix.com/kubernetes/kubetools/)
+#### 8. K8s Tools 
+   - [k8s tools](http://dockerlabs.collabnix.com/kubernetes/kubetools/)
+  
 
