@@ -1,4 +1,4 @@
-# Taint and Tolerations
+# [Taint and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
 
 # Taint a node
 ```
