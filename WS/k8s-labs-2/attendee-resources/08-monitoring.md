@@ -1,7 +1,7 @@
 ### 08. Monitoring
 
 ```
-Collecting metrics for fun and profit
+ 
 Learn how to collect and display metrics with Prometheus and Grafana
 In this workshop we will set up Prometheus to scrape metrics from a number of endpoints 
 in the sock shop.
