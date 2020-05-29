@@ -1,0 +1,15 @@
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: k8s-counter
+  labels:
+    name: my-example-pod
+  namespace: demo
+spec:
+  containers:
+  - name: my-container
+    image: gcr.io/jetstack-workshops/k8s-counter
+    ports:
+    - containerPort: 8080
+      protocol: TCP
