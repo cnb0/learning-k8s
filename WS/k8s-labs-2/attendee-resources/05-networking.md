@@ -2,24 +2,27 @@
 
 ```
 Loads of balancer
+
 Deploy load-balancing nginx ingress controller. Use cert-manager for automated TLS with an ingress resource.
 In this workshop, we will use the NGINX ingress controller and add automated TLS support, with the 
 aid of cert-manager, to deploy a secure Sock Shop.
 
 preparation - check if we have cluster admin
+
 We ran a command in Workshop 1B to make sure that we have all the cluster admin rights on the cluster,
 but in rare situations we can still have issues with this. There is an easy way to check:
 
-kubectl create clusterrole test-my-adminness --verb='*' --resource=pods
-kubectl delete clusterrole test-my-adminness
-If these two commands succeeded, you are good to go, otherwise please consult with your instructor.
+$kubectl create clusterrole test-my-adminness --verb='*' --resource=pods
+$kubectl delete clusterrole test-my-adminness
+
+If these two commands succeeded, you are good to go 
 
 step 1 - deploy Nginx ingress controller
 ---------------------------------------------------------------
 Run the following commands to install the NGINX ingress controller:
 
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.25.1/deploy/static/mandatory.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.25.1/deploy/static/provider/cloud-generic.yaml
+$kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.25.1/deploy/static/mandatory.yaml
+$kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.25.1/deploy/static/provider/cloud-generic.yaml
 
 step 2 - get the external IP for NGINX and update DNS
 ---------------------------------------------------------------
@@ -46,6 +49,8 @@ at the docs is for you.
 If you do not own a domain you can use, ask an instructor and one can be created for you.
 
 step 3 - create a non-TLS ingress resource
+-------------------------------------
+
 An Ingress resource describes to Kubernetes how to forward external (Layer 7) traffic into the cluster.
 
 We will make an Ingress that will be consumed by the NGINX ingress controller 
@@ -72,13 +77,13 @@ spec:
           servicePort: 80
 Create the ingress resource using kubectl apply:
 
-kubectl apply -n sock-shop -f attendee-resources/workshop-05/ingress-frontend.yaml
+$kubectl apply -n sock-shop -f attendee-resources/workshop-05/ingress-frontend.yaml
 Now visit http:// in a web browser. You should see the Sock Shop site.
 
 To understand how this works, take a look at the Nginx configuration:
 
-kubectl get pods -n ingress-nginx
-kubectl -n ingress-nginx exec <nginx-ingress-pod-name> cat /etc/nginx/nginx.conf
+$ kubectl get pods -n ingress-nginx
+$ kubectl -n ingress-nginx exec <nginx-ingress-pod-name> cat /etc/nginx/nginx.conf
 
 You should see that the Nginx Ingress Controller has rewritten the nginx.conf 
 file to include a Server Block for your chosen DNS name.
@@ -99,6 +104,8 @@ We’ve seen how the Nginx Ingress Controller allows you to serve multiple
 HTTP services on a single external IP address.
 
 step 4 - enable cert-manager
+-------------------------------------
+
 At this stage, the Sock Shop is deployed, but now we want to use TLS to 
 make sure customers feel confident browsing the shop.
 
@@ -125,9 +132,10 @@ Canonically, cert-manager is installed by Helm chart, however here we’ll use t
 raw manifests directly to reduce the number of things going on. Create the cert-manager resources. 
 Note how we’re creating the resources in a new namespace.
 
-kubectl create namespace cert-manager
-kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
-kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v0.9.1/cert-manager.yaml
+$kubectl create namespace cert-manager
+$kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
+$kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v0.9.1/cert-manager.yaml
+
 We now have a deployment of cert-manager’s core, but it’s a general-purpose system 
 and doesn’t yet know how to issue certificates; how to take our requests for desired 
 certificates and get them signed by an authority. We interact with cert-manager in a “Kubernetes native” way, 
@@ -156,9 +164,11 @@ spec:
       name: letsencrypt-prod-key
     # Enable the HTTP-01 challenge provider
     http01: {}
+
 Apply our new ClusterIssuer:
 
-kubectl apply -f attendee-resources/workshop-05/my-cluster-issuer.yaml
+$kubectl apply -f attendee-resources/workshop-05/my-cluster-issuer.yaml
+
 Note how this is a ClusterIssuer; it is not namespaced because it models a resource outside of the cluster.
 
 We could now use cert-manager to manually get certificates from Let’s Encrypt. 
@@ -170,6 +180,7 @@ Kubernetes uses declarative APIs, so this resource isn’t called CSR for the sa
 that Pod isn’t called DesiredPod or PodRequest.
 
 step 5 - enable TLS
+-------------------------------------
 To trigger TLS to be enabled, and for cert-manager to obtain a Let’s Encrypt certificate 
 for it, we need to update the Ingress resource.
 
@@ -226,24 +237,32 @@ For example, you will be able to see the events that describe the status of the 
 Once cert-manager has finished its magic, you should see two certificates in a Secret. 
 NGINX knows where to find these certificates and will be ready-configured to serve traffic with TLS on the domain.
 
-kubectl get secret -n sock-shop
+$kubectl get secret -n sock-shop
 Now go ahead and check out the site at the HTTPS URL - job done (with the help of
 Kubernetes and cert-manager), get yourself a well-earned coffee!
 
 NOTE: That simple modification to the Ingress resource, triggered quite a complex 
-series of interactions: 1. The Nginx Ingress Controller will attempt to get the Secret 
-with name front-end-tls, from the sock-shop namespace of the Kubernetes API, and 
-write them to files in the Nginx server container. 2. The Nginx Ingress Controller
-will rewrite the server {} block in the nginx.conf with TLS configuration options 
-for your DNS host and the certificate files downloaded (above). It will then reload the 
-Nginx server. 3. Meanwhile cert-manager controller will create a TLS certificate matching 
-your DNS hostname. 4. cert-manager will send a certificate signing request (CSR) to the 
-LetsEncrypt API. 5. cert-manager will set up another (temporary) Ingress resource, 
-matching http://<your-domain>/<lets-encrypt-validation-path>, which will allow the
-LetsEncrypt service to validate that you control the domain and web server. 6. 
-Once validated, cert-manager will get the signed certificate from LetsEncrypt and 
-save it as a Secret in the sock-shop namespace. 7. 
-And finally, the Nginx Ingress Controller will see the new secrets and reconfigure and reload the Nginx server.
+series of interactions: 
+  1. The Nginx Ingress Controller will attempt to get the Secret 
+     with name front-end-tls, from the sock-shop namespace of the Kubernetes API, and 
+     write them to files in the Nginx server container. 
+     
+  2. The Nginx Ingress Controller will rewrite the server {} block in the nginx.conf with TLS 
+     configuration options for your DNS host and the certificate files downloaded (above). 
+     It will then reload the Nginx server. 
+
+  3. Meanwhile cert-manager controller will create a TLS certificate matching your DNS hostname. 
+  
+  4. cert-manager will send a certificate signing request (CSR) to the LetsEncrypt API. 
+
+  5. cert-manager will set up another (temporary) Ingress resource, 
+      matching http://<your-domain>/<lets-encrypt-validation-path>, which will allow the
+      LetsEncrypt service to validate that you control the domain and web server. 
+
+  6.Once validated, cert-manager will get the signed certificate from LetsEncrypt and 
+    save it as a Secret in the sock-shop namespace. 
+
+  7. And finally, the Nginx Ingress Controller will see the new secrets and reconfigure and reload the Nginx server.
 
 Take another look at the nginx.conf file and see for yourself how the TLS termination is configured:
 
