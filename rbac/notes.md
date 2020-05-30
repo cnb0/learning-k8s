@@ -6,7 +6,8 @@ At the end of this guide, you should have enough knowledge to implement RBAC pol
 The examples here described were tested in Minikube, but they can be applied to any Kubernetes cluster.
 
 From Kubernetes 1.6 onwards, RBAC policies are enabled by default. RBAC policies are vital 
-for the correct management of your cluster, as they allow you to specify which types of actions are permitted depending on the user and their role in your organization. Examples include:
+for the correct management of your cluster, as they allow you to specify which types of actions 
+are permitted depending on the user and their role in your organization. Examples include:
 
 Secure your cluster by granting privileged operations (accessing secrets, for example) only to admin users.
 Force user authentication in your cluster.
@@ -14,11 +15,12 @@ Limit resource creation (such as pods, persistent volumes, deployments) to speci
 You can also use quotas to ensure that resource usage is limited and under control.
 Have a user only see resources in their authorized namespace. 
 This allows you to isolate resources within your organization (for example, between departments).
-As a consequence of having RBAC enabled by default, you may have found errors like this when configuring network overlays (such as flanneld) or making Helm work in your cluster:
+As a consequence of having RBAC enabled by default, you may have found errors like this when configuring 
+network overlays (such as flanneld) or making Helm work in your cluster:
 
-```
+
 the server does not allow access to the requested resource
-```
+
 This guide will show you how to work with RBAC so you can properly deal with issues like these.
 
 Prerequisites and assumptions
@@ -37,7 +39,8 @@ You have Helm installed.
 You have OpenSSL installed locally.
 
 RBAC API objects
-One basic Kubernetes feature is that all its resources are modeled API objects, which allow CRUD (Create, Read, Update, Delete) operations. Examples of resources are:
+One basic Kubernetes feature is that all its resources are modeled API objects, which allow CRUD (Create,
+Read, Update, Delete) operations. Examples of resources are:
 
 Pods.
 PersistentVolumes.
