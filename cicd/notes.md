@@ -30,4 +30,4 @@ provides building blocks and describe customizations for a CI/CD pipeline.
   * **client-side only** - Skaffold has no cluster-side component, so there is no overhead or maintenance burden
   * **minimal pipeline** - Skaffold provides an opinionated, minimal pipeline to keep things simple
 
-### Check out our [examples page](./examples) for more complex workflows!
+### Check out our [examples page](https://github.com/GoogleContainerTools/skaffold/tree/master/examples) for more complex workflows!
