@@ -1,0 +1,26 @@
+- [K8s Bootstrapping Step by Step Advanced](https://github.com/kelseyhightower/kubernetes-the-hard-way)
+- https://5pi.de/2017/12/15/production-grade-kubernetes/
+- https://youtu.be/PXJu8ujNEmU
+- https://thenewstack.io/ebooks/kubernetes/state-of-kubernetes-ecosystem/
+- https://kccncna17.sched.com/event/CU5x/101-ways-to-crash-your-cluster-i-marius-grigoriu-emmanuel-gomez-nordstrom
+- https://kccncna17.sched.com/event/CU6H/certiﬁk8s-all-you-need-to-know-about-certiﬁcates-in-kubernetes-i-alexander-brand-apprenda
+- https://kccncna17.sched.com/event/CU86/shipping-in-pirate-infested-waters-practical-attack-and-defense-in-kubernetes-a-greg-castle-cj
+-cullen-google
+- https://kccncna17.sched.com/event/CU6z/hacking-and-hardening-kubernetes-clusters-by-example-i-brad-geesaman-symantec
+- https://kccncna17.sched.com/event/CUFK/keynote-kubernetes-at-github-jesse-newland-principal-site-reliability-engineer-github
+- https://kccncna17.sched.com/event/CU8b/what-happens-when-something-goes-wrong-on-kubernetes-reliability-i-marek-grabowski-tina
+-zhang-google
+- https://kccncna17.sched.com/event/CU64/automating-and-testing-production-ready-kubernetes-clusters-in-the-public-cloud-ron-lipke-g  annetusa-today-network
+- https://stripe.com/blog/operating-kubernetes
+- https://blog.envoyproxy.io/introduction-to-modern-network-load-balancing-and-proxying-a57f6ff80236
+- https://jvns.ca/blog/2017/10/10/operating-a-kubernetes-network/
+- https://acotten.com/post/kube17-security
+- https://applatix.com/making-kubernetes-production-ready/
+- https://www.aquasec.com/wiki/display/containers/Kubernetes+in+Production
+- https://www.weave.works/blog/provisioning-lifecycle-production-ready-kubernetes-cluster/
+- https://www.weave.works/blog/demystifying-production-ready-apps-on-kubernetes-with-carter-morgan
+- https://www.slideshare.net/gn00023040/all-the-troubles-you-get-into-when-setting-up-a-production-ready-kubernetes-cluster
+- https://www.slideshare.net/gn00023040/a-million-ways-of-deploying-a-kubernetes-cluster
+- https://blog.sophaskins.net/blog/misadventures-with-kube-dns/
+- https://thenewstack.io/kubernetes-high-availability-no-single-point-of-failure/
+
