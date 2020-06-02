@@ -1,5 +1,36 @@
 ## K8s Troubleshooting commands 
 ```
+
+APP Failure 
+curl http://web-service-ip:node-port
+kubectl describe service web-service
+curl http://web-service-ip:node-port
+
+Check Pod
+kubectl get pods
+kubectl describe pod web
+kubectl logs web
+
+kubectl get nodes 
+kubectl get pods
+kubectl get pods -n kube-system
+service kube-apiserver status
+service kube-controller-manager status
+service kube-scheduler status
+service kubelet status
+service kube-proxy status
+kubectl logs kube-apiserver-master -n kube-system
+sudo journalctl -u kube-apiserver
+kubectl get nodes
+kubectl describe node worker-1
+service kubelet status
+openssl x509 -in /var/lib/kubelet/worker-1.crt -text
+
+
+
+
+
+
 To verify that the kube-scheduler component is healthy
 $kubectl get componentstatuses
 
