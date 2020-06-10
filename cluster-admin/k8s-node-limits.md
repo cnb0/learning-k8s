@@ -1,3 +1,4 @@
+```
 What is it?	"Not all memory and CPU in a Node can be used to run Pods. 
 The resources are partitioned in 4:
 
