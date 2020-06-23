@@ -1,9 +1,11 @@
 ```
 1. What does “production-ready” mean to you?
-   - The cluster is production ready when it is in a good enough shape  for the user to serve real-world traffic
-   - Your offering is production ready when it slightly exceeds your customer’s expectations  in a way that allows
-      for business growth
-    - The cluster is production ready when it is in a good enough shape  for the user to serve real-world traffic
+   - The cluster is production ready when it is in a good enough shape  for the 
+     user to serve real-world traffic
+   - Your offering is production ready when it slightly exceeds your customer’s 
+      expectations  in a way that allows for business growth
+    - The cluster is production ready when it is in a good enough shape  for the 
+      user to serve real-world traffic
    
 
 2. What are the requirements for a highly available cluster?
