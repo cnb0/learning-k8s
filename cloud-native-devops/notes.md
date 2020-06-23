@@ -4,8 +4,7 @@ providing a reliable and scalable platform for running containerized workloads.
 
 You’ll learn all about the Kubernetes ecosystem, and use battle-tested solutions to everyday problems. 
 You’ll build, step by step, an example cloud native application and its supporting infrastructure, 
-along with a development environment 
-and continuous deployment pipeline that you can use for your own applications.
+along with a development environment and continuous deployment pipeline application 
 
  
 Use Kubernetes to manage resource usage and the container lifecycle
