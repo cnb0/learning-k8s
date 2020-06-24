@@ -1,3 +1,5 @@
+https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
+
 ```
 kubectl api-resources
 kubectl api-versions
