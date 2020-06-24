@@ -1,3 +1,5 @@
+https://kukulinski.com/10-most-common-reasons-kubernetes-deployments-fail-part-1/
+
 ```
 1.Image Pull errors - Check image tag value
  $kubectl edit deployment/frontend
