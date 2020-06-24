@@ -1,5 +1,5 @@
 ### [Handbook](https://minikube.sigs.k8s.io/docs/handbook/) - How to perform common tasks with minikube
-```
+ 
 
 1. [Basic controls](https://minikube.sigs.k8s.io/docs/handbook/controls/) -  See minikube in action!
 
