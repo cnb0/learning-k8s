@@ -3,9 +3,6 @@ open source will guide you through the process of building applications with thi
 Based on the experiences of companies that are running Kubernetes in production successfully,
 many of the methods are also backed by concrete code examples.
 
-This book is ideal for those already familiar with basic Kubernetes concepts who want to learn common best practices. 
-You’ll learn exactly what you need to know to build your best app with Kubernetes the first time.
-
 - Set up and develop applications in Kubernetes
 - patterns for monitoring, securing your systems,  
 - managing upgrades, rollouts, and rollbacks
