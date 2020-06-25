@@ -16,7 +16,7 @@
         - JSONPath - Syntax guide for using JSONPath expressions with kubectl.
         - kubeadm - CLI tool to easily provision a secure Kubernetes cluster.
 
-5. Components Reference
+4. Components Reference
         kubelet  
                 - The primary node agent that runs on each node. 
                   The kubelet takes a set of PodSpecs and ensures that 
