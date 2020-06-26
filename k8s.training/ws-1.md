@@ -22,19 +22,19 @@
             which will enable you to architect, build and maintain a production-grade system.
 
 4 Managing stateful applications
-            The Managing stateful applications workshop is a whole day workshop designed to teach participants concepts 
-            and techniques regarding managing State in Kubernetes.
+            The Managing stateful applications workshop is a whole day workshop designed to teach participants 
+            concepts and techniques regarding managing State in Kubernetes.
 
-            As any other resource, Kubernetes abstracts the interface to Storage providers, but additional considerations 
-            have to be taken compared to more ephemeral resource like Compute and Memory.
+            As any other resource, Kubernetes abstracts the interface to Storage providers, but additional 
+            considerations have to be taken compared to more ephemeral resource like Compute and Memory.
 
             After being introduced to the Kubernetes storage concepts, this workshop will take participants 
             through a series of exercises covering use-cases using real world technologies.
 
 5 Cluster processes
             This lab focuses on the DevSecOps aspect of running your cluster. We'll be using Kubernetes mechanisms
-            like Service Accounts, Pod Security Policies and Network Policies to ensure strict control over utilisation 
-            and access to various resources and services of your cluster.​
+            like Service Accounts, Pod Security Policies and Network Policies to ensure strict control over 
+            utilisation and access to various resources and services of your cluster.​
 
             This will ensure best practices are enforced by the cluster itself, and reduce the need to reinvent 
             the wheel in various teams.
