@@ -11,9 +11,9 @@
             scalable frontends, networking and ingress.
 
 2 Zero-downtime deployments
-            This lab focuses on ensuring reliable deployment and upgrade, scaling, healing and monitoring of your services. 
-            We'll cover several powerful Kubernetes mechanisms that facilitate them as well as explaining 
-            how to fit them in the larger picture of a software delivery process.
+            This lab focuses on ensuring reliable deployment and upgrade, scaling, healing and monitoring of 
+            your services. We'll cover several powerful Kubernetes mechanisms that facilitate them as well
+            as explaining how to fit them in the larger picture of a software delivery process.
 
 3 Advanced networking patterns
             In this lab we'll be doing a deep dive into Kubernetes Networking. 
