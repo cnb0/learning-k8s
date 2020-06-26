@@ -1,1 +1,2 @@
 https://srcco.de/posts/web-service-on-kubernetes-production-checklist-2019.html
+https://www.fellowcloud.info/post/kubernetes-security-are-your-container-doors-open
