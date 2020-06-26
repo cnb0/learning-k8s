@@ -2,7 +2,7 @@
 
 [k8s-Cluster-Admin](https://kubernetes.io/docs/tasks/administer-cluster/)
 
-```
+ 
         1. Administration with kubeadm
         
         2. Manage Memory, CPU, and API Resources
@@ -22,8 +22,8 @@
                  Romana for NetworkPolicy
                  Weave Net for NetworkPolicy
                 
-        4.  (Access Clusters Using the Kubernetes API)(https://kubernetes.io/docs/tasks/administer-cluster/access-cluster-api/)
-        5.  (Access Services Running on Clusters)(https://kubernetes.io/docs/tasks/administer-cluster/access-cluster-api/)
+        4.  [Access Clusters Using the Kubernetes API](https://kubernetes.io/docs/tasks/administer-cluster/access-cluster-api/)
+        5.  [Access Services Running on Clusters](https://kubernetes.io/docs/tasks/administer-cluster/access-cluster-api/)
         6.  Advertise Extended Resources for a Node
         7.  [Autoscale the DNS Service in a Cluster](https://kubernetes.io/docs/tasks/administer-cluster/dns-horizontal-autoscaling/)
         8.  Change the default StorageClass
