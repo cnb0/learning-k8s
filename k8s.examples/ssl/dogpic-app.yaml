@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dogpic-web
+  labels:
+    app.kubernetes.io/name: dogpic-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: dogpic-web
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: dogpic-web
+    spec:
+      containers:
+        - name: dogpic-container
+          image: learncloudnative/dogpic-service:0.1.0
+          ports:
+            - containerPort: 3000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: dogpic-service
+  labels:
+    app.kubernetes.io/name: dogpic-web
+spec:
+  selector:
+    app.kubernetes.io/name: dogpic-web
+  ports:
+    - port: 3000
+      name: http

@@ -1,43 +1,44 @@
+
 ## K8s Troubleshooting commands 
+
 ```
 
 APP Failure 
 curl http://web-service-ip:node-port
+
 kubectl describe service web-service
 curl http://web-service-ip:node-port
 
 Check Pod
-kubectl get pods
-kubectl describe pod web
-kubectl logs web
+    kubectl get pods
+    kubectl describe pod web
+    kubectl logs web
 
 kubectl get nodes 
-kubectl get pods
-kubectl get pods -n kube-system
+
 service kube-apiserver status
 service kube-controller-manager status
 service kube-scheduler status
 service kubelet status
 service kube-proxy status
+
 kubectl logs kube-apiserver-master -n kube-system
+
 sudo journalctl -u kube-apiserver
-kubectl get nodes
 kubectl describe node worker-1
-service kubelet status
+
 openssl x509 -in /var/lib/kubelet/worker-1.crt -text
 
-
-
-
-
-
 To verify that the kube-scheduler component is healthy
+
 $kubectl get componentstatuses
 
-$ kubectl explain
-Did something weird happen when your pod deployed?
-$ kubectl get pods
-$ kubectl describe pods my-pod
+$kubectl explain
+    Did something weird happen when your pod deployed?
+$kubectl get pods
+$kubectl describe pods my-pod
+$kubectl get pods -n kube-system
+
 
 Check the logs
  # dump pod logs (stdout)
@@ -67,13 +68,9 @@ remote cluster with telepresence.io
 
 # Attach to Running Container
 
-# Forward port 6000 of Pod to
-your to 5000 on your local
-machine
-# Run command in existing
-pod (1 container case)
-# Run command in existing pod
-(multi-container case)
+# Forward port 6000 of Pod to your to 5000 on your local machine
+# Run command in existing pod (1 container case)
+# Run command in existing pod (multi-container case)
 # Show metrics for a given pod
 and its containers## k8s troubleshooting 
 ```
