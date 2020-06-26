@@ -11,7 +11,8 @@
     - Some certiﬁcates need to be identical across control plane nodes
          - e.g. the ServiceAccount signing private key for the controller-manager
       	   Needs to be rotated for all instances at the same time
-    - Monitoring the cluster components becomes increasingly more important  with a HA cluster that is expected to have a high SLO
+    - Monitoring the cluster components becomes increasingly more important  with a HA cluster 
+      that is expected to have a high SLO
             You can for example use Prometheus and kube-state-metrics as a starting point
     - Do you need a HA cluster? Is it worth the added cost and complexity?
 
