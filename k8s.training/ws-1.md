@@ -1,5 +1,5 @@
 
-
+```
 1 Kubernetes kickoff
             In this workshop we will cover the Kubernetes architecture and way of thinking. 
             We will start the workshop with a theoretical overview of the Kubernetes architecture, 
@@ -32,11 +32,12 @@
             through a series of exercises covering use-cases using real world technologies.
 
 5 Cluster processes
-            This lab focuses on the DevSecOps aspect of running your cluster. We'll be using Kubernetes mechanisms like Service Accounts, 
-            Pod Security Policies and Network Policies to ensure strict control over utilisation and access to various resources and 
-            services of your cluster.​
+            This lab focuses on the DevSecOps aspect of running your cluster. We'll be using Kubernetes mechanisms
+            like Service Accounts, Pod Security Policies and Network Policies to ensure strict control over utilisation 
+            and access to various resources and services of your cluster.​
 
-            This will ensure best practices are enforced by the cluster itself, and reduce the need to reinvent the wheel in various teams.
+            This will ensure best practices are enforced by the cluster itself, and reduce the need to reinvent 
+            the wheel in various teams.
 
 6 Building a software delivery pipeline
             During this lab we will synthesise all the knowledge from the previous labs to build a unified and
