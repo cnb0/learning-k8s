@@ -1,5 +1,5 @@
 
-[Configuration](https://kubernetes.io/docs/concepts/configuration/)
+## [k8s Configuration](https://kubernetes.io/docs/concepts/configuration/)
 
 ```
     - Configuration Best Practices
