@@ -6,9 +6,6 @@
 Assign Memory Resources to Containers and Pods
 Assign CPU Resources to Containers and Pods
 
-Configure GMSA for Windows Pods and containers
-Configure RunAsUserName for Windows pods and containers
-
 Configure Quality of Service for Pods
 Assign Extended Resources to a Container
 
