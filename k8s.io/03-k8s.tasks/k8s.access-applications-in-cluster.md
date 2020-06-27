@@ -138,7 +138,9 @@
                 - $ kubectl create deployment web --image=gcr.io/google-samples/hello-app:1.0
                   $ kubectl expose deployment web --type=NodePort --port=8080
                   $ kubectl get service web
-                  $ minikube service web --url  #You can now access the sample app via the Minikube IP address and NodePort
+                  #You can now access the sample app via the Minikube IP address and NodePort
+                  $ minikube service web --url  
+                  
          - Create an Ingress resource 
                 - Ingress resource that sends traffic to your Service via hello-world.info
                 - $ kubectl get ingress
