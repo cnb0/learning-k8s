@@ -1,7 +1,7 @@
 [k8s.application-access-in-cluster](https://kubernetes.io/docs/tasks/access-application-cluster/)
 
+ 
 ```
-
 - Web UI (Dashboard)
     - kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
     - You can access Dashboard using the kubectl command-line tool by running the following command:
@@ -14,28 +14,32 @@
                 - explore the API - curl http://localhost:8080/api/
             - Programmatic access to the API  - go/python/java/js 
             - Accessing the API from a Pod - kubectl proxy 
-                    - When accessing the API from a pod, locating and authenticating to the apiserver are somewhat different.
-                    - The recommended way to locate the apiserver within the pod is with the kubernetes.default.svc DNS name, 
-                      which resolves to a Service IP which in turn will be routed to an apiserver.
-                    - $ kubectl proxy in a sidecar container in the pod, or as a background process within the container. 
-                      This proxies the Kubernetes API to the localhost interface of the pod, 
+                    - When accessing the API from a pod, locating and authenticating to the apiserver are somewhat 
+                      different.
+                    - The recommended way to locate the apiserver within the pod is with the kubernetes.default.svc 
+                      DNS name,which resolves to a Service IP which in turn will be routed to an apiserver.
+                    - $ kubectl proxy in a sidecar container in the pod, or as a background process within the 
+                      container.This proxies the Kubernetes API to the localhost interface of the pod, 
                       so that other processes in any container of the pod can access it.
             - Accessing services running on the cluster
                   - You have several options for connecting to nodes, pods and services from outside the cluster
                         - Access services through public IPs
-                                - Use a service with type NodePort or LoadBalancer to make the service reachable outside the cluster
+                                - Use a service with type NodePort or LoadBalancer to make the service reachable 
+                                  outside the cluster
                         - Access services, nodes, or pods using the Proxy Verb
                         - Access from a node or pod in the cluster
                                 - Run a pod, and then connect to a shell in it using kubectl exec. 
                                   Connect to other nodes, pods, and services from that shell.
             - Discovering builtin services 
-                  - There are several services which are started on a cluster by kube-system. Get a list of these with the 
+                  - There are several services which are started on a cluster by kube-system. 
+                    Get a list of these with the 
                         $ kubectl cluster-info
             - Manually constructing apiserver proxy URLs
                     - The supported formats for the name segment of the URL are:
                             <service_name> - proxies to the default or unnamed port using http
                             <service_name>:<port_name> - proxies to the specified port using http
-                            https:<service_name>: - proxies to the default or unnamed port using https (note the trailing colon)
+                            https:<service_name>: - proxies to the default or unnamed port using https
+                                                    (note the trailing colon)
                             https:<service_name>:<port_name> - proxies to the specified port using https
             - Many Proxies 
                     kubectl proxy
@@ -55,19 +59,23 @@
              - kubectl port-forward deployment/redis-master 7000:6379
              - kubectl port-forward replicaset/redis-master 7000:6379
              - kubectl port-forward service/redis-master 7000:6379
-        - Connections made to local port 7000 are forwarded to port 6379 of the Pod that is running the Redis server. 
-          With this connection in place, you can use your local workstation to debug the database that is running in the Pod.
+        - Connections made to local port 7000 are forwarded to port 6379 of the Pod that is running 
+          the Redis server.With this connection in place, you can use your local workstation to debug 
+          the database that is running in the Pod.
 
         - Forward one or more local ports to a pod. 
-            - Use resource type/name such as deployment/mydeployment to select a pod. Resource type defaults to 'pod' if omitted.
-              If there are multiple pods matching the criteria, a pod will be selected automatically. 
-              The forwarding session ends when the selected pod terminates, and rerun of the command is needed to resume forwarding.
+            - Use resource type/name such as deployment/mydeployment to select a pod. Resource type defaults to 
+              'pod' if omitted.If there are multiple pods matching the criteria, a pod will be selected
+               automatically.The forwarding session ends when the selected pod terminates, and 
+               rerun of the command is needed to resume forwarding.
 
         - Listen on ports 5000 and 6000 locally, forwarding data to/from ports 5000 and 6000 in the pod
             $ kubectl port-forward pod/mypod 5000 6000
-        - Listen on ports 5000 and 6000 locally, forwarding data to/from ports 5000 and 6000 in a pod selected by the deployment
+        - Listen on ports 5000 and 6000 locally, forwarding data to/from ports 5000 and 6000 
+           in a pod selected by the deployment
             $ kubectl port-forward deployment/mydeployment 5000 6000
-        - Listen on ports 5000 and 6000 locally, forwarding data to/from ports 5000 and 6000 in a pod selected by the service
+        - Listen on ports 5000 and 6000 locally, forwarding data to/from ports 5000 and 6000 in a pod
+          selected by the service
             $ kubectl port-forward service/myservice 5000 6000
 
         - Listen on port 8888 locally, forwarding to 5000 in the pod
@@ -109,12 +117,14 @@
 - Create an External Load Balancer
         - When creating a service, you have the option of automatically creating a cloud network load balancer. 
           This provides an externally-accessible IP address that sends traffic to the correct port on your cluster 
-          nodes provided your cluster runs in a supported environment and is configured with the correct cloud load balancer provider package.
+          nodes provided your cluster runs in a supported environment and is configured with the correct cloud 
+          load balancer provider package.
 
 - List All Container Images Running in a Cluster
         - use kubectl to list all of the Container images for Pods running in a cluster.
         - List Container images by Pod
-            $ kubectl get pods --all-namespaces -o=jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{", "}{end}{end}' 
+            $ kubectl get pods --all-namespaces \
+            -o=jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{", "}{end}{end}' 
         - List Container images filtering by Pod label
             $ kubectl get pods --all-namespaces -o=jsonpath="{..image}" -l app=nginx
         - List Container images filtering by Pod namespace 
@@ -128,7 +138,9 @@
                 - $ kubectl create deployment web --image=gcr.io/google-samples/hello-app:1.0
                   $ kubectl expose deployment web --type=NodePort --port=8080
                   $ kubectl get service web
-                  $ minikube service web --url  #You can now access the sample app via the Minikube IP address and NodePort
+                  #You can now access the sample app via the Minikube IP address and NodePort
+                  $ minikube service web --url  
+                  
          - Create an Ingress resource 
                 - Ingress resource that sends traffic to your Service via hello-world.info
                 - $ kubectl get ingress
@@ -139,11 +151,13 @@
 - Communicate Between Containers in the Same Pod Using a Shared Volume
         - use a Volume to communicate between two Containers running in the same Pod. 
           allow processes to communicate by sharing process namespace between containers.
-        - The primary reason that Pods can have multiple containers is to support helper applications that assist a primary application. 
+        - The primary reason that Pods can have multiple containers is to support helper applications that assist a 
+          primary application. 
           Typical examples of helper applications are data pullers, data pushers, and proxies.
           Helper and primary applications often need to communicate with each other. 
           Typically this is done through a shared filesystem, or through the loopback network interface, localhost.
-          An example of this pattern is a web server along with a helper program that polls a Git repository for new updates
+          An example of this pattern is a web server along with a helper program that polls a Git repository for
+          new updates
 
 - Configure DNS for a Cluster
     - Kubernetes offers a DNS cluster addon, which most of the supported environments enable by default. 
