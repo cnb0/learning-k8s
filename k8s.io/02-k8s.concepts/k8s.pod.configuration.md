@@ -1,7 +1,6 @@
 
 ## [k8s Configuration](https://kubernetes.io/docs/concepts/configuration/)
-<details><summary>show</summary>
-<p>
+
 
     - Configuration Best Practices
     - ConfigMaps
