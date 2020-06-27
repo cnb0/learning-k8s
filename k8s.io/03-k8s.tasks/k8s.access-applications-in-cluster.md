@@ -1,7 +1,7 @@
 [k8s.application-access-in-cluster](https://kubernetes.io/docs/tasks/access-application-cluster/)
 
  
-
+```
 - Web UI (Dashboard)
     - kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
     - You can access Dashboard using the kubectl command-line tool by running the following command:
