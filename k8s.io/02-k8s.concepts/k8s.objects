@@ -1,0 +1,12 @@
+[Working with Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/)
+
+```
+            Understanding Kubernetes Objects
+            Kubernetes Object Management
+            Object Names and IDs
+            Namespaces
+            Labels and Selectors
+            Annotations
+            Field Selectors
+            Recommended Labels
+```
