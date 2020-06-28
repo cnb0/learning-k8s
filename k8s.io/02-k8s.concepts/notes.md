@@ -31,7 +31,6 @@
                     - Ephemeral Containers
               -  Controllers
                     - ReplicaSet
-                    - ReplicationController
                     - Deployments
                     - StatefulSets
                     - DaemonSet
