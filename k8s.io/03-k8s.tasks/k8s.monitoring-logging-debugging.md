@@ -33,6 +33,8 @@
                         $ kubectl get nodes
                         $ kubectl describe node  ${NODE_NAME} 
                         $ kubectl describe node  ${NODE_NAME} -o yaml
+                        $ kubectl top node
+                        $ kubectl top pod
 
              - Check Accessibility
                         $ curl http://web-service-ip:node-port
@@ -194,6 +196,7 @@
                          - Confirm hairpin-mode is set to hairpin-veth or promiscuous-bridge
                              $ ps auxw | grep kubelet
                                 Confirm the effective hairpin-mode. To do this, you'll have to look at kubelet log
+
 - k8s  debugging/troubleshooting networking 
 
             - Make sure you’re connecting to the service’s cluster IP from within the cluster, not from the outside.
@@ -253,6 +256,16 @@
                         - /var/log/kubelet.log - Kubelet, responsible for running containers on the node
                         - /var/log/kube-proxy.log - Kube Proxy, responsible for service load balancing
 
+- Node Networking configuration 
+                $ ip addr
+                $ ip link
+                $ ip link show ens3
+                $ arp node01
+                $ ip link show docker0 
+                $ ip route show default
+                $ netstat -nplt
+                $ netstat -anp | grep etcd
+
 - Monitor Node Health
          - Node problem detector is a DaemonSet monitoring the node health. 
           It collects node problems from various daemons and reports them to the apiserver as NodeCondition and Event.
@@ -260,7 +273,45 @@
 - Debugging Kubernetes nodes with crictl
         - crictl is a command-line interface for CRI-compatible container runtimes. 
           You can use it to inspect and debug container runtimes and applications on a Kubernetes node. 
-          
+         
+- Pod Networking Configuration
+                $ ip netns add white
+                $ ip netns
+                $ ip netns exec white ip link
+                $ ip -n red link
+                $ ip netns exec white arp
+                $ ip netns exec white route
+                $ ip link set veth-white netns white
+                $ ip -n white addr add 192.168.1.1 dev veth-white
+                $ ip -n white link set veth-white up
+                $ ip link add v-net-0 type bridge
+                $ ip link set dev v-net-0 up
+                $ ip link add veth-white type veth peer name veth-white-br
+                $ ip link set veth-white netns white
+                $ ip link set veth-white-br master v-net-0
+                $ ip -n white addr add 192.168.1.1 dev veth-white
+                $ ip -n white link set veth-white up
+                $ docker network ls
+                $ docker inspect <network ns>
+
+- Service Networking Configuration
+                $ ps aux | grep kube-api
+                    --service-cluster-ip-range=10.0.0.0/24
+                $ iptables -L -t net | grep <service name>
+                $ cat /var/log/kube-proxy.log
+                $ kubectl logs weave-net-cwpbj weave -n kube-system
+
+                - Check for ipalloc-range:
+
+                  $ kubectl logs <kube-proxy-pod> -n kube-system
+                          Check for "Flag proxy-mode="" unknown, assuming iptables proxy"
+
+- Deploy and configure network load balancer
+- Know how to use Ingress rules
+- Know how to configure and use the cluster DNS
+- Understand CNI
+
+
 - Resource metrics pipeline - /apis/metrics.k8s.io/
          - Metrics Server is a cluster-wide aggregator of resource usage data
          - Measuring Resource Usage ( Memory/CPU )
