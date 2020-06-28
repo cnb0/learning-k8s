@@ -202,10 +202,14 @@
             - Make sure you’re connecting to the service’s cluster IP from within the cluster, not from the outside.
             - Don’t bother pinging the service IP to figure out if the service is accessible 
                 (remember, the service’s cluster IP is a virtual IP and pinging it will never work).
-            - if you’ve defined a readiness probe, make sure it’s succeeding; otherwise the pod won’t be part of the service.
-            - To confirm that a pod is part of the service, examine the corresponding Endpoints object with kubectl get endpoints.
-            - If you’re trying to access the service through its FQDN or a part of it (for example, myservice.mynamespace.svc.cluster.local 
-              or myservice.mynamespace) and it doesn’t work,   see if you can access it using its cluster IP instead of the FQDN.
+            - if you’ve defined a readiness probe, make sure it’s succeeding; otherwise the pod won’t be
+              part of the service.
+            - To confirm that a pod is part of the service, examine the corresponding Endpoints object
+              with kubectl get endpoints.
+            - If you’re trying to access the service through its FQDN or a part of it 
+              (for example, myservice.mynamespace.svc.cluster.local 
+              or myservice.mynamespace) and it doesn’t work,   see if you can access it using its 
+              cluster IP instead of the FQDN.
             - Check whether you’re connecting to the port exposed by the service and not the target port.
             - Try connecting to the pod IP directly to confirm your pod is accepting connections on the correct port.
             - If you can’t even access your app through the pod’s IP, make sure your app isn’t only binding to localhost.
@@ -343,9 +347,12 @@
       When an event is processed, it's compared against the list of rules in order
        The first matching rule sets the "audit level" of the event. The known audit levels are:
             - None - don't log events that match this rule.
-            - Metadata - log request metadata (requesting user, timestamp, resource, verb, etc.) but not request or response body.
-            - Request - log event metadata and request body but not response body. This does not apply for non-resource requests.
-            - RequestResponse - log event metadata, request and response bodies. This does not apply for non-resource requests.
+            - Metadata - log request metadata (requesting user, timestamp, resource, verb, etc.) but not request
+                         or response body.
+            - Request - log event metadata and request body but not response body. This does not 
+                        apply for non-resource requests.
+            - RequestResponse - log event metadata, request and response bodies. This does not apply for 
+                                 non-resource requests.
 
 - Auditing with Falco
       - Falco is an open source project for intrusion and abnormality detection for Cloud Native platforms
@@ -361,7 +368,8 @@
 
       - Since events are API objects, they are stored in the apiserver on master. To avoid filling up master's disk,
         a retention policy is enforced: events are removed one hour after the last occurrence. 
-        To provide longer history and aggregation capabilities, a third party solution should be installed to capture events.
+        To provide longer history and aggregation capabilities, a third party solution should be installed
+        to capture events.
 
      -  exports Kubernetes events to Stackdriver Logging, where they can be processed and analyzed.
         
