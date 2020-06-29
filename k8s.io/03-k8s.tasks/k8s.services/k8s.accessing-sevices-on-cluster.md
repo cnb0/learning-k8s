@@ -1,8 +1,7 @@
 
-[Access Services Running on K8s Clusters](https://kubernetes.io/docs/tasks/administer-cluster/access-cluster-services/)
+## [Access Services Running on K8s Clusters](https://kubernetes.io/docs/tasks/administer-cluster/access-cluster-services/)
 
 
-```
 - Connect to services running on the Kubernetes cluster
     - In Kubernetes, nodes, pods and services all have their own IPs. 
     -  In many cases, the node IPs, pod IPs, and some service IPs on a cluster will not be routable, 
@@ -35,7 +34,7 @@
                    This is a non-standard method, and will work on some clusters but not others. 
                    Browsers and other tools may or may not be installed. Cluster DNS may not work
 
-- Discovering builtin services 
+2. Discovering builtin services 
     - Typically, there are several services which are started on a cluster by kube-system. 
       Get a list of these with the kubectl cluster-info command:
 
