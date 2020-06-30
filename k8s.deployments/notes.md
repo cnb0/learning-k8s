@@ -1,5 +1,9 @@
-```
 
+
+[6 strategies for K8s application deployment](https://thenewstack.io/deployment-strategies/)
+[Blue Green vs Canary Deployments](https://harness.io/2018/02/blue-green-vs-canary-deployments/)
+
+```
 In Kubernetes there is few different way to release an application, you have
 to carefully choose the right strategy to make your infrastructure resilient.
 
