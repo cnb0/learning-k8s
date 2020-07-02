@@ -204,7 +204,7 @@ Start here and elevate your security by exploring additional resources listed at
 
 Next we provide recommendations for securing your Kubernetes workloads during the runtime phase.
 
-Kubernetes Security Best Practices: Runtime Phase
+=== Kubernetes Security Best Practices: Runtime Phase  ===
 
 The runtime phase exposes containerized applications to a slew of new security challenges. Your goal here is to 
 both gain visibility into your running environment and detect and respond to threats as they arise.
