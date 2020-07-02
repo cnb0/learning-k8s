@@ -1,13 +1,13 @@
-## security risks and challenges you’re likely to encounter when using Kubernetes,
- -  in production and at scale. We will also provide a 
-   list of best practices and practical recommendations to help you secure 
-   cloud-native infrastructure and applications
+## Security Risks and Challenges you’re likely to encounter when using Kubernetes
+
+ -  in production and at scale. best practices and practical recommendations 
+    to help you secure cloud-native infrastructure and applications
 
 ```
 Images and image registries, when misused, can pose security issues
 Organizations need strong governance policies regarding how images are built and stored in trusted image registries. 
-You must ensure that container images are built using secure and approved base images that are regularly scanned and ensure 
-that only images from whitelisted image registries are used to launch containers in your Kubernetes environment.
+You must ensure that container images are built using secure and approved base images that are regularly scanned and 
+ensure that only images from whitelisted image registries are used to launch containers in your Kubernetes environment.
 
 Containers talk to each other and to other endpoints
 Containers and pods will need to talk to each other within deployments as well as to other internal and external endpoints 
@@ -35,8 +35,8 @@ Containers and Kubernetes pose compliance challenges
 Cloud-native environments also introduce challenges in complying with security best practices, industry standards and 
 benchmarks, and internal organizational policies.
 
-Beyond remaining compliant, organizations also must show proof of that compliance. They must adapt their strategies to ensure 
-their Kubernetes environments meet controls that were originally written for traditional application architectures.
+Beyond remaining compliant, organizations also must show proof of that compliance. They must adapt their strategies to 
+ensure their Kubernetes environments meet controls that were originally written for traditional application architectures.
 
 Also, the distributed and dynamic nature of containerized applications means monitoring for compliance adherence and audits
 must be fully automated to successfully operate at scale.
@@ -162,14 +162,16 @@ known/whitelisted registries only.
 13) Extend your image scanning to deploy phase
 As an extension of image scanning, enforce policies at the deploy phase based on scan results. One way to enforce
 would be to use the Validating Admission Controller, a feature of Kubernetes to reject deployment creation when 
-they specify images without scanning results or critical vulnerabilities, or if the images have been built over 90 days ago.
+they specify images without scanning results or critical vulnerabilities, or if the images have been built over
+90 days ago.
 
 Images that haven’t been scanned recently might contain vulnerabilities that have been newly disclosed since the 
 time of the last scan.
 
 14) Use labels and annotations appropriately
 For example, consider labeling or annotating your deployments with the name, email alias, or Slack channel of the
-team responsible for an application. This will make it easier to alert the responsible team for triaging security issues.
+team responsible for an application. This will make it easier to alert the responsible team for triaging security
+issues.
 
 15) Enable Kubernetes role-based access control (RBAC)
 RBAC provides a method for controlling authorization to access a cluster’s Kubernetes API server, both for users 
@@ -212,7 +214,8 @@ of attacks that depend on privileged access. Read-only root file systems, for ex
 that depends on installing software or writing to the file system.
 
 19) Monitor network traffic to limit unnecessary or insecure communication
-Observe your active network traffic and compare that traffic to what is allowed based on your Kubernetes network policies. 
+Observe your active network traffic and compare that traffic to what is allowed based on your Kubernetes network 
+policies.
 Containerized applications typically make extensive use of cluster networking, and observing active networking traffic
 8is a good way to understand how applications interact with each other and identify unexpected communication.
 
@@ -237,14 +240,15 @@ should behave nearly identically; replicas with significant deviations from the 
 Integrate your Kubernetes security tool with other external systems (email, PagerDuty, Slack, 
 Google Cloud Security Command Center, SIEMs [security information and event management], etc.) and 
 leverage deployment labels or annotations to alert the team responsible for a given application when a potential 
-threat is detected. Commercial Kubernetes security vendors should support a wide array of integrations with external tools.
+threat is detected. Commercial Kubernetes security vendors should support a wide array of integrations with external 
+tools.
 
 22) If breached, scale suspicious pods to zero
 Use Kubernetes native controls to contain a successful breach by automatically instructing Kubernetes to 
 scale suspicious pods to zero or kill then restart instances of breached applications.
 
 Infrastructure Security
-So far, we’ve focused on security best practices for building, deploying, and running workloads orchestrated by Kubernetes. 
+So far, we’ve focused on security best practices for building, deploying, and running workloads orchestrated by K8s. 
 Security, however, must extend beyond images and workloads and protect the entire environment, including the 
 cluster infrastructure. You must secure your clusters, nodes and the container engine.
 
