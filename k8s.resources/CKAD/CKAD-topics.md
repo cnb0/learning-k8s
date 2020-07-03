@@ -1,6 +1,4 @@
 
-
-
 1. Core Concepts (13%) 
         - Kubernetes Architecture
         - Create and Configure Pods
