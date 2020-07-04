@@ -115,7 +115,7 @@
                     
                     $ kubectl get po -l app=v2
                     $ kubectl get po -l 'app in (v2)'
-                    $ kubectl get po --selector=app=v2
+                    $ kubectl get po --selector app=v2
                     
                     $ kubectl label po nginx1 nginx2 nginx3 app-
                     $ kubectl label po -lapp  app-
