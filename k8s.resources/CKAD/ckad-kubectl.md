@@ -2,11 +2,11 @@
 ## CKAD Learning experience 
 
 ```
-
 - Environment Settings 
 
         $ alias k=kubectl
         $ source <(kubectl completion bash)
+        
         $ kubectl cluster-info  
 
         $ kubectl config view 
@@ -21,7 +21,6 @@
 
         $ kubectl describe node 
         $ kubectl top nodes
-
         $ kubectl replace --force -f pod/yaml                # Force delete k8s resource object
 
  - Explain structure of a Kubernetes resource object (po,deployment,cm,rs,pv,pvc ..)
@@ -31,10 +30,18 @@
             $ kubectl explain pod.spec
             $ kubectl explain pod.spec.containers
             $ kubectl explain pod.spec.containers.image
-            
+            $ kubectl explain pod.spec.containers.livenessProbe
+            $ kubectl explain pod.spec.containers.livenessProbe.httpGet
+            $ kubectl explain pod.spec.containers.readinessProbe
+            $ kubectl explain pod.spec.containers.readinessProbe.exec
+
+            $ kubectl explain job.spec.parallelism
+            $ kubectl explain job.spec.completions
+                        
             $ kubectl explain deployment 
             $ kubectl explain deployment --recursive
             $ kubectl explain deployment.spec.strategy
+
             
             $ kubectl get pods -l env=dev 
             $ kubectl get pods --selector env=dev 
@@ -42,11 +49,17 @@
             $ kubectl run nginx --image=nginx --restart=Never --env=foo=bar
 
             $ kubectl run  nginx   --image=nginx   --restart=Never 
-            $ kubectl create deployment nginx --image=nginx  # start a single instance of nginx
             $ kubectl run  busybox --image=busybox --restart=Never 
             $ kubectl logs busybox -f     
             $ kubectl describe pod busybox 
             $ kubectl exec busybox -- printenv
+            $ kubectl run busybox --image=busybox --restart=Never --namespace=myns
+
+            $ kubectl run nginx   --image=nginx   --dry-run -o yaml                 
+            $ kubectl create deployment nginx --image=nginx  # start a single instance of nginx
+            $ kubectl run nginx   --image=nginx   --restart=Never     --dry-run=client -o yaml  
+            $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run -o yaml=client -- /bin/sh -c 'echo Hello world!'  
+            $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * ?" -- dry-run=client -o yaml -- /bin/sh -c 'echo Hello world!' 
 
   
 1. Core Concepts - 13% ( Tasks )
@@ -91,10 +104,13 @@
                  $ kubectl label pods my-pod new-label=awesome  
                  
                     # Lables/Selectors/Annotations
-                     
-                    $ kubectl run nginx1 --image=nginx --restart=Never --labels=app=v1
+
+                    $ kubectl run nginx1 --image=nginx --restart=Never --labels="app=v1"
+                    $ kubectl run nginx2 --image=nginx --restart=Never --labels="app=frontend,env=dev"
+
                     $ kubectl get po --show-labels
                     $ kubectl label po nginx1 app=v2 --overwrite
+                    
                     $ kubectl get po -L app
                     
                     $ kubectl get po -l app=v2
