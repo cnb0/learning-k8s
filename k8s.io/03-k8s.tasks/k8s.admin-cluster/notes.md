@@ -1,5 +1,5 @@
 
-## [k8s admin cluster] (https://kubernetes.io/docs/tasks/administer-cluster/)
+## [k8s admin cluster](https://kubernetes.io/docs/tasks/administer-cluster/)
 
 ```
             Administration with kubeadm
