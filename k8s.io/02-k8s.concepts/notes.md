@@ -1,5 +1,17 @@
-
 ## [k8s.concepts](https://kubernetes.io/docs/concepts/)
+
+- Kubernetes is characterized as a declarative Container Orchestration Engine: 
+
+- In a declarative system, the user supplies a representation of the 
+  desired state of the system to the system. Then, the system considers 
+  the current state and the desired state to determine the
+  sequence of commands to transition from current state to desired state
+  
+- Kubernetes iteratively determines the next command to execute based on the current state only. 
+  If and when no next command can be determined, Kubernetes reached a steady state.
+
+- The Kubernetes Object Store is a set of Kubernetes Objects. 
+  Kubernetes Objects are data records that come in different flavors, called kinds.
 
 ```
     1.  Overview 
