@@ -79,13 +79,31 @@
                     > Configure Access to Multiple Clusters
                     > Accessing Clusters using API
                     > Use Port Forwarding to Access Applications in a Cluster
+                    
+                    $ kubectl get po --all-namespaces
+                    $ kubectl get po -A
 
-
+                    $ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl create -n mynamespace -f -
+                    $ kubectl set image pod/nginx nginx=nginx:1.7.1 
+                                 
+                    # Interactive POD debugging
+                    
+                                $ kubectl run -i --tty alpine --image=alpine -- sh
+                                $ kubectl attach my-pod -i
+                                $ kubectl port-forward my-pod 5000:6000
+                                $ kubectl exec my-pod -- ls /
+                                $ kubectl exec my-pod -c my-container -- ls /
+                                $ kubectl top pod POD_NAME --containers
+                                
 
 2. Multi-container pods - 10% 
               - run commands on 2 different containers in the same pod 
               $ kubectl run busybox --image=busybox --restart=Never -o yaml --dry-run=client -- \ 
                 /bin/sh -c 'echo hello;sleep 3600' > pod.yaml
+                
+              - stream pod container logs(stdout, multi-container case)
+               $ kubectl logs -f my-pod -c my-container
+
 
 3. Pod design - 20%
                 - Concepts 
@@ -93,87 +111,93 @@
                        > Workloads > Controllers > Deployments
                 - Tasks > Run Jobs > Running Automated Tasks with a CronJob
                 
-                 $ kubectl get events --sort-by=.metadata.creationTimestamp
-                 $ kubectl get pods --field-selector=status.phase=Running
-                 
-                 $ kubectl get pods --show-labels
-                 $ kubectl diff -f ./my-pod.yaml
-                 $ kubectl scale --replicas=3 rs/foo     
-                 $ kubectl delete pods,services -l name=myLabel          
-                 
-                 $ kubectl set image deployment/frontend www=image:v2               # Rolling update "www" containers of "frontend" deployment, updating the image
-                 $ kubectl rollout history deployment/frontend                      # Check the history of deployments including the revision 
-                 $ kubectl rollout undo deployment/frontend                         # Rollback to the previous deployment
-                 $ kubectl rollout undo deployment/frontend --to-revision=2         # Rollback to a specific revision
-                 $ kubectl rollout status -w deployment/frontend                    # Watch rolling update status of "frontend" deployment until completion
-                 $ kubectl rollout restart deployment/frontend                      # Rolling restart of the "frontend" deployment
+                         $ kubectl get events --sort-by=.metadata.creationTimestamp
+                         $ kubectl get pods --field-selector=status.phase=Running
 
-                 $ kubectl annotate pods my-pod url=http://goo.gl/XXBTWq       # Add an annotation
-                 
-                 $ kubectl autoscale deployment foo --min=2 --max=10
-                 $ kubectl label pods my-pod new-label=awesome  
-                 
-                    # Lables/Selectors/Annotations
+                         $ kubectl get pods --show-labels
+                         $ kubectl diff -f ./my-pod.yaml
+                         $ kubectl scale --replicas=3 rs/foo     
+                         $ kubectl delete pods,services -l name=myLabel          
 
-                    $ kubectl run nginx1 --image=nginx --restart=Never --labels="app=v1"
-                    $ kubectl run nginx2 --image=nginx --restart=Never --labels="app=frontend,env=dev"
+                         $ kubectl set image deployment/frontend www=image:v2      # Rolling update "www" containers of "frontend" deployment, updating the image
+                         $ kubectl rollout history deployment/frontend                      # Check the history of deployments including the revision 
+                         $ kubectl rollout undo deployment/frontend                         # Rollback to the previous deployment
+                         $ kubectl rollout undo deployment/frontend --to-revision=2         # Rollback to a specific revision
+                         $ kubectl rollout status -w deployment/frontend                  # Watch rolling update status of "frontend" deployment until completion
+                         $ kubectl rollout restart deployment/frontend                      # Rolling restart of the "frontend" deployment
 
-                    $ kubectl get po --show-labels
-                    $ kubectl label po nginx1 app=v2 --overwrite
-                    
-                    $ kubectl get po -L app
-                    
-                    $ kubectl get po -l app=v2
-                    $ kubectl get po -l 'app in (v2)'
-                    $ kubectl get po --selector app=v2
-                    
-                    $ kubectl label po nginx1 nginx2 nginx3 app-
-                    $ kubectl label po -lapp  app-
+                         $ kubectl annotate pods my-pod url=http://goo.gl/XXBTWq       # Add an annotation
 
-                    $ kubectl annotate po nginx1 nginx2 nginx3 description='my description'
-                    $ kubectl describe po nginx1 | grep -i 'annotations'
-                    $ kubectl annotate po nginx1 description-
+                         $ kubectl autoscale deployment foo --min=2 --max=10
+                         $ kubectl label pods my-pod new-label=awesome  
+
+                 # Lables/Selectors/Annotations
+
+                            $ kubectl run nginx1 --image=nginx --restart=Never --labels="app=v1"
+                            $ kubectl run nginx2 --image=nginx --restart=Never --labels="app=frontend,env=dev"
+
+                            $ kubectl get po --show-labels
+                            $ kubectl label po nginx1 app=v2 --overwrite
+
+                            $ kubectl get po -L app
+
+                            $ kubectl get po -l app=v2
+                            $ kubectl get po -l 'app in (v2)'
+                            $ kubectl get po --selector app=v2
+
+                            $ kubectl label po nginx1 nginx2 nginx3 app-
+                            $ kubectl label po -lapp  app-
+
+                            $ kubectl annotate po nginx1 nginx2 nginx3 description='my description'
+                            $ kubectl describe po nginx1 | grep -i 'annotations'
+                            $ kubectl annotate po nginx1 description-
+
+     
+
 
                     # Deployments 
 
-                    $ kubectl create deployment nginx  --image=nginx:1.7.8  --dry-run=client -o yaml > deploy.yaml
-                    $ kubectl get deploy nginx -o yaml
-                    $ kubectl describe deploy nginx
-                    
-                    $ kubectl get rs -l run=nginx # if you created deployment by 'run' command
-                    $ kubectl get rs -l app=nginx # if you created deployment by 'create' command
-                    
-                    $ kubectl get po -l run=nginx # if you created deployment by 'run' command
-                    $ kubectl get po -l app=nginx # if you created deployment by 'create' command
+                            $ kubectl create deployment nginx  --image=nginx:1.7.8  --dry-run=client -o yaml > deploy.yaml
+                            $ kubectl get deploy nginx -o yaml
+                            $ kubectl describe deploy nginx
 
-                    $ kubectl rollout status deploy nginx
-                    
-                    $ kubectl set image deploy nginx nginx=nginx:1.7.9
-                    or
-                    $ kubectl edit deploy nginx  
-                    
-                    $ kubectl rollout history deploy nginx
-                    $ kubectl rollout undo deploy nginx
+                            $ kubectl get rs -l run=nginx # if you created deployment by 'run' command
+                            $ kubectl get rs -l app=nginx # if you created deployment by 'create' command
 
-                    $ kubectl rollout undo deploy nginx --to-revision=2
-                    $ kubectl describe deploy nginx | grep Image:
-                    $ kubectl rollout status deploy nginx # Everything should be OK
+                            $ kubectl get po -l run=nginx # if you created deployment by 'run' command
+                            $ kubectl get po -l app=nginx # if you created deployment by 'create' command
 
-                    $ kubectl rollout history deploy nginx --revision=4
+                            $ kubectl rollout status deploy nginx
 
-                    $ kubectl scale deploy nginx --replicas=5
-                    $ kubectl autoscale deploy nginx --min=5 --max=10 --cpu-percent=80
+                            $ kubectl set image deploy nginx nginx=nginx:1.7.9
+                            or
+                            $ kubectl edit deploy nginx  
 
-                    $ kubectl rollout pause deploy nginx
-                    $ kubectl rollout resume deploy nginx
-                    $ kubectl rollout history deploy nginx
-                    $ kubectl rollout history deploy nginx --revision=6
+                            $ kubectl rollout history deploy nginx
+                            $ kubectl rollout undo deploy nginx
+
+                            $ kubectl rollout undo deploy nginx --to-revision=2
+                            $ kubectl describe deploy nginx | grep Image:
+                            $ kubectl rollout status deploy nginx # Everything should be OK
+
+                            $ kubectl rollout history deploy nginx --revision=4
+
+                            $ kubectl scale deploy nginx --replicas=5
+                            $ kubectl autoscale deploy nginx --min=5 --max=10 --cpu-percent=80
+
+                            $ kubectl rollout pause deploy nginx
+                            $ kubectl rollout resume deploy nginx
+                            $ kubectl rollout history deploy nginx
+                            $ kubectl rollout history deploy nginx --revision=6
 
                     # Jobs
-                    $ kubectl get jobs -w
+                    
+                          $ kubectl get jobs -w
 
                     # CronJobs
-                    $ kubectl create cronjob busybox --image=busybox --schedule="*/1 * * * *" -- /bin/sh -c 'date; echo Hello from the Kubernetes cluster'
+                    
+                          $ kubectl create cronjob busybox --image=busybox --schedule="*/1 * * * *" -- \ 
+                            /bin/sh -c 'date; echo Hello from the Kubernetes cluster'
 
 
 
