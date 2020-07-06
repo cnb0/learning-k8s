@@ -34,14 +34,22 @@
             $ kubectl explain pod.spec.containers.livenessProbe.httpGet
             $ kubectl explain pod.spec.containers.readinessProbe
             $ kubectl explain pod.spec.containers.readinessProbe.exec
-
+ 
             $ kubectl explain job.spec.parallelism
             $ kubectl explain job.spec.completions
                         
             $ kubectl explain deployment 
             $ kubectl explain deployment --recursive
             $ kubectl explain deployment.spec.strategy
-
+            
+            
+ - Delete all k8s objects/resources
+ 
+            $ kubectl delete --all pods --namespace=foo
+            $ kubectl delete --all deployments --namespace=foo
+            $ kubectl delete --all namespaces
+            $ kubectl delete ds,rs,svc,deploy,pods,rc --all
+         
             
             $ kubectl get pods -l env=dev 
             $ kubectl get pods --selector env=dev 
@@ -59,7 +67,8 @@
             $ kubectl create deployment nginx --image=nginx  # start a single instance of nginx
             $ kubectl run nginx   --image=nginx   --restart=Never     --dry-run=client -o yaml  
             $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run -o yaml=client -- /bin/sh -c 'echo Hello world!'  
-            $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * ?" -- dry-run=client -o yaml -- /bin/sh -c 'echo Hello world!' 
+            $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * ?" -- dry-run=client -o yaml \
+              -- /bin/sh -c 'echo Hello world!' 
 
   
 1. Core Concepts - 13% ( Tasks )
@@ -75,7 +84,8 @@
 
 2. Multi-container pods - 10% 
               - run commands on 2 different containers in the same pod 
-              $ kubectl run busybox --image=busybox --restart=Never -o yaml --dry-run=client -- /bin/sh -c 'echo hello;sleep 3600' > pod.yaml
+              $ kubectl run busybox --image=busybox --restart=Never -o yaml --dry-run=client -- \ 
+                /bin/sh -c 'echo hello;sleep 3600' > pod.yaml
 
 3. Pod design - 20%
                 - Concepts 
@@ -215,6 +225,8 @@
 
 
 6. Services and networking - 13%
+
+                    $ kubectl run curl --image=radial/busyboxplus:curl  -it
                     $ kubectl get services --sort-by=.metadata.name
 
                     $ kubectl get svc nginx -o yaml
