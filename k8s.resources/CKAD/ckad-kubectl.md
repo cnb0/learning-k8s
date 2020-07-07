@@ -15,6 +15,8 @@
         $ kubectl config use-context my-cluster-name   
         $ kubectl config unset users.foo     
         
+        $ kubectl config set-context $(kubectl config current-context) --namespace=testns
+        
         $ kubectl api-resources 
         $ kubectl api-resources --namespaced=true  
         $ kubectl api-resources --api-group=extensions
