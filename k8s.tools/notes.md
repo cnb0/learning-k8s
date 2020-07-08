@@ -5,3 +5,6 @@
 
 [K8s pharos platform](https://k8spharos.dev/)
                 - Deploy and run Kubernetes workloads at any scale on any infrastructure. All batteries included 
+
+
+[k8s.podast](https://kubernetespodcast.com/)
