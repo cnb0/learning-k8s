@@ -1,4 +1,27 @@
 
+## k8s Cookbook
+
+-  If your organization is preparing to move toward a cloud-native computing architecture, 
+ this cookbook shows you how to successfully use Kubernetes, the de-facto standard for
+ automating the deployment, scaling, and management of containerized applications. 
+ With more than 80 proven recipes, developers, system administrators, and architects 
+ will quickly learn how to get started with Kubernetes and understand its powerful API.
+
+
+ - Recipes in this cookbook focus on:
+                      -  Creating a Kubernetes cluster
+                      -  Using the Kubernetes command-line interface
+                      -  Managing fundamental workload types
+                      -  Working with services
+                      -  Exploring the Kubernetes API
+                      -  Managing stateful and non-cloud native apps
+                      -  Working with volumes and configuration data
+                      -  Cluster-level and application-level scaling
+                      -  Securing your applications
+                      -  Monitoring and logging
+                      -  Maintenance and troubleshooting
+
+
 
 ```
 1. Getting Started with Kubernetes

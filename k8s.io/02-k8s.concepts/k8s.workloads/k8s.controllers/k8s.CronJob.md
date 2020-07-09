@@ -1,6 +1,6 @@
 [CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/)
 
-Run Jobs using parallel processing.
+- Run Jobs using parallel processing
 
 ```
     - Use a CronJob to run Jobs on a time-based schedule. 
@@ -27,6 +27,7 @@ Run Jobs using parallel processing.
     - CronJobs are useful for creating periodic and recurring tasks, like running backups or sending emails. 
     - CronJobs can also schedule individual tasks for a specific time, such as scheduling a Job for 
       when your cluster is likely to be idle
+
                         apiVersion: batch/v1beta1
                         kind: CronJob
                         metadata:
@@ -79,7 +80,8 @@ Run Jobs using parallel processing.
 
 
 - Concurrency Policy
-            - The .spec.concurrencyPolicy field is also optional. It specifies how to treat concurrent executions of a job that is created by this cron job. 
+            - The .spec.concurrencyPolicy field is also optional. 
+            - It specifies how to treat concurrent executions of a job that is created by this cron job. 
               The spec may specify only one of the following concurrency policies:
 
                 Allow (default): The cron job allows concurrently running jobs
