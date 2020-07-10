@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: flask-cap
+  namespace: default
+spec:
+  containers:
+  - image: mateobur/flask
+    name: flask-cap
+    securityContext:
+      capabilities:
+        drop:
+          - NET_RAW
+          - CHOWN

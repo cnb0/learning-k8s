@@ -58,7 +58,11 @@
 
 5. Working with Services
         5.1. Creating a Service to Expose Your Application
+                        - To provide a stable and reliable way to discover and 
+                          access your application within the cluster.
         5.2. Verifying the DNS Entry of a Service
+                        - You have created a service and want to verify that your 
+                          DNS registration is working properly.
         5.3. Changing the Type of a Service
         5.4. Deploying an Ingress Controller on Minikube
         5.5. Making Services Accessible from Outside the Cluster
