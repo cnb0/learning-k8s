@@ -1,8 +1,8 @@
 
 
-An exploration of continuous deployment to a Kubernetes cluster, using a wide range of Kubernetes platforms
+- An exploration of continuous deployment to a Kubernetes cluster, using a wide range of Kubernetes platforms
 with instructions on how to develop a pipeline on a few of the most commonly used CI/CD platforms.
-
+```
 - Continuous delivery vs. continuous deployment, and which is best for the user
 - Continuous deployment process using Jenkins in a Kubernetes cluster
 - Best practices for building, testing, and deploying applications through fully automated pipelines.
@@ -18,7 +18,7 @@ with instructions on how to develop a pipeline on a few of the most commonly use
 - Gain an understanding of continuous deployment
 - Learn how to build, test, and deploy applications into Kubernetes
 - Execute continuous integration inside containers
-
+```
 
 ```
 
