@@ -8,3 +8,5 @@
 
 
 [k8s.podast](https://kubernetespodcast.com/)
+
+[Openssl](https://www.freecodecamp.org/news/openssl-command-cheatsheet-b441be1e8c4a/)
