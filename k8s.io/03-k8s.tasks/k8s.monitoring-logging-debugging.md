@@ -3,10 +3,11 @@
 
 ```
 
-- Troubleshoot control plane failure (kube-apiserver,kube-controller-manager,kube-scheduler,kubelet,kube-proxy )
-- Troubleshoot worker node failure   ( node )
-- Troubleshoot application failure (Pod ,replicaset)
-- Troubleshoot networking ( services , endpoints , ingress/egress, ingress controller)
+- Troubleshoot 
+                - control plane failure (kube-apiserver,kube-controller-manager,kube-scheduler,kubelet,kube-proxy )
+                - worker node failure   ( node )
+                - application failure (Pod ,replicaset)
+                - networking failure ( services , endpoints , ingress/egress, ingress controller)
 
     
 - Application Introspection and Debugging
