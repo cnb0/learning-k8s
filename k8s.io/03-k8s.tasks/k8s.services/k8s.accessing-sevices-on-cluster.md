@@ -7,7 +7,7 @@
     -  In many cases, the node IPs, pod IPs, and some service IPs on a cluster will not be routable, 
        so they will not be reachable from a machine outside the cluster, such as your desktop machine
 
-
+```
 1. Ways to connect
         - You have several options for connecting to nodes, pods and services from outside the cluster:
 
