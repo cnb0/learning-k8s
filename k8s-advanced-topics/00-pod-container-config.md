@@ -1,17 +1,18 @@
 
 ### Configure Pods and Containers
-```
+ 
 
 1. [Configure K8s Pods & Containers](https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource)
 2. [Assign CPU Resources to Containers and Pods](https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/)
+```
 3. Configure GMSA for Windows Pods and containers
 4. Configure RunAsUserName for Windows pods and containers
 5. Configure Quality of Service for Pods
 6. Assign Extended Resources to a Container
 7. Configure a Pod to 
-             - Use a Volume for Storage
-             - Use a PersistentVolume for Storage
-             - Use a Projected Volume for Storage
+             -Use a Volume for Storage
+             -Use a PersistentVolume for Storage
+             -Use a Projected Volume for Storage
 10. Configure 
              - Security Context for a Pod or Container
              - Service Accounts for Pods
