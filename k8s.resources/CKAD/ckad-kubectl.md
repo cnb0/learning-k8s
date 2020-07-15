@@ -239,7 +239,8 @@
                     $ kubectl run nginx --image=nginx --restart=Never --serviceaccount=myuser -o yaml --dry-run > pod.yaml
 
                     $ kubectl run nginx --image=nginx --restart=Never --requests='cpu=100m,memory=256Mi' --limits='cpu=200m,memory=512Mi'
-
+                    $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256Mi --limits cpu=200m,memory=512Mi  --dry-run -o yaml
+ 
 
 5. Observability - 18%
                     $ kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml > pod.yaml
