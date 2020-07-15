@@ -8,15 +8,18 @@
 4. Configure RunAsUserName for Windows pods and containers
 5. Configure Quality of Service for Pods
 6. Assign Extended Resources to a Container
-7. Configure a Pod to Use a Volume for Storage
-8. Configure a Pod to Use a PersistentVolume for Storage
-9. Configure a Pod to Use a Projected Volume for Storage
-10. Configure a Security Context for a Pod or Container
-11. Configure Service Accounts for Pods
+7. Configure a Pod to 
+             - Use a Volume for Storage
+             - Use a PersistentVolume for Storage
+             - Use a Projected Volume for Storage
+10. Configure 
+             - Security Context for a Pod or Container
+             - Service Accounts for Pods
 12. Pull an Image from a Private Registry
 13. Configure Liveness, Readiness and Startup Probes
-14. Assign Pods to Nodes
-15. Assign Pods to Nodes using Node Affinity
+14. Assign Pods to
+             - Nodes
+             - Nodes using Node Affinity
 16. Configure Pod Initialization
 17. Attach Handlers to Container Lifecycle Events
 18. Configure a Pod to Use a ConfigMap
