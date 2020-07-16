@@ -16,10 +16,10 @@
         $ kubectl config current-context  
         $ kubectl config use-context my-cluster-name   
         $ kubectl config set-context --current --namespace=mytest
-        $ kubectl config unset users.foo     
-        
         $ kubectl config set-context $(kubectl config current-context) --namespace=testns
-        
+
+        $ kubectl config unset users.foo     
+
         $ kubectl api-resources 
         $ kubectl api-resources --namespaced=true  
         $ kubectl api-resources --api-group=extensions
@@ -28,7 +28,7 @@
         $ kubectl top nodes
         $ kubectl replace --force -f pod/yaml       # Force delete k8s resource object
 ```
-### - Explain structure of a Kubernetes resource object (po,deployment,cm,rs,pv,pvc ..)
+### - Explain structure of a Kubernetes API resource object (po,deployment,cm,rs,pv,pvc ..)
 ```
         $ kubectl explain pod  
         $ kubectl explain pod --recursive
@@ -50,7 +50,7 @@
 
 ### - Delete all k8s objects/resources
 ```
-        $ kubectl delete --all pods --namespace=foo
+        $ kubectl delete --all pods        --namespace=foo
         $ kubectl delete --all deployments --namespace=foo
         $ kubectl delete --all namespaces
         $ kubectl delete ds,rs,svc,deploy,pods,rc --all
@@ -58,19 +58,21 @@
         $ kubectl get pods -l env=dev 
         $ kubectl get pods --selector env=dev 
         $ kubectl delete pods -l 'env in (production, development)'
+
+        $ kubectl run nginx --image=nginx --restart=Never 
         $ kubectl run nginx --image=nginx --restart=Never --env=foo=bar
 
-        $ kubectl run  nginx   --image=nginx   --restart=Never 
-        $ kubectl run  busybox --image=busybox --restart=Never 
-        $ kubectl logs busybox -f     
+        $ kubectl run busybox --image=busybox --restart=Never --namespace=myns
+
+        $ kubectl run busybox --image=busybox --restart=Never 
         $ kubectl describe pod busybox 
         $ kubectl exec busybox -- printenv
-        $ kubectl run busybox --image=busybox --restart=Never --namespace=myns
-        $ kubectl run nginx   --image=nginx   --dry-run -o yaml                 
+        $ kubectl logs busybox -f     
+                       
    
-$ kubectl create deployment nginx --image=nginx  # start a single instance of nginx 
-$ kubectl run nginx   --image=nginx   --restart=Never     --dry-run=client -o yaml  
-$ kubectl run busybox --image=busybox --restart=OnFailure --dry-run -o yaml=client -- /bin/sh -c 'echo Hello!'  
+$ kubectl create deployment nginx --image=nginx            # start a single instance of nginx 
+$ kubectl run nginx   --image=nginx   --restart=Never     --dry-run -o yaml  
+$ kubectl run busybox --image=busybox --restart=OnFailure --dry-run -o yaml -- /bin/sh -c 'echo Hello!'  
 $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * ?" -- dry-run=client -o yaml -- \
           /bin/sh -c 'echo Hello world!' 
 ```
@@ -94,51 +96,51 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
    # Interactive POD debugging
                     
    $ kubectl run -i --tty alpine --image=alpine -- sh
-   $ kubectl attach my-pod -i
-   $ kubectl port-forward my-pod 5000:6000
-   $ kubectl exec my-pod -- ls /
-   $ kubectl exec my-pod -c my-container -- ls /
+   $ kubectl attach POD_NAME -i
+   $ kubectl port-forward POD_NAME 5000:6000
+   $ kubectl exec POD_NAME -- ls /
+   $ kubectl exec POD_NAME -c my-container -- ls /
    $ kubectl top pod POD_NAME --containers
 ```
 
 ### 2. Multi-container pods - 10% 
 ```
-        - run commands on 2 different containers in the same pod 
+       - run commands on 2 different containers in the same pod 
               
         $ kubectl run busybox --image=busybox --restart=Never -o yaml --dry-run=client -- \ 
                 /bin/sh -c 'echo hello;sleep 3600' > pod.yaml
                 
-              - stream pod container logs(stdout, multi-container case)
+       - stream pod container logs(stdout, multi-container case)
         $ kubectl logs -f my-pod -c my-container
 ```
 
 ### 3. Pod design - 20%
 ```
-           . Concepts >
-                       Overview > Labels and Selectors
-                       Workloads > Controllers > Deployments
-           . Tasks > Run Jobs > Running Automated Tasks with a CronJob
+     . Concepts >
+              Overview > Labels and Selectors
+              Workloads > Controllers > Deployments
+      . Tasks > Run Jobs > Running Automated Tasks with a CronJob
  
              $ kubectl get events --sort-by=.metadata.creationTimestamp
              $ kubectl get pods --field-selector=status.phase=Running
 
-             $ kubectl get pods --show-labels
              $ kubectl diff -f ./my-pod.yaml
              $ kubectl scale --replicas=3 rs/foo     
              $ kubectl delete pods,services -l name=myLabel         
 
-        
              $ kubectl autoscale deployment foo --min=2 --max=10
-             $ kubectl label pods my-pod new-label=awesome  
+             
 
       # Lables/Selectors/Annotations
 
              $ kubectl run nginx1 --image=nginx --restart=Never --labels="app=v1"
              $ kubectl run nginx2 --image=nginx --restart=Never --labels="app=frontend,env=dev"
 
-             $ kubectl get po --show-labels
-             $ kubectl label po nginx1 app=v2 --overwrite
+             $ kubectl get pods --show-labels
 
+             $ kubectl label pods my-pod new-label=awesome 
+             
+             $ kubectl label po nginx1 app=v2 --overwrite
              $ kubectl get po -L app
 
              $ kubectl get po -l app=v2
@@ -186,20 +188,22 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
              $ kubectl get po -l run=nginx # if you created deployment by 'run' command
              $ kubectl get po -l app=nginx # if you created deployment by 'create' command
 
-             $ kubectl rollout status deploy nginx
+             
+             
 
              $ kubectl set image deploy nginx nginx=nginx:1.7.9
                           or
              $ kubectl edit deploy nginx  
 
+             $ kubectl rollout status deploy nginx
+
              $ kubectl rollout history deploy nginx
-             $ kubectl rollout undo deploy nginx
-
-             $ kubectl rollout undo deploy nginx --to-revision=2
-             $ kubectl describe deploy nginx | grep Image:
-             $ kubectl rollout status deploy nginx # Everything should be OK
-
              $ kubectl rollout history deploy nginx --revision=4
+
+             $ kubectl rollout undo deploy nginx
+             $ kubectl rollout undo deploy nginx --to-revision=2
+
+             $ kubectl describe deploy nginx | grep Image:
 
              $ kubectl scale deploy nginx --replicas=5
              $ kubectl autoscale deploy nginx --min=5 --max=10 --cpu-percent=80
@@ -220,36 +224,35 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
 ```
 ### 4. Configuration - 18%  ( Tasks )
 ```
-      - Configure Pods and Containers 
-               -> Configure a Pod to Use a ConfigMap
-               -> Configure a Security Context for a Pod or Container
-               -> Configure Service Accounts for Pods
-               -> Assign CPU Resources to Containers and Pods
+   - Configure Pods and Containers 
+            -> Configure a Pod to Use a ConfigMap
+            -> Configure a Security Context for a Pod or Container
+            -> Configure Service Accounts for Pods
+            -> Assign CPU Resources to Containers and Pods
 
-      - Concepts > Configuration > Secrets
-      - Inject Data Into Applications > Distribute Credentials Securely Using Secrets
-      - CRUD - ( ConfigMap(cm), service context(sc), secret(secrets) and service account(sa), cpu/mem limits)
+   - Concepts > Configuration > Secrets
+   - Inject Data Into Applications > Distribute Credentials Securely Using Secrets
+   - CRUD - ( ConfigMap(cm), service context(sc), secret(secrets) and service account(sa), cpu/mem limits)
 
         $ kubectl get cm,sc,secrets,sa
-        $ kubectl create configmap
+
+        $ kubectl create myconfig
         $ kubectl get cm  myconfig
         $ kubectl describe cm myconfig
                         
         $ kubectl create cm options --from-literal=var5=val5
-                        
         $ kubectl create configmap  config1    --from-literal=foo=lala  --from-literal=foo2=lolo
         $ kubectl create configmap  anotherone --from-literal=var6=val6 --from-literal=var7=val7
-
-        $ kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml > pod.yaml
                         
         $ kubectl create secret generic mysecret --from-literal=password=mypass
         $ kubectl get secret mysecret2 -o yaml
-        $ kubectl get sa --all-namespaces
 
         $ kubectl create sa myuser
-                or 
+        $ kubectl get sa --all-namespaces
+               or 
         $ kubectl get sa default -o yaml > sa.yaml
 
+$ kubectl run nginx --image=nginx --restart=Never  -o yaml 
 $ kubectl run nginx --image=nginx --restart=Never --serviceaccount=myuser -o yaml --dry-run > pod.yaml
 $ kubectl run nginx --image=nginx --restart=Never --requests='cpu=100m,memory=256Mi' --limits='cpu=200m,memory=512Mi'
 $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256Mi --limits cpu=200m,memory=512Mi  
@@ -278,23 +281,25 @@ $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256
         $ kubectl edit svc nginx
 
         $ kubectl run nginx --image=nginx --restart=Never --port=80 --expose
+       
         $ kubectl expose deploy mydeploy --port=6262 --target-port=8080
         $ kubectl expose rc nginx --port=80 --target-port=8000
  
 $ kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -O- http://nginx:80 --timeout 2    
-$ kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- \
+$ kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- sh \
        wget -O- http://nginx:80 --timeout 2  
-        $ kubectl run busybox --image=busybox --rm -it --restart=Never -- sh
+       
+$ kubectl run busybox --image=busybox --rm -it --restart=Never -- sh \
             # inside in a container 
-             wget -O- IP:80
-             wget -O- SERVICE_CLUSTER_IP:6262
+        wget -O- IP:80
+        wget -O- SERVICE_CLUSTER_IP:6262
 ```
 
 ### 7. State persistence - 8% ( Tasks - PV/PVC )
 ```
-      - Configure Pods and Containers 
-             > Configure a Pod to Use a Volume for Storage
-             > Configure a Pod to Use a PersistentVolume for Storage
+  - Configure Pods and Containers 
+        > Configure a Pod to Use a Volume for Storage
+        > Configure a Pod to Use a PersistentVolume for Storage
                   
         $ kubectl get pv --sort-by=.spec.capacity.storage
 
