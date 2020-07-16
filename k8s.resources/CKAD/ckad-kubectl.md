@@ -47,12 +47,12 @@
   ```          
             
  - Delete all k8s objects/resources
+ 
  ```
             $ kubectl delete --all pods --namespace=foo
             $ kubectl delete --all deployments --namespace=foo
             $ kubectl delete --all namespaces
             $ kubectl delete ds,rs,svc,deploy,pods,rc --all
-         
             
             $ kubectl get pods -l env=dev 
             $ kubectl get pods --selector env=dev 
@@ -65,16 +65,17 @@
             $ kubectl describe pod busybox 
             $ kubectl exec busybox -- printenv
             $ kubectl run busybox --image=busybox --restart=Never --namespace=myns
-
             $ kubectl run nginx   --image=nginx   --dry-run -o yaml                 
-            $ kubectl create deployment nginx --image=nginx  # start a single instance of nginx
+   
+            $ kubectl create deployment nginx --image=nginx  # start a single instance of nginx 
             $ kubectl run nginx   --image=nginx   --restart=Never     --dry-run=client -o yaml  
             $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run -o yaml=client -- /bin/sh -c 'echo Hello world!'  
             $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * ?" -- dry-run=client -o yaml \
               -- /bin/sh -c 'echo Hello world!' 
 ```
   
-1. Core Concepts - 13% ( Tasks )
+### 1. Core Concepts - 13% ( Tasks )
+           ```
             - Reference > kubectl CLI > kubectl Cheat Sheet
             - Monitoring, Logging, and Debugging 
                     > Get a Shell to a Running Container
@@ -82,12 +83,13 @@
                     > Configure Access to Multiple Clusters
                     > Accessing Clusters using API
                     > Use Port Forwarding to Access Applications in a Cluster
-   ```                 
+   ```        
+   
                     $ kubectl get po --all-namespaces
                     $ kubectl get po -A
 
-                    $ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl create -n mynamespace -f -
-                    $ kubectl set image pod/nginx nginx=nginx:1.7.1 
+            $ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl create -n mynamespace -f -
+            $ kubectl set image pod/nginx nginx=nginx:1.7.1 
                                  
                     # Interactive POD debugging
                     
@@ -97,23 +99,26 @@
                                 $ kubectl exec my-pod -- ls /
                                 $ kubectl exec my-pod -c my-container -- ls /
                                 $ kubectl top pod POD_NAME --containers
-      ```                          ```
+```
 
-2. Multi-container pods - 10% 
+### 2. Multi-container pods - 10% 
+```
               - run commands on 2 different containers in the same pod 
- ```
-         $ kubectl run busybox --image=busybox --restart=Never -o yaml --dry-run=client -- \ 
+              
+          $ kubectl run busybox --image=busybox --restart=Never -o yaml --dry-run=client -- \ 
                 /bin/sh -c 'echo hello;sleep 3600' > pod.yaml
                 
               - stream pod container logs(stdout, multi-container case)
          $ kubectl logs -f my-pod -c my-container
 ```
-3. Pod design - 20%
-           . Concepts 
-           . Overview > Labels and Selectors
-           . Workloads > Controllers > Deployments
+
+### 3. Pod design - 20%
+```
+           . Concepts >
+                       Overview > Labels and Selectors
+                       Workloads > Controllers > Deployments
            . Tasks > Run Jobs > Running Automated Tasks with a CronJob
-    ```
+ 
                          $ kubectl get events --sort-by=.metadata.creationTimestamp
                          $ kubectl get pods --field-selector=status.phase=Running
 
@@ -122,12 +127,12 @@
                          $ kubectl scale --replicas=3 rs/foo     
                          $ kubectl delete pods,services -l name=myLabel          
 
-                         $ kubectl set image deployment/frontend www=image:v2      # Rolling update "www" containers of "frontend" deployment, updating the image
-                         $ kubectl rollout history deployment/frontend                      # Check the history of deployments including the revision 
-                         $ kubectl rollout undo deployment/frontend                         # Rollback to the previous deployment
-                         $ kubectl rollout undo deployment/frontend --to-revision=2         # Rollback to a specific revision
-                         $ kubectl rollout status -w deployment/frontend                  # Watch rolling update status of "frontend" deployment until completion
-                         $ kubectl rollout restart deployment/frontend                      # Rolling restart of the "frontend" deployment
+       $ kubectl set image deployment/frontend www=image:v2      # Rolling update "www" containers of "frontend" deployment, updating the image
+       $ kubectl rollout history deployment/frontend             # Check the history of deployments including the revision 
+       $ kubectl rollout undo deployment/frontend                    # Rollback to the previous deployment
+       $ kubectl rollout undo deployment/frontend --to-revision=2    # Rollback to a specific revision
+       $ kubectl rollout status -w deployment/frontend               # Watch rolling update status of "frontend" deployment until completion
+       $ kubectl rollout restart deployment/frontend                  # Rolling restart of the "frontend" deployment
 
                          $ kubectl annotate pods my-pod url=http://goo.gl/XXBTWq       # Add an annotation
 
@@ -199,9 +204,8 @@
                           $ kubectl create cronjob busybox --image=busybox --schedule="*/1 * * * *" -- \ 
                             /bin/sh -c 'date; echo Hello from the Kubernetes cluster'
 ```
+### 4. Configuration - 18%  ( Tasks )
 
-
-4. Configuration - 18%  ( Tasks )
 ```
             - Configure Pods and Containers 
                     -> Configure a Pod to Use a ConfigMap
@@ -235,11 +239,10 @@
                     $ kubectl get sa default -o yaml > sa.yaml
                     $ kubectl run nginx --image=nginx --restart=Never --serviceaccount=myuser -o yaml --dry-run > pod.yaml
 
-                    $ kubectl run nginx --image=nginx --restart=Never --requests='cpu=100m,memory=256Mi' --limits='cpu=200m,memory=512Mi'
-                    $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256Mi --limits cpu=200m,memory=512Mi  --dry-run -o yaml
+    $ kubectl run nginx --image=nginx --restart=Never --requests='cpu=100m,memory=256Mi' --limits='cpu=200m,memory=512Mi'
+    $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256Mi --limits cpu=200m,memory=512Mi  --dry-run -o yaml
  ```
-
-5. Observability - 18%
+### 5. Observability - 18%
 ```
                     $ kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml > pod.yaml
 
@@ -250,7 +253,7 @@
                     $ kubectl delete po busybox --force --grace-period=0
 
 ```
-6. Services and networking - 13%
+### 6. Services and networking - 13%
 ```
 
                     $ kubectl run curl --image=radial/busyboxplus:curl  -it
@@ -260,22 +263,23 @@
                     $ kubectl get ep
                     $ kubectl edit svc nginx
 
-                    $ kubectl run nginx --image=nginx --restart=Never --port=80 --expose
-                    $ kubectl expose deploy mydeploy --port=6262 --target-port=8080
-                    $ kubectl expose rc nginx --port=80 --target-port=8000
-                    $ kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -O- http://nginx:80 --timeout 2    
-                    $ kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- wget -O- http://nginx:80 --timeout 2  
-                    $ kubectl run busybox --image=busybox --rm -it --restart=Never -- sh
-                            # inside in a container 
-                                wget -O- IP:80
-                                wget -O- SERVICE_CLUSTER_IP:6262
+          $ kubectl run nginx --image=nginx --restart=Never --port=80 --expose
+          $ kubectl expose deploy mydeploy --port=6262 --target-port=8080
+          $ kubectl expose rc nginx --port=80 --target-port=8000
+          $ kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -O- http://nginx:80 --timeout 2    
+          $ kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- wget -O- http://nginx:80 --timeout 2  
+          $ kubectl run busybox --image=busybox --rm -it --restart=Never -- sh
+                   # inside in a container 
+                     wget -O- IP:80
+                     wget -O- SERVICE_CLUSTER_IP:6262
 ```
 
-7. State persistence - 8% ( Tasks - PV/PVC )
+### 7. State persistence - 8% ( Tasks - PV/PVC )
 ```
              - Configure Pods and Containers 
                   > Configure a Pod to Use a Volume for Storage
                   > Configure a Pod to Use a PersistentVolume for Storage
+                  
                   $ kubectl get pv --sort-by=.spec.capacity.storage
 ```
 
