@@ -66,10 +66,10 @@
         $ kubectl run busybox --image=busybox --restart=Never --namespace=myns
         $ kubectl run nginx   --image=nginx   --dry-run -o yaml                 
    
-   $ kubectl create deployment nginx --image=nginx  # start a single instance of nginx 
-   $ kubectl run nginx   --image=nginx   --restart=Never     --dry-run=client -o yaml  
-   $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run -o yaml=client -- /bin/sh -c 'echo Hello world!'  
-   $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * ?" -- dry-run=client -o yaml -- \
+$ kubectl create deployment nginx --image=nginx  # start a single instance of nginx 
+$ kubectl run nginx   --image=nginx   --restart=Never     --dry-run=client -o yaml  
+$ kubectl run busybox --image=busybox --restart=OnFailure --dry-run -o yaml=client -- /bin/sh -c 'echo Hello!'  
+$ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * ?" -- dry-run=client -o yaml -- \
           /bin/sh -c 'echo Hello world!' 
 
 ```
@@ -85,20 +85,20 @@
                     > Use Port Forwarding to Access Applications in a Cluster
    
    
-                    $ kubectl get po --all-namespaces
-                    $ kubectl get po -A
+             $ kubectl get po --all-namespaces
+             $ kubectl get po -A
 
-            $ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl create -n mynamespace -f -
-            $ kubectl set image pod/nginx nginx=nginx:1.7.1 
+   $ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl create -n mynamespace -f -
+   $ kubectl set image pod/nginx nginx=nginx:1.7.1 
                                  
                     # Interactive POD debugging
                     
-            $ kubectl run -i --tty alpine --image=alpine -- sh
-            $ kubectl attach my-pod -i
-            $ kubectl port-forward my-pod 5000:6000
-            $ kubectl exec my-pod -- ls /
-            $ kubectl exec my-pod -c my-container -- ls /
-            $ kubectl top pod POD_NAME --containers
+             $ kubectl run -i --tty alpine --image=alpine -- sh
+             $ kubectl attach my-pod -i
+             $ kubectl port-forward my-pod 5000:6000
+             $ kubectl exec my-pod -- ls /
+             $ kubectl exec my-pod -c my-container -- ls /
+             $ kubectl top pod POD_NAME --containers
 ```
 
 ### 2. Multi-container pods - 10% 
@@ -125,16 +125,9 @@
              $ kubectl get pods --show-labels
              $ kubectl diff -f ./my-pod.yaml
              $ kubectl scale --replicas=3 rs/foo     
-             $ kubectl delete pods,services -l name=myLabel          
+             $ kubectl delete pods,services -l name=myLabel         
 
-$ kubectl set image deployment/frontend www=image:v2      # Rolling update "www" containers of "frontend" deploy,upd the image
-$ kubectl rollout history deployment/frontend             # Check the history of deployments including the revision 
-$ kubectl rollout undo deployment/frontend                # Rollback to the previous deployment
-$ kubectl rollout undo deployment/frontend --to-revision=2    # Rollback to a specific revision
-$ kubectl rollout status -w deployment/frontend            # Watch rolling update status of "frontend" deploy until finish
-$ kubectl rollout restart deployment/frontend              # Rolling restart of the "frontend" deployment
-
-             $ kubectl annotate pods my-pod url=http://goo.gl/XXBTWq       # Add an annotation
+        
              $ kubectl autoscale deployment foo --min=2 --max=10
              $ kubectl label pods my-pod new-label=awesome  
 
@@ -155,15 +148,37 @@ $ kubectl rollout restart deployment/frontend              # Rolling restart of 
              $ kubectl label po nginx1 nginx2 nginx3 app-
              $ kubectl label po -lapp  app-
 
+       # Add an annotation
+
+             $ kubectl annotate pods my-pod url=http://goo.gl/XXBTWq       
              $ kubectl annotate po nginx1 nginx2 nginx3 description='my description'
              $ kubectl describe po nginx1 | grep -i 'annotations'
              $ kubectl annotate po nginx1 description-
-
+         
        # Deployments 
 
-             $ kubectl create deployment nginx  --image=nginx:1.7.8  --dry-run=client -o yaml > deploy.yaml
+         $ kubectl create deployment nginx  --image=nginx:1.7.8  --dry-run=client -o yaml > deploy.yaml
              $ kubectl get deploy nginx -o yaml
              $ kubectl describe deploy nginx
+
+             # Rolling update "www" containers of "frontend" deploy,upd the image
+             $ kubectl set image deployment/frontend www=image:v2      
+
+             # Check the history of deployments including the revision 
+             $ kubectl rollout history deployment/frontend             
+
+             # Rollback to the previous deployment
+             $ kubectl rollout undo deployment/frontend    
+
+             # Rollback to a specific revision
+             $ kubectl rollout undo deployment/frontend --to-revision=2   
+        
+             # Watch rolling update status of "frontend" deploy until finish
+             $ kubectl rollout status -w deployment/frontend
+
+             # Rolling restart of the "frontend" deployment
+             $ kubectl rollout restart deployment/frontend             
+
 
              $ kubectl get rs -l run=nginx # if you created deployment by 'run' command
              $ kubectl get rs -l app=nginx # if you created deployment by 'create' command
@@ -213,32 +228,33 @@ $ kubectl rollout restart deployment/frontend              # Rolling restart of 
 
       - Concepts > Configuration > Secrets
       - Inject Data Into Applications > Distribute Credentials Securely Using Secrets
-      - CRUD - ( ConfigMap(cm), Service Context(sc), Secret(secrets) and Service account(sa) , cpu/mem limits )
+      - CRUD - ( ConfigMap(cm), service context(sc), secret(secrets) and service account(sa), cpu/mem limits)
 
-     $ kubectl get cm,sc,secrets,sa
-     $ kubectl create configmap
-     $ kubectl get cm  myconfig
-     $ kubectl describe cm myconfig
-                    
-     $ kubectl create cm options --from-literal=var5=val5
-                   
-     $ kubectl create configmap  config1    --from-literal=foo=lala  --from-literal=foo2=lolo
-     $ kubectl create configmap  anotherone --from-literal=var6=val6 --from-literal=var7=val7
+        $ kubectl get cm,sc,secrets,sa
+        $ kubectl create configmap
+        $ kubectl get cm  myconfig
+        $ kubectl describe cm myconfig
+                        
+        $ kubectl create cm options --from-literal=var5=val5
+                        
+        $ kubectl create configmap  config1    --from-literal=foo=lala  --from-literal=foo2=lolo
+        $ kubectl create configmap  anotherone --from-literal=var6=val6 --from-literal=var7=val7
 
-     $ kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml > pod.yaml
-                    
-     $ kubectl create secret generic mysecret --from-literal=password=mypass
-     $ kubectl get secret mysecret2 -o yaml
-     $ kubectl get sa --all-namespaces
+        $ kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml > pod.yaml
+                        
+        $ kubectl create secret generic mysecret --from-literal=password=mypass
+        $ kubectl get secret mysecret2 -o yaml
+        $ kubectl get sa --all-namespaces
 
-     $ kubectl create sa myuser
-              or 
-     $ kubectl get sa default -o yaml > sa.yaml
+        $ kubectl create sa myuser
+                or 
+        $ kubectl get sa default -o yaml > sa.yaml
 
 $ kubectl run nginx --image=nginx --restart=Never --serviceaccount=myuser -o yaml --dry-run > pod.yaml
 $ kubectl run nginx --image=nginx --restart=Never --requests='cpu=100m,memory=256Mi' --limits='cpu=200m,memory=512Mi'
 $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256Mi --limits cpu=200m,memory=512Mi  
- ```
+
+```
 ### 5. Observability - 18%
 
 ```
@@ -254,7 +270,6 @@ $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256
 
 ### 6. Services and networking - 13%
 ```
-
         $ kubectl run curl --image=radial/busyboxplus:curl  -it
         $ kubectl get services --sort-by=.metadata.name
         
@@ -277,10 +292,10 @@ $ kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=g
 
 ### 7. State persistence - 8% ( Tasks - PV/PVC )
 ```
-             - Configure Pods and Containers 
-                  > Configure a Pod to Use a Volume for Storage
-                  > Configure a Pod to Use a PersistentVolume for Storage
+      - Configure Pods and Containers 
+             > Configure a Pod to Use a Volume for Storage
+             > Configure a Pod to Use a PersistentVolume for Storage
                   
-                  $ kubectl get pv --sort-by=.spec.capacity.storage
+        $ kubectl get pv --sort-by=.spec.capacity.storage
 
 ```
