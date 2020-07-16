@@ -67,11 +67,11 @@
             $ kubectl run busybox --image=busybox --restart=Never --namespace=myns
             $ kubectl run nginx   --image=nginx   --dry-run -o yaml                 
    
-            $ kubectl create deployment nginx --image=nginx  # start a single instance of nginx 
-            $ kubectl run nginx   --image=nginx   --restart=Never     --dry-run=client -o yaml  
-            $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run -o yaml=client -- /bin/sh -c 'echo Hello world!'  
-            $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * ?" -- dry-run=client -o yaml \
-              -- /bin/sh -c 'echo Hello world!' 
+       $ kubectl create deployment nginx --image=nginx  # start a single instance of nginx 
+       $ kubectl run nginx   --image=nginx   --restart=Never     --dry-run=client -o yaml  
+       $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run -o yaml=client -- /bin/sh -c 'echo Hello world!'  
+       $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * ?" -- dry-run=client -o yaml \
+            -- /bin/sh -c 'echo Hello world!' 
 ```
   
 ### 1. Core Concepts - 13% ( Tasks )
@@ -131,8 +131,8 @@
        $ kubectl rollout history deployment/frontend             # Check the history of deployments including the revision 
        $ kubectl rollout undo deployment/frontend                    # Rollback to the previous deployment
        $ kubectl rollout undo deployment/frontend --to-revision=2    # Rollback to a specific revision
-       $ kubectl rollout status -w deployment/frontend               # Watch rolling update status of "frontend" deployment until completion
-       $ kubectl rollout restart deployment/frontend                  # Rolling restart of the "frontend" deployment
+       $ kubectl rollout status -w deployment/frontend            # Watch rolling update status of "frontend" deployment until completion
+       $ kubectl rollout restart deployment/frontend              # Rolling restart of the "frontend" deployment
 
                          $ kubectl annotate pods my-pod url=http://goo.gl/XXBTWq       # Add an annotation
 
@@ -237,10 +237,9 @@
                     $ kubectl create sa myuser
                     or 
                     $ kubectl get sa default -o yaml > sa.yaml
-                    $ kubectl run nginx --image=nginx --restart=Never --serviceaccount=myuser -o yaml --dry-run > pod.yaml
-
+    $ kubectl run nginx --image=nginx --restart=Never --serviceaccount=myuser -o yaml --dry-run > pod.yaml
     $ kubectl run nginx --image=nginx --restart=Never --requests='cpu=100m,memory=256Mi' --limits='cpu=200m,memory=512Mi'
-    $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256Mi --limits cpu=200m,memory=512Mi  --dry-run -o yaml
+    $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256Mi --limits cpu=200m,memory=512Mi --dry-run -o yaml
  ```
 ### 5. Observability - 18%
 ```
@@ -266,9 +265,9 @@
           $ kubectl run nginx --image=nginx --restart=Never --port=80 --expose
           $ kubectl expose deploy mydeploy --port=6262 --target-port=8080
           $ kubectl expose rc nginx --port=80 --target-port=8000
-          $ kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -O- http://nginx:80 --timeout 2    
-          $ kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- wget -O- http://nginx:80 --timeout 2  
-          $ kubectl run busybox --image=busybox --rm -it --restart=Never -- sh
+        $ kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -O- http://nginx:80 --timeout 2    
+        $ kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- wget -O- http://nginx:80 --timeout 2  
+        $ kubectl run busybox --image=busybox --rm -it --restart=Never -- sh
                    # inside in a container 
                      wget -O- IP:80
                      wget -O- SERVICE_CLUSTER_IP:6262
