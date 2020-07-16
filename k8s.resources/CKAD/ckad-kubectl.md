@@ -3,6 +3,7 @@
 
 
 ## - Environment Settings 
+
 ```
         $ alias k=kubectl
         $ source <(kubectl completion bash)
@@ -28,7 +29,6 @@
 
  - Explain structure of a Kubernetes resource object (po,deployment,cm,rs,pv,pvc ..)
 
-
         $ kubectl explain pod  
         $ kubectl explain pod --recursive
         $ kubectl explain pod.spec
@@ -45,11 +45,9 @@
         $ kubectl explain deployment 
         $ kubectl explain deployment --recursive
         $ kubectl explain deployment.spec.strategy
-
             
  - Delete all k8s objects/resources
  
-
         $ kubectl delete --all pods --namespace=foo
         $ kubectl delete --all deployments --namespace=foo
         $ kubectl delete --all namespaces
@@ -77,7 +75,7 @@
 ```
   
 ### 1. Core Concepts - 13% ( Tasks )
-    ```
+```
             - Reference > kubectl CLI > kubectl Cheat Sheet
             - Monitoring, Logging, and Debugging 
                     > Get a Shell to a Running Container
@@ -206,7 +204,6 @@ $ kubectl rollout restart deployment/frontend              # Rolling restart of 
                  /bin/sh -c 'date; echo Hello from the Kubernetes cluster'
 ```
 ### 4. Configuration - 18%  ( Tasks )
-
 ```
       - Configure Pods and Containers 
                -> Configure a Pod to Use a ConfigMap
@@ -241,9 +238,9 @@ $ kubectl rollout restart deployment/frontend              # Rolling restart of 
 $ kubectl run nginx --image=nginx --restart=Never --serviceaccount=myuser -o yaml --dry-run > pod.yaml
 $ kubectl run nginx --image=nginx --restart=Never --requests='cpu=100m,memory=256Mi' --limits='cpu=200m,memory=512Mi'
 $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256Mi --limits cpu=200m,memory=512Mi  
-
  ```
 ### 5. Observability - 18%
+
 ```
        $ kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml > pod.yaml
 
