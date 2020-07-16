@@ -2,19 +2,20 @@
 ## CKAD Learning experience 
 
 
-## - Environment Settings 
+### - Environment Settings 
 
 ```
         $ alias k=kubectl
         $ source <(kubectl completion bash)
         
         $ kubectl cluster-info  
+        $ kubectl cluster-info  dump
 
         $ kubectl config view 
         $ kubectl config get-contexts
         $ kubectl config current-context  
         $ kubectl config use-context my-cluster-name   
-        $kubectl config set-context --current --namespace=mytest
+        $ kubectl config set-context --current --namespace=mytest
         $ kubectl config unset users.foo     
         
         $ kubectl config set-context $(kubectl config current-context) --namespace=testns
@@ -26,9 +27,9 @@
         $ kubectl describe node 
         $ kubectl top nodes
         $ kubectl replace --force -f pod/yaml       # Force delete k8s resource object
-
- - Explain structure of a Kubernetes resource object (po,deployment,cm,rs,pv,pvc ..)
-
+```
+### - Explain structure of a Kubernetes resource object (po,deployment,cm,rs,pv,pvc ..)
+```
         $ kubectl explain pod  
         $ kubectl explain pod --recursive
         $ kubectl explain pod.spec
@@ -45,9 +46,10 @@
         $ kubectl explain deployment 
         $ kubectl explain deployment --recursive
         $ kubectl explain deployment.spec.strategy
-            
- - Delete all k8s objects/resources
- 
+```          
+
+### - Delete all k8s objects/resources
+```
         $ kubectl delete --all pods --namespace=foo
         $ kubectl delete --all deployments --namespace=foo
         $ kubectl delete --all namespaces
@@ -71,34 +73,32 @@ $ kubectl run nginx   --image=nginx   --restart=Never     --dry-run=client -o ya
 $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run -o yaml=client -- /bin/sh -c 'echo Hello!'  
 $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * ?" -- dry-run=client -o yaml -- \
           /bin/sh -c 'echo Hello world!' 
-
 ```
   
 ### 1. Core Concepts - 13% ( Tasks )
 ```
-            - Reference > kubectl CLI > kubectl Cheat Sheet
-            - Monitoring, Logging, and Debugging 
-                    > Get a Shell to a Running Container
-            - Access Applications in a Cluster
-                    > Configure Access to Multiple Clusters
-                    > Accessing Clusters using API
-                    > Use Port Forwarding to Access Applications in a Cluster
-   
-   
-             $ kubectl get po --all-namespaces
-             $ kubectl get po -A
+       - Reference > kubectl CLI > kubectl Cheat Sheet
+       - Monitoring, Logging, and Debugging 
+                 > Get a Shell to a Running Container
+       - Access Applications in a Cluster
+                 > Configure Access to Multiple Clusters
+                 > Accessing Clusters using API
+                 > Use Port Forwarding to Access Applications in a Cluster
+      
+   $ kubectl get po --all-namespaces
+   $ kubectl get po -A
 
    $ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl create -n mynamespace -f -
    $ kubectl set image pod/nginx nginx=nginx:1.7.1 
                                  
-                    # Interactive POD debugging
+   # Interactive POD debugging
                     
-             $ kubectl run -i --tty alpine --image=alpine -- sh
-             $ kubectl attach my-pod -i
-             $ kubectl port-forward my-pod 5000:6000
-             $ kubectl exec my-pod -- ls /
-             $ kubectl exec my-pod -c my-container -- ls /
-             $ kubectl top pod POD_NAME --containers
+   $ kubectl run -i --tty alpine --image=alpine -- sh
+   $ kubectl attach my-pod -i
+   $ kubectl port-forward my-pod 5000:6000
+   $ kubectl exec my-pod -- ls /
+   $ kubectl exec my-pod -c my-container -- ls /
+   $ kubectl top pod POD_NAME --containers
 ```
 
 ### 2. Multi-container pods - 10% 
@@ -210,7 +210,7 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
              $ kubectl rollout history deploy nginx --revision=6
 
               # Jobs
-              
+            
               $ kubectl get jobs -w
 
               # CronJobs
