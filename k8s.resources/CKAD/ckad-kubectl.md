@@ -267,9 +267,10 @@ $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256
           $ kubectl expose deploy mydeploy --port=6262 --target-port=8080
           $ kubectl expose rc nginx --port=80 --target-port=8000
  
- $ kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -O- http://nginx:80 --timeout 2    
- $ kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- wget -O- http://nginx:80 --timeout 2  
- $ kubectl run busybox --image=busybox --rm -it --restart=Never -- sh
+$ kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -O- http://nginx:80 --timeout 2    
+$ kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- \
+       wget -O- http://nginx:80 --timeout 2  
+$ kubectl run busybox --image=busybox --rm -it --restart=Never -- sh
             # inside in a container 
              wget -O- IP:80
              wget -O- SERVICE_CLUSTER_IP:6262
