@@ -67,10 +67,10 @@
             $ kubectl run busybox --image=busybox --restart=Never --namespace=myns
             $ kubectl run nginx   --image=nginx   --dry-run -o yaml                 
    
-       $ kubectl create deployment nginx --image=nginx  # start a single instance of nginx 
-       $ kubectl run nginx   --image=nginx   --restart=Never     --dry-run=client -o yaml  
-       $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run -o yaml=client -- /bin/sh -c 'echo Hello world!'  
-       $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * ?" -- dry-run=client -o yaml \
+   $ kubectl create deployment nginx --image=nginx  # start a single instance of nginx 
+   $ kubectl run nginx   --image=nginx   --restart=Never     --dry-run=client -o yaml  
+   $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run -o yaml=client -- /bin/sh -c 'echo Hello world!'  
+   $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * ?" -- dry-run=client -o yaml \
             -- /bin/sh -c 'echo Hello world!' 
 ```
   
@@ -127,12 +127,12 @@
                          $ kubectl scale --replicas=3 rs/foo     
                          $ kubectl delete pods,services -l name=myLabel          
 
-       $ kubectl set image deployment/frontend www=image:v2      # Rolling update "www" containers of "frontend" deployment, updating the image
-       $ kubectl rollout history deployment/frontend             # Check the history of deployments including the revision 
-       $ kubectl rollout undo deployment/frontend                    # Rollback to the previous deployment
-       $ kubectl rollout undo deployment/frontend --to-revision=2    # Rollback to a specific revision
-       $ kubectl rollout status -w deployment/frontend            # Watch rolling update status of "frontend" deployment until completion
-       $ kubectl rollout restart deployment/frontend              # Rolling restart of the "frontend" deployment
+$ kubectl set image deployment/frontend www=image:v2      # Rolling update "www" containers of "frontend" deploy,upd the image
+$ kubectl rollout history deployment/frontend             # Check the history of deployments including the revision 
+$ kubectl rollout undo deployment/frontend                # Rollback to the previous deployment
+$ kubectl rollout undo deployment/frontend --to-revision=2    # Rollback to a specific revision
+$ kubectl rollout status -w deployment/frontend            # Watch rolling update status of "frontend" deploy until finish
+$ kubectl rollout restart deployment/frontend              # Rolling restart of the "frontend" deployment
 
                          $ kubectl annotate pods my-pod url=http://goo.gl/XXBTWq       # Add an annotation
 
@@ -162,38 +162,38 @@
 ```
                     # Deployments 
 ```
-                            $ kubectl create deployment nginx  --image=nginx:1.7.8  --dry-run=client -o yaml > deploy.yaml
-                            $ kubectl get deploy nginx -o yaml
-                            $ kubectl describe deploy nginx
+                         $ kubectl create deployment nginx  --image=nginx:1.7.8  --dry-run=client -o yaml > deploy.yaml
+                         $ kubectl get deploy nginx -o yaml
+                         $ kubectl describe deploy nginx
 
-                            $ kubectl get rs -l run=nginx # if you created deployment by 'run' command
-                            $ kubectl get rs -l app=nginx # if you created deployment by 'create' command
+                         $ kubectl get rs -l run=nginx # if you created deployment by 'run' command
+                         $ kubectl get rs -l app=nginx # if you created deployment by 'create' command
 
-                            $ kubectl get po -l run=nginx # if you created deployment by 'run' command
-                            $ kubectl get po -l app=nginx # if you created deployment by 'create' command
+                         $ kubectl get po -l run=nginx # if you created deployment by 'run' command
+                         $ kubectl get po -l app=nginx # if you created deployment by 'create' command
 
-                            $ kubectl rollout status deploy nginx
+                         $ kubectl rollout status deploy nginx
 
-                            $ kubectl set image deploy nginx nginx=nginx:1.7.9
-                            or
-                            $ kubectl edit deploy nginx  
+                         $ kubectl set image deploy nginx nginx=nginx:1.7.9
+                          or
+                         $ kubectl edit deploy nginx  
 
-                            $ kubectl rollout history deploy nginx
-                            $ kubectl rollout undo deploy nginx
+                         $ kubectl rollout history deploy nginx
+                         $ kubectl rollout undo deploy nginx
 
-                            $ kubectl rollout undo deploy nginx --to-revision=2
-                            $ kubectl describe deploy nginx | grep Image:
-                            $ kubectl rollout status deploy nginx # Everything should be OK
+                         $ kubectl rollout undo deploy nginx --to-revision=2
+                         $ kubectl describe deploy nginx | grep Image:
+                         $ kubectl rollout status deploy nginx # Everything should be OK
 
-                            $ kubectl rollout history deploy nginx --revision=4
+                         $ kubectl rollout history deploy nginx --revision=4
 
-                            $ kubectl scale deploy nginx --replicas=5
-                            $ kubectl autoscale deploy nginx --min=5 --max=10 --cpu-percent=80
+                         $ kubectl scale deploy nginx --replicas=5
+                         $ kubectl autoscale deploy nginx --min=5 --max=10 --cpu-percent=80
 
-                            $ kubectl rollout pause deploy nginx
-                            $ kubectl rollout resume deploy nginx
-                            $ kubectl rollout history deploy nginx
-                            $ kubectl rollout history deploy nginx --revision=6
+                         $ kubectl rollout pause deploy nginx
+                         $ kubectl rollout resume deploy nginx
+                         $ kubectl rollout history deploy nginx
+                         $ kubectl rollout history deploy nginx --revision=6
 
                     # Jobs
                     
@@ -237,9 +237,10 @@
                     $ kubectl create sa myuser
                     or 
                     $ kubectl get sa default -o yaml > sa.yaml
-    $ kubectl run nginx --image=nginx --restart=Never --serviceaccount=myuser -o yaml --dry-run > pod.yaml
-    $ kubectl run nginx --image=nginx --restart=Never --requests='cpu=100m,memory=256Mi' --limits='cpu=200m,memory=512Mi'
-    $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256Mi --limits cpu=200m,memory=512Mi --dry-run -o yaml
+$ kubectl run nginx --image=nginx --restart=Never --serviceaccount=myuser -o yaml --dry-run > pod.yaml
+$ kubectl run nginx --image=nginx --restart=Never --requests='cpu=100m,memory=256Mi' --limits='cpu=200m,memory=512Mi'
+$ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256Mi --limits cpu=200m,memory=512Mi  
+
  ```
 ### 5. Observability - 18%
 ```
@@ -265,12 +266,13 @@
           $ kubectl run nginx --image=nginx --restart=Never --port=80 --expose
           $ kubectl expose deploy mydeploy --port=6262 --target-port=8080
           $ kubectl expose rc nginx --port=80 --target-port=8000
-        $ kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -O- http://nginx:80 --timeout 2    
-        $ kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- wget -O- http://nginx:80 --timeout 2  
-        $ kubectl run busybox --image=busybox --rm -it --restart=Never -- sh
-                   # inside in a container 
-                     wget -O- IP:80
-                     wget -O- SERVICE_CLUSTER_IP:6262
+ 
+ $ kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -O- http://nginx:80 --timeout 2    
+ $ kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- wget -O- http://nginx:80 --timeout 2  
+ $ kubectl run busybox --image=busybox --rm -it --restart=Never -- sh
+            # inside in a container 
+             wget -O- IP:80
+             wget -O- SERVICE_CLUSTER_IP:6262
 ```
 
 ### 7. State persistence - 8% ( Tasks - PV/PVC )
