@@ -1,9 +1,9 @@
 
 ## CKAD Learning experience 
 
-```
-- Environment Settings 
 
+## - Environment Settings 
+```
         $ alias k=kubectl
         $ source <(kubectl completion bash)
         
@@ -25,9 +25,9 @@
         $ kubectl describe node 
         $ kubectl top nodes
         $ kubectl replace --force -f pod/yaml                # Force delete k8s resource object
-
+```
  - Explain structure of a Kubernetes resource object (po,deployment,cm,rs,pv,pvc ..)
-
+```
             $ kubectl explain pod  
             $ kubectl explain pod --recursive
             $ kubectl explain pod.spec
@@ -44,10 +44,10 @@
             $ kubectl explain deployment 
             $ kubectl explain deployment --recursive
             $ kubectl explain deployment.spec.strategy
-            
+  ```          
             
  - Delete all k8s objects/resources
- 
+ ```
             $ kubectl delete --all pods --namespace=foo
             $ kubectl delete --all deployments --namespace=foo
             $ kubectl delete --all namespaces
@@ -72,7 +72,7 @@
             $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run -o yaml=client -- /bin/sh -c 'echo Hello world!'  
             $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * ?" -- dry-run=client -o yaml \
               -- /bin/sh -c 'echo Hello world!' 
-
+```
   
 1. Core Concepts - 13% ( Tasks )
             - Reference > kubectl CLI > kubectl Cheat Sheet
@@ -82,7 +82,7 @@
                     > Configure Access to Multiple Clusters
                     > Accessing Clusters using API
                     > Use Port Forwarding to Access Applications in a Cluster
-                    
+   ```                 
                     $ kubectl get po --all-namespaces
                     $ kubectl get po -A
 
@@ -97,23 +97,23 @@
                                 $ kubectl exec my-pod -- ls /
                                 $ kubectl exec my-pod -c my-container -- ls /
                                 $ kubectl top pod POD_NAME --containers
-                                
+      ```                          ```
 
 2. Multi-container pods - 10% 
               - run commands on 2 different containers in the same pod 
-              $ kubectl run busybox --image=busybox --restart=Never -o yaml --dry-run=client -- \ 
+ ```
+         $ kubectl run busybox --image=busybox --restart=Never -o yaml --dry-run=client -- \ 
                 /bin/sh -c 'echo hello;sleep 3600' > pod.yaml
                 
               - stream pod container logs(stdout, multi-container case)
-               $ kubectl logs -f my-pod -c my-container
-
-
+         $ kubectl logs -f my-pod -c my-container
+```
 3. Pod design - 20%
-                - Concepts 
-                       > Overview > Labels and Selectors
-                       > Workloads > Controllers > Deployments
-                - Tasks > Run Jobs > Running Automated Tasks with a CronJob
-                
+           . Concepts 
+           . Overview > Labels and Selectors
+           . Workloads > Controllers > Deployments
+           . Tasks > Run Jobs > Running Automated Tasks with a CronJob
+    ```
                          $ kubectl get events --sort-by=.metadata.creationTimestamp
                          $ kubectl get pods --field-selector=status.phase=Running
 
@@ -133,9 +133,9 @@
 
                          $ kubectl autoscale deployment foo --min=2 --max=10
                          $ kubectl label pods my-pod new-label=awesome  
-
+```
                  # Lables/Selectors/Annotations
-
+```
                             $ kubectl run nginx1 --image=nginx --restart=Never --labels="app=v1"
                             $ kubectl run nginx2 --image=nginx --restart=Never --labels="app=frontend,env=dev"
 
@@ -154,12 +154,9 @@
                             $ kubectl annotate po nginx1 nginx2 nginx3 description='my description'
                             $ kubectl describe po nginx1 | grep -i 'annotations'
                             $ kubectl annotate po nginx1 description-
-
-     
-
-
+```
                     # Deployments 
-
+```
                             $ kubectl create deployment nginx  --image=nginx:1.7.8  --dry-run=client -o yaml > deploy.yaml
                             $ kubectl get deploy nginx -o yaml
                             $ kubectl describe deploy nginx
@@ -201,11 +198,11 @@
                     
                           $ kubectl create cronjob busybox --image=busybox --schedule="*/1 * * * *" -- \ 
                             /bin/sh -c 'date; echo Hello from the Kubernetes cluster'
-
+```
 
 
 4. Configuration - 18%  ( Tasks )
-
+```
             - Configure Pods and Containers 
                     -> Configure a Pod to Use a ConfigMap
                     -> Configure a Security Context for a Pod or Container
@@ -240,9 +237,10 @@
 
                     $ kubectl run nginx --image=nginx --restart=Never --requests='cpu=100m,memory=256Mi' --limits='cpu=200m,memory=512Mi'
                     $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256Mi --limits cpu=200m,memory=512Mi  --dry-run -o yaml
- 
+ ```
 
 5. Observability - 18%
+```
                     $ kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml > pod.yaml
 
                     $ kubectl describe pod nginx | grep -i readiness
@@ -251,8 +249,9 @@
                     $ kubectl get events | grep -i error 
                     $ kubectl delete po busybox --force --grace-period=0
 
-
+```
 6. Services and networking - 13%
+```
 
                     $ kubectl run curl --image=radial/busyboxplus:curl  -it
                     $ kubectl get services --sort-by=.metadata.name
@@ -270,13 +269,14 @@
                             # inside in a container 
                                 wget -O- IP:80
                                 wget -O- SERVICE_CLUSTER_IP:6262
-
+```
 
 7. State persistence - 8% ( Tasks - PV/PVC )
+```
              - Configure Pods and Containers 
                   > Configure a Pod to Use a Volume for Storage
                   > Configure a Pod to Use a PersistentVolume for Storage
                   $ kubectl get pv --sort-by=.spec.capacity.storage
-
+```
 
 ```
