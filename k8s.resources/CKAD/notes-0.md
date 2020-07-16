@@ -12,10 +12,6 @@ All k8s definition files have four required sections:
 
 ## Environment Setup
 
-Setup kubectl alias:
-```sh
-$ alias kc=kubectl
-```
 
 Configure Vim for YAML files:
 ```sh
@@ -32,49 +28,49 @@ Ctrl+b %
 
 Create just a pod via imperative command with label:
 ```sh
-$ kc run --generator=run-pod/v1 nginx --image=nginx -l tier=frontend
+$ kubectl run  nginx --image=nginx -l tier=frontend
 ```
 
 Create pod manifest for nginx:
 ```sh
-$ kc run nginx --image=nginx --dry-run -o yaml
+$ kubectl run nginx --image=nginx --dry-run -o yaml
 ```
 
 Get pod info:
 ```sh
-$ kc describe po nginx-pod
+$ kubectl describe po nginx-pod
 ```
 
 Get more details of pods:
 ```sh
-$ kc get po -o wide
+$ kubectl get po -o wide
 ```
 
 Update an existing pod from changed source yaml:
 ```sh
-$ kc apply -f redis-pod.yaml
+$ kubectl apply -f redis-pod.yaml
 ```
 
 Get running pod defintion from k8s and edit/update:
 ```sh
-$ kc get po <pod-name> -o yaml > pod-definition.yaml
+$ kubectl get po <pod-name> -o yaml > pod-definition.yaml
 $ vim pod-definition.yaml
-$ kc apply -f pod-definition.yaml
+$ kubectl apply -f pod-definition.yaml
 ```
 
 Edit running pod definition directly:
 ```sh
-$ kc edit po <pod-name>
+$ kubectl edit po <pod-name>
 ```
 
 Delete all pods in default namespace:
 ```sh
-$ kc delete po --all
+$ kubectl delete po --all
 ```
 
 Shell into (if possible) a running pod:
 ```sh
-$ kc exec -it pod-name /bin/sh (or /bin/bash, if available)
+$ kubectl exec -it pod-name /bin/sh (or /bin/bash, if available)
 ```
 
 ## 18. ReplicaSet
@@ -91,68 +87,68 @@ from this template.
 
 Scale a replicaset to a different number of pods:
 ```sh
-$ kc scale --replicas=X rs nginx-replicaset
+$ kubectl scale --replicas=X rs nginx-replicaset
 ```
 
 Update a replicaset with the replace command via definition file:
 ```sh
-$ kc replace -f replicaset-definition.yaml
+$ kubectl replace -f replicaset-definition.yaml
 ```
 
 Get definition file from kubectl:
 ```sh
-$ kc get rs ngnix-replicaset -o yaml > nginx-replicaset.yaml
+$ kubectl get rs ngnix-replicaset -o yaml > nginx-replicaset.yaml
 ```
 
 ## 21. Deployment
 
 Create deployment direct from kubectl:
 ```sh
-$ kc run nginx --image=nginx
+$ kubectl run nginx --image=nginx
 ```
 
 Create a deployment manifest with 4 replicas of nginx and save to a file:
 ```sh
-$ kc run  nginx --image=nginx --dry-run --replicas=4 -o yaml > nginx-deployment.yaml
+$ kubectl run  nginx --image=nginx --dry-run --replicas=4 -o yaml > nginx-deployment.yaml
 ```
 
 Create a service with nodeport 30080 exposed for access:
 ```sh
-$ kc create svc nodeport nginx --tcp=80:80 --node-port=30080 --dry-run -o yaml
+$ kubectl create svc nodeport nginx --tcp=80:80 --node-port=30080 --dry-run -o yaml
 ```
 
 Create a service onto a deployment:
 ```sh
-$ kc expose deployment webapp --type=NodePort --port=8080 --name=webapp-service --dry-run -o yaml > webapp-service.yaml
+$ kubectl expose deployment webapp --type=NodePort --port=8080 --name=webapp-service --dry-run -o yaml > webapp-service.yaml
 $ vim webapp-service.yaml
   ports:
     nodePort: 30082
-$ kc create -f webapp-service.yaml
+$ kubectl create -f webapp-service.yaml
 ```
 
 ## 26. Namespace 
 
 View all resources that exist in namespace of current context:
 ```sh
-$ kc get all
+$ kubectl get all
 ```
 
 Switch context to a different namespace, and verify
 ```sh
-$ kc config set-context $(kubectl config current-context) --namespace=elastic-stack
-$ kc config view | grep namespace
+$ kubectl config set-context $(kubectl config current-context) --namespace=elastic-stack
+$ kubectl config view | grep namespace
 ```
 
 ## 35. ConfigMap
 
 Create a configmap imperatively with literal values:
 ```sh
-$ kc create cm cmname --from-literal=KEY=VALUE
+$ kubectl create cm cmname --from-literal=KEY=VALUE
 ```
 
 Create a configmap imperatively with a key-value file:
 ```sh
-$ kc create cm configmap-name --from-file=keyvalue.properties
+$ kubectl create cm configmap-name --from-file=keyvalue.properties
 ```
 
 Create a configmap declaratively from manifest file (uses a "data"
@@ -222,12 +218,12 @@ spec:
 
 Get list of service accounts:
 ```sh
-$ kc get sa
+$ kubectl get sa
 ```
 
 Create a service account:
 ```sh
-$ kc create sa sa-name
+$ kubectl create sa sa-name
 ```
 
 Add a service account to a pod or deployment:
@@ -280,7 +276,7 @@ Taint nodes to prevent intolerant pods from being scheduled on those nodes.
 * Tolerations on pods do not guarantee that they are scheduled only on tainted nodes (NodeAffinity does this)
 
 ```sh
-$ kc taint no node-name instanceType=Compute:PreferNoSchedule
+$ kubectl taint no node-name instanceType=Compute:PreferNoSchedule
 ```
 
 Add tolerations to pods for being acceptable to schedule on tainted nodes:
@@ -295,14 +291,14 @@ spec:
 
 Remove a taint from a node by key (and effect):
 ```sh
-$ kc taint no node-name instanceType:PreferNoSchedule-
+$ kubectl taint no node-name instanceType:PreferNoSchedule-
 ```
 
 ## 50. nodeSelector 
 
 Label nodes for node selectors:
 ```sh
-$ kc label no node-name memSize=Large
+$ kubectl label no node-name memSize=Large
 ```
 
 Set which nodes a pod would be nice to be scheduled on with `nodeSelector`:
@@ -379,12 +375,12 @@ On a running container, maintain status of a validly running application by conf
 
 View live running pod logs:
 ```sh
-$ kc logs -f pod-name
+$ kubectl logs -f pod-name
 ```
 
 In a multi-container pod, logs can only be shown from one container, and must be specified:
 ```sh
-$ kc logs -f pod-name container-name
+$ kubectl logs -f pod-name container-name
 ```
 
 ## 63. Cluster Monitoring
@@ -404,17 +400,17 @@ To deploy metrics-server to any other cluster:
 ```sh
 $ git clone https://github.com/kubernetes-incubator/metrics-server.git
 $ cd metrics-server
-$ kc create -f deploy/1.8+/ # create command can take a directory of YAML files as an argument
+$ kubectl create -f deploy/1.8+/ # create command can take a directory of YAML files as an argument
 ```
 
 Inspect the resource usage of each node:
 ```sh
-$ kc top node
+$ kubectl top node
 ```
 
 Inspect the resource usage of each pod:
 ```sh
-$ kc top pod
+$ kubectl top pod
 ```
 
 
