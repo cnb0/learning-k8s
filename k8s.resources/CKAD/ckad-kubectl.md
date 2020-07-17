@@ -122,6 +122,7 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
       . Tasks > Run Jobs > Running Automated Tasks with a CronJob
  
              $ kubectl get events --sort-by=.metadata.creationTimestamp
+             $ kubectl get events --namespace myns --sort-by='{.lastTimestamp}'
              $ kubectl get pods --field-selector=status.phase=Running
 
              $ kubectl diff -f ./my-pod.yaml
@@ -229,7 +230,6 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
             -> Configure a Security Context for a Pod or Container
             -> Configure Service Accounts for Pods
             -> Assign CPU Resources to Containers and Pods
-
    - Concepts > Configuration > Secrets
    - Inject Data Into Applications > Distribute Credentials Securely Using Secrets
    - CRUD - ( ConfigMap(cm), service context(sc), secret(secrets) and service account(sa), cpu/mem limits)
