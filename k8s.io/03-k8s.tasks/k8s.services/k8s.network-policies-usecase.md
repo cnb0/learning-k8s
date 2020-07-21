@@ -91,7 +91,8 @@
                 to access to the pod.
 
                 Use Cases:
-                    - You need to expose the pods to the public Internet in a namespace denying all non-whitelisted traffic
+                    - You need to expose the pods to the public Internet in a namespace denying 
+                      all non-whitelisted traffic
 
 9. ALLOW traffic only to a port of an application
                 - This NetworkPolicy lets you define ingress rules for specific ports of an application. 
@@ -100,8 +101,8 @@
                 - A port may be either a numerical or named port on a pod.
 
                 Use Cases :
-                    - Allow monitoring system to collect the metrics by querying the diagnostics port of your application, 
-                      without giving it access to the rest of the application.
+                    - Allow monitoring system to collect the metrics by querying the diagnostics 
+                      port of your application,without giving it access to the rest of the application.
 
 10. ALLOW traffic only to a port of an application
                 - This NetworkPolicy lets you define ingress rules for specific ports of an application. 
@@ -110,8 +111,8 @@
                 - A port may be either a numerical or named port on a pod.
 
             Use Cases :
-                - Allow monitoring system to collect the metrics by querying the diagnostics port of your application, 
-                  without giving it access to the rest of the application.
+                - Allow monitoring system to collect the metrics by querying the diagnostics port of
+                  your application, without giving it access to the rest of the application.
 
 
 11. DENY egress traffic from an application
@@ -120,10 +121,10 @@
                   Useful for restricting outbound traffic of single-instance databases and datastores.
 
 12. DENY all non-whitelisted traffic from a namespace
-             Bulb Use Case: This is a fundamental policy, blocking all outgoing (egress) traffic from a namespace by default 
-             (including DNS resolution). After deploying this, you can deploy Network Policies that allow the specific 
+             Bulb Use Case: This is a fundamental policy, blocking all outgoing (egress) traffic from a
+             namespace by default (including DNS resolution). 
+             After deploying this, you can deploy Network Policies that allow the specific 
              outgoing traffic.
-
              Consider applying this manifest to any namespace you deploy workloads to (except kube-system).
         
              Bulb Best Practice: 
@@ -134,6 +135,7 @@
 13. DENY external egress traffic
             (a.k.a LIMIT traffic to pods in the cluster)
             Use Cases:
-                - You want to prevent certain type of applications from establishing connections to the external networks.    
+                - You want to prevent certain type of applications from establishing connections to the
+                  external networks.    
 
 ```
