@@ -23,7 +23,8 @@
 
     Use Cases:
         - It’s very common: 
-                - To start whitelisting the traffic using Network Policies, first you need to blacklist the traffic using this policy.
+                - To start whitelisting the traffic using Network Policies, first you need to blacklist the traffic 
+                  using this policy.
                 - You want to run a Pod and want to prevent any other Pods communicating with it.
                 - You temporarily want to isolate traffic to a Service from other Pods.
 
@@ -69,21 +70,21 @@
 
             Use Case:
                 - You have a common service or a database which is used by deployments in different namespaces.
-                - You do not need this policy unless there is already a NetworkPolicy blocking traffic to the application or 
-                  a NetworkPolicy blocking non-whitelisted traffic to all pods in the namespace.
+                - You do not need this policy unless there is already a NetworkPolicy blocking traffic to the
+                  application or a NetworkPolicy blocking non-whitelisted traffic to all pods in the namespace.
 
 6. ALLOW all traffic from a namespace
         
-            This policy is similar to allowing traffic from all namespaces but shows how you can choose particular namespaces.
+            This policy is similar to allowing traffic from all namespaces but shows how you can choose particular
+            namespaces.
 
             Use Case:
                 - Restrict traffic to a production database only to namespaces where production workloads are deployed.
                 - Enable monitoring tools deployed to a particular namespace to scrape metrics from the current namespace.
 
 7. ALLOW traffic from some pods in another namespace
-            Since Kubernetes v1.11, it is possible to combine podSelector and namespaceSelector with an AND (intersection) operation.
-
-
+            Since Kubernetes v1.11, it is possible to combine podSelector and namespaceSelector with an AND 
+            (intersection) operation.
 
 8. ALLOW traffic from external clients
                 This Network Policy enables external clients from the public Internet directly or via a Load Balancer 
