@@ -1,8 +1,6 @@
 
+
 ```
-
- 
-
  00-create-cluster.md
  01-deny-all-traffic-to-an-application.md
  02-limit-traffic-to-an-application.md
@@ -21,7 +19,7 @@
 
 
 1. DENY all traffic to an application
-    This NetworkPolicy will drop all traffic to pods of an application, selected using Pod Selectors.
+     This NetworkPolicy will drop all traffic to pods of an application, selected using Pod Selectors.
 
     Use Cases:
         - It’s very common: 
@@ -46,7 +44,8 @@
                   allow all traffic to it from its namespace and other namespaces.
 
 3. DENY all non-whitelisted traffic to a namespace
-                - bulb Use Case: This is a fundamental policy, blocking all cross-pod networking other than the ones whitelisted via the other Network Policies you deploy.
+                - bulb Use Case: This is a fundamental policy, blocking all cross-pod networking other than the 
+                  ones whitelisted via the other Network Policies you deploy.
                 - Consider applying this manifest to any namespace you deploy workloads to (anything but kube-system).
 
                 - bulb Best Practice: This policy will give you a default "deny all" functionality. 
@@ -55,10 +54,12 @@
 
 4. DENY all traffic from other namespaces
         (a.k.a LIMIT access to the current namespace)
-                - You can configure a NetworkPolicy to deny all the traffic from other namespaces while allowing all the traffic coming from the same   namespace the pod deployed to.
+                - You can configure a NetworkPolicy to deny all the traffic from other namespaces while allowing all the 
+                  traffic coming from the same   namespace the pod deployed to.
     
             Use Cases :
-                - You do not want deployments in test namespace to accidentally send traffic to other services or databases in prod namespace.
+                - You do not want deployments in test namespace to accidentally send traffic to other services or
+                  databases in prod namespace.
                 - You host applications from different customers in separate Kubernetes namespaces and 
                   you would like to block traffic coming from outside a namespace.
 
@@ -85,7 +86,8 @@
 
 
 8. ALLOW traffic from external clients
-                This Network Policy enables external clients from the public Internet directly or via a Load Balancer to access to the pod.
+                This Network Policy enables external clients from the public Internet directly or via a Load Balancer 
+                to access to the pod.
 
                 Use Cases:
                     - You need to expose the pods to the public Internet in a namespace denying all non-whitelisted traffic
@@ -117,7 +119,9 @@
                   Useful for restricting outbound traffic of single-instance databases and datastores.
 
 12. DENY all non-whitelisted traffic from a namespace
-             Bulb Use Case: This is a fundamental policy, blocking all outgoing (egress) traffic from a namespace by default (including DNS resolution). After deploying this, you can deploy Network Policies that allow the specific outgoing traffic.
+             Bulb Use Case: This is a fundamental policy, blocking all outgoing (egress) traffic from a namespace by default 
+             (including DNS resolution). After deploying this, you can deploy Network Policies that allow the specific 
+             outgoing traffic.
 
              Consider applying this manifest to any namespace you deploy workloads to (except kube-system).
         
