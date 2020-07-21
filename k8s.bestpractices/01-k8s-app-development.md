@@ -2,6 +2,9 @@
 
 Best practices for application development on Kubernetes.
 
+
+
+
 ## Health checks
 
 Kubernetes offers two mechanisms to track the lifecycle of your containers and Pods: liveness and readiness probes.
@@ -546,3 +549,21 @@ Save only non-sensitive configuration in ConfigMaps. For sensitive information (
 The content of Secret resources should be mounted into containers as volumes rather than passed in as environment variables.
 
 This is to prevent that the secret values appear in the command that was used to start the container, which may be inspected by individuals that shouldn't have access to the secret values.
+
+```
+Kubernetes allocates CPU and memory resources to containers on the basis of requests and limits.
+A container’s requests are the minimum amounts of resources it needs to run. Its limits specify the maximum amount it’s allowed to use.
+Minimal container images are faster to build, push, deploy, and start. The smaller the container, the fewer the potential security vulnerabilities.
+Liveness probes tell Kubernetes whether the container is working properly. If a container’s liveness probe fails, it will be killed and restarted.
+Readiness probes tell Kubernetes that the container is ready and able to serve requests. If the readiness probe fails, the container will be removed from any Services that reference it, disconnecting it from user traffic.
+PodDisruptionBudgets let you limit the number of Pods that can be stopped at once during evictions, preserving high availability for your application.
+Namespaces are a way of logically partitioning your cluster. You might create a namespace for each application, or group of related applications.
+To refer to a Service in another namespace, you can use a DNS address like this: SERVICE.NAMESPACE.
+ResourceQuotas let you set overall resource limits for a given namespace.
+LimitRanges specify default resource requests and limits for containers in a namespace.
+Set resource limits so that your applications almost, but don’t quite exceed them in normal usage.
+Don’t allocate more cloud storage than you need, and don’t provision high-bandwidth storage unless it’s critical for your application’s performance.
+Set owner annotations on all your resources, and scan the cluster regularly for unowned resources.
+Find and clean up resources that aren’t being used (but check with their owners).
+Reserved instances can save you money if you can plan your usage long-term.
+Preemptible instances can save you money right now, but be ready for them to vanish at short notice. Use node affinities to keep failure-sensitive Pods away from preemptible nodes. ```
