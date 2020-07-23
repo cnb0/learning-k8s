@@ -1,0 +1,2 @@
+- [K8s Prod Checkist](https://srcco.de/posts/web-service-on-kubernetes-production-checklist-2019.html)
+- [Security Checklist](https://www.fellowcloud.info/post/kubernetes-security-are-your-container-doors-open)
