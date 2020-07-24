@@ -1,5 +1,16 @@
-
 ```
+- pod-kill: The selected pod is killed (ReplicaSet or something similar may be needed to ensure the pod will be restarted).
+- pod-failure: The selected pod will be unavailable in a specified period of time.
+- container-kill: The selected container is killed in the selected pod.
+- netem chaos: Network chaos such as delay, duplication, etc.
+- network-partition: Simulate network partition.
+- IO chaos: Simulate file system faults such as I/O delay, read/write errors, etc.
+- time chaos: The selected pod will be injected with clock skew.
+- cpu-burn: Simulate the CPU of the selected pod stress.
+- memory-burn: Simulate the memory of the selected pod stress.
+- kernel chaos: The selected pod will be injected with (slab, bio, etc) errors.
+
+ 
 1: Destroying Application Instances
            - Creating A Cluster
            - Deploying The Application
