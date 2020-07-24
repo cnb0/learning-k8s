@@ -1,5 +1,5 @@
 
-
+```
 1: Destroying Application Instances
            - Creating A Cluster
            - Deploying The Application
@@ -72,3 +72,4 @@
             - Preparing For Termination Of Nodes
             - Terminating Random Nodes
             - Monitoring And Alerting With Prometheus
+```
