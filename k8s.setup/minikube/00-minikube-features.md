@@ -39,6 +39,7 @@ See https://minikube.sigs.k8s.io/docs/
 See minikube in action [here](https://minikube.sigs.k8s.io/docs/handbook/controls/)
 
 
-
+## issues 
+[CPU usage](https://github.com/kubernetes/minikube/issues/3207)
 
 ```
