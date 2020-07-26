@@ -123,6 +123,7 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
  
              $ kubectl get events --sort-by=.metadata.creationTimestamp
              $ kubectl get events --namespace myns --sort-by='{.lastTimestamp}'
+             $ kubectl get event --field-selector=involvedObject.name=random-logger
              $ kubectl get pods --field-selector=status.phase=Running
 
              $ kubectl diff -f ./my-pod.yaml
