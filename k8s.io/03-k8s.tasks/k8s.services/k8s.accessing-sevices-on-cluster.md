@@ -8,7 +8,9 @@
        so they will not be reachable from a machine outside the cluster, such as your desktop machine
        
   -  On minikube, the LoadBalancer type makes the Service accessible through the minikube service command.
-        $ minikube service list
+        ```  
+        - $ minikube service list 
+        ```
          
 ```
 1. Ways to connect
