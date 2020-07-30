@@ -30,12 +30,13 @@
 I. Foundational Patterns
 
             2. Predictable Demands
-
-                    Runtime Dependencies
-                    Resource Profiles
-                    Pod Priority
-                    Project Resources
-                    Capacity Planning
+                  - Our sample random generator dealing with hard requirements on ConfigMap and 
+                    PersistentVolumeClaims as well as with resource limits.
+                                            Runtime Dependencies
+                                            Resource Profiles
+                                            Pod Priority
+                                            Project Resources
+                                            Capacity Planning
 
             3. Declarative Deployment
                     Rolling Deployment
