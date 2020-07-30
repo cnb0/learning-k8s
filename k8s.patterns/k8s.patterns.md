@@ -1,6 +1,7 @@
 
 ## k8s patterns 
 
+```
 - The way developers design, build, and run software has changed significantly with the evolution of microservices and containers.   
 - provide common reusable elements, patterns, principles, and practices for designing and implementing cloud-native applications on Kubernetes
 
@@ -15,7 +16,7 @@
 - Advanced patterns 
         cover more advanced topics such as extending the platform with operators.
 
-```
+
 1. Introduction
         The Path to Cloud Native
         Distributed Primitives
