@@ -2,8 +2,10 @@
 ## k8s patterns 
 
 ```
-- The way developers design, build, and run software has changed significantly with the evolution of microservices and containers.   
-- provide common reusable elements, patterns, principles, and practices for designing and implementing cloud-native applications on Kubernetes
+- The way developers design, build, and run software has changed significantly with the evolution of 
+  microservices and containers.   
+- provide common reusable elements, patterns, principles, and practices for designing and implementing 
+  cloud-native applications on Kubernetes
 
                 - Foundational patterns
                         cover the core principles and practices for building container-based cloud-native applications.
