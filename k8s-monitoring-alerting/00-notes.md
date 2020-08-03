@@ -4,6 +4,10 @@
 A Kubernetes cluster has multiple components and layers, and across each of them we will find different 
 failure points that we need to monitor. These are some typical use cases for Kubernetes monitoring.
 
+1.Monitoring Kubernetes clusters and nodes
+2.Monitoring Kubernetes deployments and pods
+3.Monitoring Kubernetes applications
+
 1. Monitoring Kubernetes clusters and nodes
             - By monitoring the cluster, you get an across-the-board view of the
               overall platform health and capacity. 
