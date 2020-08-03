@@ -2,7 +2,24 @@
 ```
 
 A Kubernetes cluster has multiple components and layers, and across each of them we will find different 
-failure points that we need to monitor. These are some typical use cases for Kubernetes monitoring.
+failure points that we need to monitor. 
+
+- find out which nodes are consuming the most resources -
+            It shows the CPU and memory usage of the nodes:
+                        $ kubectl top nodes
+- From Cloud Provider UI - Cluster,Nodes,Controllers,Container insights
+  
+  - Check container metrics, logs, and environmental variables
+  - Logs are tied up with kube events 
+  - kubectl events to monitor the application
+  - logs  are to debug the applications
+  - Kubernetes metrics for the operational monitoring of your deployments
+  
+  - AKS metrics and environment variables, as well as logs with log filtering. 
+    set alerts on any metric that you would like to be notified of by leveraging 
+    Azure Insights.
+
+These are some typical use cases for Kubernetes monitoring.
 
 1.Monitoring Kubernetes clusters and nodes
 2.Monitoring Kubernetes deployments and pods
