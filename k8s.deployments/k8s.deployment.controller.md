@@ -1,5 +1,6 @@
 [K8s Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
+```
  - A Deployment provides declarative updates for Pods and ReplicaSets.
 
     - You describe a desired state in a Deployment, and the Deployment Controller changes the actual state to the               . 
@@ -233,7 +234,8 @@ Updating a Deployment
 
               $ kubectl patch deployment.v1.apps/nginx-deployment -p '{"spec":{"progressDeadlineSeconds":600}}'
 
-         - Once the deadline has been exceeded, the Deployment controller adds a DeploymentCondition with the following attributes to the Deployment's .status.conditions:
+         - Once the deadline has been exceeded, the Deployment controller adds a DeploymentCondition with 
+           the following attributes to the Deployment's .status.conditions:
 
                       Type=Progressing
                       Status=False
@@ -277,7 +279,9 @@ Updating a Deployment
                     for it to be considered available. This defaults to 0 (the Pod will be considered available as soon as it is ready)
 
         - Rollback To 
-                 - Field .spec.rollbackTo has been deprecated in API versions extensions/v1beta1 and apps/v1beta1, and is no longer supported in API     versions  starting apps/v1beta2. Instead, kubectl rollout undo as introduced in Rolling Back to a Previous Revision should be used
+                 - Field .spec.rollbackTo has been deprecated in API versions extensions/v1beta1 and apps/v1beta1, and is no longer supported in API     
+                   versions  starting apps/v1beta2. Instead, kubectl rollout undo as introduced in Rolling Back to a Previous Revision
+                   should be used
 
         - Revision History Limit 
                  - A Deployment's revision history is stored in the ReplicaSets it controls.
