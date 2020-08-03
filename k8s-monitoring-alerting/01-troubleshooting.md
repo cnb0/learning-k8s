@@ -17,6 +17,16 @@ kubectl -n kube-system get pods -o wide
 ```sh
 kubectl describe pod <pod-name>
 ```
+```
+1. Check control plane logs 
+          -kube-apiserver 
+          -kube-controller-manager 
+          -kube-scheduler  
+          -kube-dns  
+2. kubelet logs
+3. kube-proxy logs
+```
+
 
 ## Looking at kube-apiserver logs
 
