@@ -1,5 +1,5 @@
 
-[Reference](https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/)
+[Run Applications](https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/)
 
 ```
 1. Run a Stateless Application Using a Deployment
