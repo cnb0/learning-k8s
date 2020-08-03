@@ -4,16 +4,17 @@ To verify that the kube-scheduler component is healthy
 $kubectl get componentstatuses
 
 $ kubectl explain
+
 Did something weird happen when your pod deployed?
 $ kubectl get pods
 $ kubectl describe pods my-pod
 
-Check the logs
- # dump pod logs (stdout)
+Check the logs - dump pod logs (stdout)
 $ kubectl logs my-pod    
 
 # dump pod container logs(stdout, multi-container case) 
 $ kubectl logs my-pod -c my-container 
+
 # stream pod logs (stdout)
 $ kubectl logs -f my-pod
 
@@ -36,10 +37,8 @@ remote cluster with telepresence.io
 
 # Attach to Running Container
 
-# Forward port 6000 of Pod to
-your to 5000 on your local
-machine
-# Run command in existing
+# Forward port 6000 of Pod to your to 5000 on your local machine
+# Run command in existing 
 pod (1 container case)
 # Run command in existing pod
 (multi-container case)
