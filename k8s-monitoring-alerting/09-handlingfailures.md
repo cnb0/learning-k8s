@@ -7,8 +7,6 @@ Kubernetes is a distributed system with many hidden working parts.
 3.Storage mount issues
 4.Network issues
 
-
-
 1. Node Failures 
      $kubectl describe nodes
      $while true; do curl http://<EXTERNAl-IP>/ ; sleep 5; done
@@ -17,8 +15,10 @@ Kubernetes is a distributed system with many hidden working parts.
 
 2. Out of resource failures
   - Reducing the number of replicas to the bare minimum
+        
         - $kubcectl scale --replicas=1 deployment/frontend
         - $kubcetl get events
+        
   - Reducing CPU requirements
 
  ```
