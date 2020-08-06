@@ -32,4 +32,51 @@ update-context - Update kubeconfig in case of an IP or port change
 version - Print the version of minikube
 
 
+minikube lifecycle	  
+      $ minikube delete, minikube start, minikube status, Link: minikube
+Get minikube version	
+      $ minikube version, Link: all minikube releases
+Start minikube with different machine flavor	
+      $ minikube start --memory 5120 --cpus=4
+Start minikube with a specific k8s version	
+      $ minikube start --kubernetes-version v1.11.0
+Start minikube with more customizations
+      $ minikube start –kubernetes-version v1.11.0 –feature-gates=AdvancedAuditing=true
+SSH to minikube vm	
+      $ minikube ssh, ssh -i ~/.minikube/machines/minikube/id_rsa docker@192.168.99.100
+Your local docker to use minikube dockerd	eval
+      $ (minikube docker-env), Then no need for docker push
+Minikube check latest version	
+      $ minikube update-check
+
+# Check status :
+
+- Get minikube version	        $ minikube version, Link: all minikube releases
+- Get cluster info	            $ kubectl cluster-info
+- Get service info	            $ minikube service <srv-name>
+- Get dashboard                	$ minikube dashboard
+- Get ip	                      $ minikube ip
+- Get minikube log	            $ minikube logs
+- List addons	                  $ minikube addons list
+
+
+# Handling folders from host 
+
+Mount host OS’s folder to minikube VM	
+$ minikube mount /host-mount-path:/vm-mount-path
+
+Folder of k8s.io/minikube-hostpath provisioner	/tmp/hostpath-provisioner, /tmp/hostpath_pv
+Mount host OS’s folder to minikube VM	
+$minikube mount /host-mount-path:/vm-mount-path
+
+Critical minikube folder	
+      /var/lib/localkube, /var/lib/docker, /data
+Check minikube config in your host OS desktop	
+     ~/.minikube/machines/minikube/config.json
+Minikube conf in local env	
+     ~/.minikube, ~/.kube
+ Install addon after creating minikube env
+ $ minikube addons enable heapster, kubectl top node
+
+
 ```
