@@ -243,8 +243,7 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
                         
         $ kubectl create cm options --from-literal=var5=val5
         $ kubectl create configmap  config1    --from-literal=foo=lala  --from-literal=foo2=lolo
-        $ kubectl create configmap  anotherone --from-literal=var6=val6 --from-literal=var7=val7
-                        
+                                
         $ kubectl create secret generic mysecret --from-literal=password=mypass
         $ kubectl get secret mysecret2 -o yaml
 
