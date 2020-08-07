@@ -1,7 +1,7 @@
 #  k8s-learning
 
 ## Kubernetes is a 
-##   - container centric DevOps/Workload orchestration system & 
+##   - container centric DevOps/Workload orchestration system   
 ##   - Platform for building platforms 
 
       
