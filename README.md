@@ -3,6 +3,7 @@
 
 ### Kubernetes is not a “CI/CD”, “Micro-service” focused container cloud 
 
+### Kubernetes is the brain for your distributed container deployment
 
 ### Kubernetes is a 
 
