@@ -78,7 +78,11 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
 ```
   
 ### 1. Core Concepts - 13% ( Tasks )
-```
+
+- Understand Kubernetes API primitives
+- Create and configure basic Pods
+
+```   
        - Reference > kubectl CLI > kubectl Cheat Sheet
        - Monitoring, Logging, and Debugging 
                  > Get a Shell to a Running Container
@@ -90,8 +94,8 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
    $ kubectl get po --all-namespaces
    $ kubectl get po -A
 
-   $ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl create -n mynamespace -f -
-   $ kubectl set image pod/nginx nginx=nginx:1.7.1 
+ $ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl create -n mynamespace -f -
+ $ kubectl set image pod/nginx nginx=nginx:1.7.1 
                                  
    # Interactive POD debugging
                     
@@ -104,17 +108,23 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
 ```
 
 ### 2. Multi-container pods - 10% 
+- Understand Multi-Container Pod design patterns (e .g. ambassador, adapter, sidecar
+
 ```
-       - run commands on 2 different containers in the same pod 
+- run commands on 2 different containers in the same pod 
               
-        $ kubectl run busybox --image=busybox --restart=Never -o yaml --dry-run=client -- \ 
+    $ kubectl run busybox --image=busybox --restart=Never -o yaml --dry-run=client -- \ 
                 /bin/sh -c 'echo hello;sleep 3600' > pod.yaml
                 
        - stream pod container logs(stdout, multi-container case)
-        $ kubectl logs -f my-pod -c my-container
+    $ kubectl logs -f my-pod -c my-container
 ```
 
 ### 3. Pod design - 20%
+- Understand Deployments and how to perform rolling updates
+- Understand Deployments and how to perform rollbacks
+- Understand Jobs and CronJobs
+- Understand how to use Labels, Selectors, and Annotations
 ```
      . Concepts >
               Overview > Labels and Selectors
@@ -190,9 +200,6 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
              $ kubectl get po -l run=nginx # if you created deployment by 'run' command
              $ kubectl get po -l app=nginx # if you created deployment by 'create' command
 
-             
-             
-
              $ kubectl set image deploy nginx nginx=nginx:1.7.9
                           or
              $ kubectl edit deploy nginx  
@@ -225,6 +232,13 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
                  /bin/sh -c 'date; echo Hello from the Kubernetes cluster'
 ```
 ### 4. Configuration - 18%  ( Tasks )
+
+- Understand ConfigMaps
+- Understand SecurityContexts
+- Define an application’s resource requirements
+- Create & consume Secrets
+- Understand ServiceAccounts
+
 ```
    - Configure Pods and Containers 
             -> Configure a Pod to Use a ConfigMap
@@ -256,9 +270,13 @@ $ kubectl run nginx --image=nginx --restart=Never  -o yaml
 $ kubectl run nginx --image=nginx --restart=Never --serviceaccount=myuser -o yaml --dry-run > pod.yaml
 $ kubectl run nginx --image=nginx --restart=Never --requests='cpu=100m,memory=256Mi' --limits='cpu=200m,memory=512Mi'
 $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256Mi --limits cpu=200m,memory=512Mi  
-
 ```
+
 ### 5. Observability - 18%
+- Understand LivenessProbes and ReadinessProbes
+- Understand container logging
+- Understand how to monitor applications in Kubernetes
+- Understand debugging in Kubernetes
 
 ```
        $ kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml > pod.yaml
@@ -270,8 +288,10 @@ $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256
        $ kubectl delete po busybox --force --grace-period=0
 
 ```
-
 ### 6. Services and networking - 13%
+- Understand Services
+- Demonstrate a basic understanding of NetworkPolicies
+
 ```
         $ kubectl run curl --image=radial/busyboxplus:curl  -it
         $ kubectl get services --sort-by=.metadata.name
@@ -296,11 +316,12 @@ $ kubectl run busybox --image=busybox --rm -it --restart=Never -- sh \
 ```
 
 ### 7. State persistence - 8% ( Tasks - PV/PVC )
+- Understand PersistentVolumeClaims for storage
+
 ```
-  - Configure Pods and Containers 
+ - Configure Pods and Containers 
         > Configure a Pod to Use a Volume for Storage
         > Configure a Pod to Use a PersistentVolume for Storage
                   
         $ kubectl get pv --sort-by=.spec.capacity.storage
-
 ```
