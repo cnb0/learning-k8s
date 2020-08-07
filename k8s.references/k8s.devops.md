@@ -1,7 +1,8 @@
 
 ## K8s DevOps Key Features
          -  Implement Kubernetes to orchestrate and scale applications proficiently
-         -  Leverage the latest features of Kubernetes to resolve common as well as complex problems in a cloud-native environment
+         -  Leverage the latest features of Kubernetes to resolve common as well as complex problems in a 
+            cloud-native environment
          -  Gain hands-on experience in securing, monitoring, and troubleshooting your application
          
          -  Kubernetes is a popular open source orchestration platform for managing containers in a cluster environment. 
@@ -9,14 +10,17 @@
          -  you can  create highly available Kubernetes clusters on multiple clouds such as Amazon Web Services (AWS), 
             Google Cloud Platform (GCP), Azure, Alibaba, and on-premises data centers.
 
-         -  Starting with recipes for installing and configuring Kubernetes instances, you'll discover how to work with Kubernetes clients, services, and key metadata. 
+         -  Starting with recipes for installing and configuring Kubernetes instances, you'll discover 
+            how to work with Kubernetes clients, services, and key metadata. 
          -  how to build continuous integration/continuous delivery (CI/CD) pipelines for your applications
          -  understand various methods to manage containers.
-         -  delve into Kubernetes' integration with Docker and Jenkins, and even perform a batch process and configure data volumes.
+         -  delve into Kubernetes' integration with Docker and Jenkins, and even perform a batch process and 
+            configure data volumes.
          -  learn methods for scaling, security, monitoring, logging, and troubleshooting. 
          -  volume snapshots, creating high availability clusters with kops, running workload operators 
 
-          By the end of this course, you'll have developed the skills required to implement Kubernetes in production and manage containers proficiently.
+          By the end of this course, you'll have developed the skills required to implement Kubernetes in production and 
+          manage containers proficiently.
 
          - What you will learn
                     - Deploy cloud-native applications on Kubernetes
