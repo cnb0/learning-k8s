@@ -111,6 +111,9 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
 - Understand Multi-Container Pod design patterns (e .g. ambassador, adapter, sidecar
 
 ```
+        - Tasks -> Init Containers
+        - Concepts -> Logging Architecture
+
 - run commands on 2 different containers in the same pod 
               
     $ kubectl run busybox --image=busybox --restart=Never -o yaml --dry-run=client -- \ 
@@ -141,7 +144,7 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
              $ kubectl delete pods,services -l name=myLabel         
 
              $ kubectl autoscale deployment foo --min=2 --max=10
-             
+           
 
       # Lables/Selectors/Annotations
 
@@ -149,7 +152,6 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
              $ kubectl run nginx2 --image=nginx --restart=Never --labels="app=frontend,env=dev"
 
              $ kubectl get pods --show-labels
-
              $ kubectl label pods my-pod new-label=awesome 
              
              $ kubectl label po nginx1 app=v2 --overwrite
@@ -227,7 +229,12 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
               $ kubectl get jobs -w
 
               # CronJobs
-                    
+                   - Tasks 
+                         - Automated Tasks with Cron Jobs
+                         - Parallel Jobs with Expansions
+                         - Course Parallel Processing with a Work Queue
+                         - Fine Parallel Processsing with a Work Queue              
+                           
               $ kubectl create cronjob busybox --image=busybox --schedule="*/1 * * * *" -- \ 
                  /bin/sh -c 'date; echo Hello from the Kubernetes cluster'
 ```
@@ -248,6 +255,7 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
    - Concepts > Configuration > Secrets
    - Inject Data Into Applications > Distribute Credentials Securely Using Secrets
    - CRUD - ( ConfigMap(cm), service context(sc), secret(secrets) and service account(sa), cpu/mem limits)
+   
 
         $ kubectl get cm,sc,secrets,sa
 
@@ -279,6 +287,14 @@ $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256
 - Understand debugging in Kubernetes
 
 ```
+      Tasks - App Introspection and Debugging
+            - Liveness and Readiness Probes
+            - Debugging Pods
+            - Troubleshooting Applications
+            - Debugging Services
+            - Debugging Services Locally
+            - Core Metrics Pipeline
+        
        $ kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml > pod.yaml
 
        $ kubectl describe pod nginx | grep -i readiness
@@ -293,6 +309,10 @@ $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256
 - Demonstrate a basic understanding of NetworkPolicies
 
 ```
+   - Concepts -> Connecting Apps with Services
+    - Tasks -> Declare Network Policy
+        
+        
         $ kubectl run curl --image=radial/busyboxplus:curl  -it
         $ kubectl get services --sort-by=.metadata.name
         
