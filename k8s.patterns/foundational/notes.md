@@ -1,6 +1,7 @@
 ```
 Predictable Demands
-Our sample random generator dealing with hard requirements on ConfigMap and PersistentVolumeClaims as well as with resource limits.
+Our sample random generator dealing with hard requirements on ConfigMap and PersistentVolumeClaims 
+as well as with resource limits.
 
 Declarative Deployment
 Rolling and fixed update of the random generator Deployment from version 1.0 to 2.0.
