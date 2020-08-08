@@ -1,9 +1,5 @@
 #  k8s-learning
 
-
-#  k8s-learning
-
-
 ### Kubernetes is not a “CI/CD”, “Micro-service” focused container cloud 
 
 ### Kubernetes is the brain for your distributed container deployment
