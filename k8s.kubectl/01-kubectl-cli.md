@@ -140,7 +140,7 @@ kubectl delete pod-name --grace-period=0 --force
 ## Create Pod
 
 ```
-kubectl run kuard --generator=run-pod/v1 --image=gcr.io/kuar-demo/kuard-amd64:1 --output yaml --export --dry-run > kuard-pod.yml
+kubectl run kuard --image=gcr.io/kuar-demo/kuard-amd64:1 --output yaml --export --dry-run > kuard-pod.yml
 kubectl apply -f kuard-pod.yml
 ```
 
