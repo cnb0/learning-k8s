@@ -573,5 +573,5 @@ for your application’s performance.
 Set owner annotations on all your resources, and scan the cluster regularly for unowned resources.
 Find and clean up resources that aren’t being used (but check with their owners).
 Reserved instances can save you money if you can plan your usage long-term.
-Preemptible instances can save you money right now, but be ready for them to vanish at short notice. Use node affinities to 
-keep failure-sensitive Pods away from preemptible nodes. ```
+Preemptible instances can save you money right now, but be ready for them to vanish at short notice. 
+Use node affinities to keep failure-sensitive Pods away from preemptible nodes. ```
