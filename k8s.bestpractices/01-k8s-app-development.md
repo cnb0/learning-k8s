@@ -558,8 +558,9 @@ This is to prevent that the secret values appear in the command that was used to
   the fewer the potential security vulnerabilities.
 - Liveness probes tell Kubernetes whether the container is working properly. If a container’s 
   liveness probe fails, it will be killed and restarted.
-- Readiness probes tell Kubernetes that the container is ready and able to serve requests. If the readiness probe fails, 
-  the container will be removed from any Services that reference it, disconnecting it from user traffic.
+- Readiness probes tell Kubernetes that the container is ready and able to serve requests. 
+  If the readiness probe fails,the container will be removed from any Services that reference it, 
+  disconnecting it from user traffic.
 - PodDisruptionBudgets let you limit the number of Pods that can be stopped at once during evictions, 
   preserving high availability for your application.
 - Namespaces are a way of logically partitioning your cluster. You might create a namespace for each application, or 
