@@ -7,7 +7,7 @@ Auditing and Auditing with Falco
 Debug 
   - StatefulSet
   - Init Containers
-  - Pods and ReplicationControllers
+  - Pods and replicaset
   - Running Pods
   - Services
 Debugging Kubernetes nodes with crictl
