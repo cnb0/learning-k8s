@@ -8,29 +8,39 @@
 - Node administration
 
 
-- Kubernetes is pretty good at running workloads for you in a reliable, efficient way with no real need for manual intervention. 
-  Providing you give the scheduler accurate estimates of your containers’ resource needs, you can largely leave Kubernetes to get on with it.
+- Kubernetes is pretty good at running workloads for you in a reliable, efficient way with
+  no real need for manual intervention. 
+  Providing you give the scheduler accurate estimates of your containers’ resource needs, 
+  you can largely leave Kubernetes to get on with it.
 
-- Understanding how Kubernetes manages resources is key to building and running your cluster correctly. The most important points to take away:
+- Understanding how Kubernetes manages resources is key to building and running your cluster correctly. 
+  The most important points to take away:
 
-                - Kubernetes allocates CPU and memory resources to containers on the basis of requests and limits.
-                - A container’s requests are the minimum amounts of resources it needs to run. Its limits specify the maximum amount it’s allowed to use.
-                - Minimal container images are faster to build, push, deploy, and start. The smaller the container, the fewer the potential security vulnerabilities.
-                - Liveness probes tell Kubernetes whether the container is working properly. If a container’s liveness probe fails, it will be killed and restarted.
-                - Readiness probes tell Kubernetes that the container is ready and able to serve requests. If the readiness probe fails, 
-                the container will be removed from any Services that reference it, disconnecting it from user traffic.
-                - PodDisruptionBudgets let you limit the number of Pods that can be stopped at once during evictions, preserving high availability for your application.
-                - Namespaces are a way of logically partitioning your cluster. You might create a namespace for each application, or group of related applications.
-                - To refer to a Service in another namespace, you can use a DNS address like this: SERVICE.NAMESPACE.
-                - ResourceQuotas let you set overall resource limits for a given namespace.
-                - LimitRanges specify default resource requests and limits for containers in a namespace.
-                - Set resource limits so that your applications almost, but don’t quite exceed them in normal usage.
-                - Don’t allocate more cloud storage than you need, and don’t provision high-bandwidth storage unless it’s critical for your application’s performance.
-                - Set owner annotations on all your resources, and scan the cluster regularly for unowned resources.
-                - Find and clean up resources that aren’t being used (but check with their owners).
-                - Reserved instances can save you money if you can plan your usage long-term.
-                - Preemptible instances can save you money right now, but be ready for them to vanish at short notice. 
-                - Use node affinities to keep failure-sensitive Pods away from preemptible nodes.
+          - Kubernetes allocates CPU and memory resources to containers on the basis of requests and limits.
+          - A container’s requests are the minimum amounts of resources it needs to run. Its limits specify 
+            the maximum amount it’s allowed to use.
+          - Minimal container images are faster to build, push, deploy, and start. 
+            The smaller the container, the fewer the potential security vulnerabilities.
+          - Liveness probes tell Kubernetes whether the container is working properly. If a container’s 
+            liveness probe fails, it will be killed and restarted.
+          - Readiness probes tell Kubernetes that the container is ready and able to serve requests.
+             If the readiness probe fails, the container will be removed from any Services that reference it, 
+             disconnecting it from user traffic.
+          - PodDisruptionBudgets let you limit the number of Pods that can be stopped at once
+            during evictions, preserving high availability for your application.
+          - Namespaces are a way of logically partitioning your cluster. 
+            You might create a namespace for each application, or group of related applications.
+          - To refer to a Service in another namespace, you can use a DNS address like this: SERVICE.NAMESPACE.
+          - ResourceQuotas let you set overall resource limits for a given namespace.
+          - LimitRanges specify default resource requests and limits for containers in a namespace.
+          - Set resource limits so that your applications almost, but don’t quite exceed them in normal usage.
+          - Don’t allocate more cloud storage than you need, and don’t provision high-bandwidth storage unless
+            it’s critical for your application’s performance.
+          - Set owner annotations on all your resources, and scan the cluster regularly for unowned resources.
+          - Find and clean up resources that aren’t being used (but check with their owners).
+          - Reserved instances can save you money if you can plan your usage long-term.
+          - Preemptible instances can save you money right now, but be ready for them to vanish at short notice. 
+          - Use node affinities to keep failure-sensitive Pods away from preemptible nodes.
 
 
 - Scheduling workloads
@@ -42,7 +52,8 @@
                     - There are two core resource types that participate in the scheduling process,
                     namely CPU and memory
                     - also additional resources are ephemeral storage and huge pages. 
-                    Vendor-specific resources such as GPU, FPGA, and NICs can be used by the Kubernetes scheduler with device plugins
+                    Vendor-specific resources such as GPU, FPGA, and NICs can be used by the Kubernetes scheduler 
+                     with device plugins
 
                 - The concept of limits addresses :
                     -  If a pod uses more than a certain percentage of CPU, it will be throttled (not killed)
@@ -57,9 +68,9 @@
                                 - The pod belongs to BestEffort ,If both requests and limits across 
                                 all containers in a pod are zero or unspecified
                 - Burstable 
-                                - If any container in a pod requests at least one type of resource, regardless of the quantity, 
+                              - If any container in a pod requests at least one type of resource, regardless of the quantity, 
                 - Guaranteed 
-                                - the pod is classified as Gauranteed, If the limits for all resources across all containers 
+                              - the pod is classified as Gauranteed, If the limits for all resources across all containers 
                                 in a pod are set, and  the number of requests of the same type of resource equals the limits, 
 
             - Placing pods with constraints
@@ -90,7 +101,8 @@
                         - requiredDuringSchedulingIgnoredDuringExecution   - hard
                         - preferredDuringSchedulingIgnoredDuringExecution  - soft
                 - both requirements take effect during scheduling, not execution—that is,
-                   - if a pod has already been scheduled on a node, it remains in execution even if the condition of that node becomes ineligible for scheduling the pod.
+                   - if a pod has already been scheduled on a node, it remains in execution even if the condition 
+                     of that node becomes ineligible for scheduling the pod.
         - Node affinity
                 - The description of a required statement is called nodeSelectorTerms, and 
                   is composed of one or more matchExpressions. matchExpressions, 
@@ -120,7 +132,8 @@
                        controls the replicas by comparing the desired target of certain metrics with their real usage.
         - Incorporating custom metrics
             - scaling with network connections, disk IOPS, and database transactions.
-            -  the custom metrics API and external metrics API were introduced for Kubernetes components to access metrics that aren't supported
+            -  the custom metrics API and external metrics API were introduced for Kubernetes
+               components to access metrics that aren't supported
 
 - Managing cluster resources
         - Resource quotas of namespaces
@@ -149,7 +162,8 @@
 
 - Node administration 
     - pod Eviction
-            - To keep a node stable, kubelet reserves some resources as buffers to ensure it can take actions before a node's kernel acts.
+            - To keep a node stable, kubelet reserves some resources as buffers to ensure it can 
+              take actions before a node's kernel acts.
             - There are three configurable segregations or thresholds for different purposes:
                 - kube-reserved: Reserves resources for node components of Kubernetes
                 - system-reserved: Reserves resources for system daemons
