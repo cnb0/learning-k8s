@@ -68,10 +68,12 @@
         $ kubectl describe pod busybox 
         $ kubectl exec busybox -- printenv
         $ kubectl logs busybox -f     
-                       
-   
-$ kubectl create deployment nginx --image=nginx            # start a single instance of nginx 
-$ kubectl run nginx   --image=nginx   --restart=Never     --dry-run -o yaml  
+
+$ kubectl create deployment nginx --image=nginx  #deployment - start a single instance of nginx 
+$ kubectl run nginx --image=nginx --restart=Never  #pod
+$ kubectl create job nginx --image=nginx  #job
+$ kubectl create cronjob nginx --image=nginx --schedule="* * * * *"  #cronJob
+
 $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run -o yaml -- /bin/sh -c 'echo Hello!'  
 $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * ?" -- dry-run=client -o yaml -- \
           /bin/sh -c 'echo Hello world!' 
@@ -274,7 +276,6 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
                or 
         $ kubectl get sa default -o yaml > sa.yaml
 
-$ kubectl run nginx --image=nginx --restart=Never  -o yaml 
 $ kubectl run nginx --image=nginx --restart=Never --serviceaccount=myuser -o yaml --dry-run > pod.yaml
 $ kubectl run nginx --image=nginx --restart=Never --requests='cpu=100m,memory=256Mi' --limits='cpu=200m,memory=512Mi'
 $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256Mi --limits cpu=200m,memory=512Mi  
