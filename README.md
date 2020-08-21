@@ -2,7 +2,8 @@
 
 ### Kubernetes is not a “CI/CD”, “Micro-service” focused container cloud 
 
-### Kubernetes is a 
+
+### Kubernetes is a  declarative platform
 
 ####   - brain for your distributed container deployment
 ####   - Container Centric DevOps/Workload Orchestration System   
