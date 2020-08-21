@@ -1,5 +1,6 @@
 [k8s CRDS - Operators](https://operatorhub.io/)
 
+```
 - Operators are automated software managers that manage the entire lifecycle of Kubernetes applications
 - value of Operators
       - embed best practices from experts you - into operator
@@ -73,6 +74,6 @@
       - ClusterRoleBinding
       - Service account
       - CRDs
- 
+ ```
 
 
