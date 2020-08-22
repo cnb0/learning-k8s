@@ -1,5 +1,6 @@
 ```
 Section 1: Introduction to Kubernetes
+-----------------------------------------
 
 Chapter 1: Kubernetes Architecture
                     The rise of Docker and the trend of microservices
@@ -62,12 +63,12 @@ Chapter 4: Applying the Principle of Least Privilege in Kubernetes
                                 Role
                                 RoleBinding
                                 Kubernetes namespaces
-                    Wrapping up least privilege for Kubernetes subjects
-                                Least privilege for Kubernetes workloads
-                                Least privilege for accessing system resources
-                                Wrapping up least privilege for accessing system resources
-                                Least privilege for accessing network resources
-                                Least privilege for accessing application resources
+                    least privilege for Kubernetes subjects
+                                Least privilege for 
+                                        Kubernetes workloads
+                                        accessing system resources
+                                        accessing network resources
+                                        accessing application resources
 
 Chapter 5: Configuring Kubernetes Security Boundaries
                     Introduction to security boundaries
@@ -82,14 +83,15 @@ Chapter 5: Configuring Kubernetes Security Boundaries
                                 Network policies
 
 Section 2: Securing Kubernetes Deployments and Clusters
-
+---------------------------------------------------------
 Chapter 6: Securing Cluster Components
-                    Securing kube-apiserver
-                    Securing kubelet
-                    Securing etcd
-                    Securing kube-scheduler
-                    Securing kube-controller-manager
-                    Securing CoreDNS
+                    Securing 
+                            kube-apiserver
+                             kubelet
+                            etcd
+                            kube-scheduler
+                            kube-controller-manager
+                            CoreDNS
                     Benchmarking a cluster's security configuration
 
 Chapter 7: Authentication, Authorization, and Admission Control
@@ -127,9 +129,9 @@ Chapter 8: Securing Kubernetes Pods
                     Container images and Dockerfiles
                     CIS Docker benchmarks
                     Configuring the security attributes of pods
-                    Setting host-level namespaces for pods
-                    Security context for containers
-                    Security context for pods
+                                Setting host-level namespaces for pods
+                                Security context for containers
+                                Security context for pods
                     AppArmor profiles
                     The power of PodSecurityPolicy
                     Understanding PodSecurityPolicy
@@ -164,9 +166,10 @@ Chapter 11: Defense in Depth
                             Kubernetes audit policy
                             Configuring the audit backend
                     Enabling high availability in a Kubernetes cluster
-                            Enabling high availability of Kubernetes workloads
-                            Enabling high availability of Kubernetes components
-                            Enabling high availability of a cloud infrastructure
+                            Enabling high availability of 
+                                        Kubernetes workloads
+                                        Kubernetes components
+                                        cloud infrastructure
                     Managing secrets with Vault
                             Setting up Vault
                             Provisioning and rotating secrets
@@ -190,10 +193,11 @@ Chapter 12: Analyzing and Detecting Crypto-Mining Attacks
                             Detecting launched crypto-mining processes
                             Checking the binary signature
                     Defending against attacks
-                            Securing Kubernetes cluster provisioning
-                            Securing the build
-                            Securing deployment
-                            Securing runtime
+                            Securing 
+                                     Kubernetes cluster provisioning
+                                     the build
+                                     deployment
+                                     runtime
 
 Chapter 13: Learning from Kubernetes CVEs
                     The path traversal issue in kubectl cp – CVE-2019-11246
