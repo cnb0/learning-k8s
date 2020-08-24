@@ -2,16 +2,15 @@
 Kubernetes is the operating system of the cloud native world, 
 providing a reliable and scalable platform for running containerized workloads. 
 
-You’ll learn all about the Kubernetes ecosystem, and use battle-tested solutions to everyday problems. 
-You’ll build, step by step, an example cloud native application and its supporting infrastructure, 
-along with a development environment and continuous deployment pipeline application 
-
+- battle-tested solutions to everyday problems. 
+- build, step by step, an example cloud native application and its supporting infrastructure, 
+- along with a development environment and continuous deployment pipeline application 
  
-Use Kubernetes to manage resource usage and the container lifecycle
-Optimize clusters for cost, performance, resilience, capacity, and scalability
-Learn the best tools for developing,testing, and deploying your applications
-Apply the latest industry practices for security, observability, and monitoring
-Adopt DevOps principles to help make your development teams lean, fast, and effective
+- Use Kubernetes to manage resource usage and the container lifecycle
+- Optimize clusters for cost, performance, resilience, capacity, and scalability
+- Learn the best tools for developing,testing, and deploying your applications
+- Apply the latest industry practices for security, observability, and monitoring
+- Adopt DevOps principles to help make your development teams lean, fast, and effective
  
 
 1. Revolution in the Cloud

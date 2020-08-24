@@ -1,14 +1,23 @@
 
 
-## Container Patterns 
+## Container Patterns  - SOLID principles for cloud native applications
 
 
 ```
 
+- Cloud native applications anticipate failure; they run and scale reliably 
+  even when their infrastructure experiences outages.
+
+- To offer such capabilities, cloud native platforms like Kubernetes 
+  impose a set of contracts on applications. 
+  
+- These contracts ensure that applications they run conform to certain constraints and 
+  allow the platform to automate application management
+
 
 - The build time principles ensure that containers have the right granularity, consistency, 
   and structure in place. 
-  
+
 - The runtime principles dictate what functionalities must be implemented in order 
   for containerized applications to possess cloud native function. 
 
