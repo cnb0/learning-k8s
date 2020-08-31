@@ -1,52 +1,54 @@
 ## Security Risks and Challenges you’re likely to encounter when using Kubernetes
 
- -  in production and at scale. best practices and practical recommendations 
+ -  In production and at scale. best practices and practical recommendations 
     to help you secure cloud-native infrastructure and applications
 
 ```
 
-Images and image registries, when misused, can pose security issues
-Organizations need strong governance policies regarding how images are built and stored in trusted image registries. 
-You must ensure that container images are built using secure and approved base images that are regularly scanned and 
-ensure that only images from whitelisted image registries are used to launch containers in your Kubernetes environment.
+- Images and image registries, when misused, can pose security issues
+        - Organizations need strong governance policies regarding how images are built and stored in trusted image registries. 
+          You must ensure that container images are built using secure and approved base images that are regularly scanned and 
+          ensure that only images from whitelisted image registries are used to launch containers in your Kubernetes environment.
 
-Containers talk to each other and to other endpoints
+- Containers talk to each other and to other endpoints
+        - Containers and pods will need to talk to each other within deployments as well as to other internal and external endpoints 
+          to properly function. If a container is breached, the ability for a malicious actor to move laterally within the environment 
+          is directly related to how broadly that container can communicate with other containers and pods.
 
-Containers and pods will need to talk to each other within deployments as well as to other internal and external endpoints 
-to properly function. If a container is breached, the ability for a malicious actor to move laterally within the environment 
-is directly related to how broadly that container can communicate with other containers and pods.
-
-In a sprawling container environment, implementing network segmentation can be prohibitively difficult given the complexity
+- In a sprawling container environment, implementing network segmentation can be prohibitively difficult given the complexity
 of configuring such policies manually.
 
-Kubernetes offers rich configuration options, but defaults are usually the least secure
-In keeping with DevOps principles, Kubernetes is designed to speed application deployment and simplify management and 
-operations. 
-Kubernetes offers a rich set of controls that can be used to effectively secure clusters and their applications.
+    - Kubernetes offers rich configuration options, but defaults are usually the least secure
+      In keeping with DevOps principles, Kubernetes is designed to speed application deployment and simplify management and 
+       operations. 
+    - Kubernetes offers a rich set of controls that can be used to effectively secure clusters and their applications.
 
-Kubernetes network policies, for example, behave like firewall rules that control how pods communicate with each other 
-and other endpoints. When a network policy is associated with a pod, that pod is allowed to communicate only with the assets 
-defined in that network policy. By default, Kubernetes does not apply a network policy to a pod, meaning every pod can talk
-to every other pod in a Kubernetes environment.
+- Kubernetes network policies, for example, behave like firewall rules that control how pods communicate with each other 
+and other endpoints. 
+        - When a network policy is associated with a pod, that pod is allowed to communicate only with the assets 
+          defined in that network policy. By default, Kubernetes does not apply a network policy to a pod, meaning every pod can talk
+          to every other pod in a Kubernetes environment.
 
-Another configuration risk relates to secrets management: how sensitive data such as credentials and keys are stored and 
-accessed. You must ensure that secrets are not being passed as environment variables but are instead mounted into read-only 
-volumes in your containers, for example.
+- Another configuration risk relates to secrets management: 
+        - how sensitive data such as credentials and keys are stored and accessed.
+          You must ensure that secrets are not being passed as environment variables but are instead mounted into read-only 
+          volumes in your containers, for example.
 
-Containers and Kubernetes pose compliance challenges
-Cloud-native environments also introduce challenges in complying with security best practices, industry standards and 
-benchmarks, and internal organizational policies.
+                - Containers and Kubernetes pose compliance challenges
+                - Cloud-native environments also introduce challenges in complying with security best practices, industry standards and 
+                  benchmarks, and internal organizational policies.
 
-Beyond remaining compliant, organizations also must show proof of that compliance. They must adapt their strategies to 
-ensure their Kubernetes environments meet controls that were originally written for traditional application architectures.
+- Beyond remaining compliant, organizations also must show proof of that compliance. 
+    They must adapt their strategies to ensure their Kubernetes environments meet controls that 
+    were originally written for traditional application architectures.
 
-Also, the distributed and dynamic nature of containerized applications means monitoring for compliance adherence and audits
-must be fully automated to successfully operate at scale.
+- Also, the distributed and dynamic nature of containerized applications means 
+  monitoring for compliance adherence and audits must be fully automated to successfully operate at scale.
 
-Containers create both familiar and new runtime security challenges
-One of the security advantages of containers and Kubernetes is they can be treated as immutable infrastructure – what’s 
-running should never be patched or changed but rather destroyed and recreated from a common template when new updates 
-are needed.
+- Containers create both familiar and new runtime security challenges
+    One of the security advantages of containers and Kubernetes is they can be treated as immutable infrastructure – what’s 
+    running should never be patched or changed but rather destroyed and recreated from a common template when new updates 
+    are needed.
 
 Other properties of containers pose unique challenges, including their ephemerality and the speed at which they can be 
 launched or removed.
@@ -79,130 +81,131 @@ at earlier stages as images are built.
 The two main things to do here are to build secure images and to scan those images for any known vulnerabilities.
 
 Recommendations
-1) Use minimal base images
 
-Avoid using images with OS package managers or shells because they could contain unknown vulnerabilities. 
-If you must include OS packages, remove the package manager at a later step. Consider using minimal images 
-such as distroless images, as an example..
+            1) Use minimal base images
 
-2) Don’t add unnecessary components
+            Avoid using images with OS package managers or shells because they could contain unknown vulnerabilities. 
+            If you must include OS packages, remove the package manager at a later step. Consider using minimal images 
+            such as distroless images, as an example..
 
-Make sure to remove debugging tools from containers in production. Common tools – like Curl – 
-that are useful to attackers should not be included in images.
+            2) Don’t add unnecessary components
 
-3) Use up-to-date images only
+            Make sure to remove debugging tools from containers in production. Common tools – like Curl – 
+            that are useful to attackers should not be included in images.
 
-Ensure your images (and any third-party tools you include) are up to date and utilizing 
-the latest versions of their components.
+            3) Use up-to-date images only
 
-4) Use an image scanner to identify known vulnerabilities
+            Ensure your images (and any third-party tools you include) are up to date and utilizing 
+            the latest versions of their components.
 
-Your image scanner sho­uld be able to identify vulnerabilities within your images, including by layer, 
-and tell you whether they are fixable or not. It must be able to scan for vulnerabilities in OS packages 
-and third-party runtime libraries for the languages being used in your containerized applications.
+            4) Use an image scanner to identify known vulnerabilities
 
-5) Integrate security into your CI/CD pipeline
+            Your image scanner sho­uld be able to identify vulnerabilities within your images, including by layer, 
+            and tell you whether they are fixable or not. It must be able to scan for vulnerabilities in OS packages 
+            and third-party runtime libraries for the languages being used in your containerized applications.
 
-Make image scanning and other security checks part of your CI/CD pipeline to automate security and 
-fail CI builds and generate alerts when your scanner detects high-severity fixable vulnerabilities.
+            5) Integrate security into your CI/CD pipeline
 
-6) Label non-fixable vulnerabilities
+            Make image scanning and other security checks part of your CI/CD pipeline to automate security and 
+            fail CI builds and generate alerts when your scanner detects high-severity fixable vulnerabilities.
 
-Sometimes there isn’t a fix for a known vulnerability, or the vulnerability is non-critical and 
-therefore doesn’t warrant an immediate fix. In this instance, add them to a whitelist or filter 
-the scanner output so that you don’t interrupt the development team’s workflow over non-actionable alerts.
+            6) Label non-fixable vulnerabilities
 
-7) Implement defense-in-depth
+            Sometimes there isn’t a fix for a known vulnerability, or the vulnerability is non-critical and 
+            therefore doesn’t warrant an immediate fix. In this instance, add them to a whitelist or filter 
+            the scanner output so that you don’t interrupt the development team’s workflow over non-actionable alerts.
 
-When a security issue is discovered in a container image or a running deployment that uses that image,
-make sure you have policy checks and a remediation workflow in place to detect and update those images.
+            7) Implement defense-in-depth
 
- === Kubernetes Security Best Practices: Deploy Phase ===
+            When a security issue is discovered in a container image or a running deployment that uses that image,
+            make sure you have policy checks and a remediation workflow in place to detect and update those images.
 
-Kubernetes infrastructure should be configured securely prior to workloads being deployed. From a security perspective,
-you first need visibility into what you’re deploying – and how. Then you can identify and respond to security 
-policy violations.At a minimum, you need to know:
+            === Kubernetes Security Best Practices: Deploy Phase ===
 
-What is being deployed - including information about the image being used, such as components or vulnerabilities, and 
-the pods that will be deployed
-Where it is going to be deployed - which clusters, namespaces, and nodes
-How it is deployed - whether it runs privileged, what other deployments it can communicate with, the pod security context
-that is applied, if any
-What it can access - including secrets, volumes, and other infrastructure components such as the host or orchestrator API
-Is it compliant - whether it complies with your policies and security requirements
-With this information, you can start to target areas for remediation and hardening and implement proper segmentation.
+            Kubernetes infrastructure should be configured securely prior to workloads being deployed. From a security perspective,
+            you first need visibility into what you’re deploying – and how. Then you can identify and respond to security 
+            policy violations.At a minimum, you need to know:
 
-Recommendations
+            What is being deployed - including information about the image being used, such as components or vulnerabilities, and 
+            the pods that will be deployed
+            Where it is going to be deployed - which clusters, namespaces, and nodes
+            How it is deployed - whether it runs privileged, what other deployments it can communicate with, the pod security context
+            that is applied, if any
+            What it can access - including secrets, volumes, and other infrastructure components such as the host or orchestrator API
+            Is it compliant - whether it complies with your policies and security requirements
+            With this information, you can start to target areas for remediation and hardening and implement proper segmentation.
 
-8) Use namespaces to isolate sensitive workloads
+            Recommendations
 
-Namespaces are a key isolation boundary for Kubernetes resources. They provide a reference for network policies, 
-access control restrictions, and other important security controls. Separating workloads into namespaces can help 
-contain attacks and limit the impact of mistakes or destructive actions by authorized users.
+            8) Use namespaces to isolate sensitive workloads
 
-9) Use Kubernetes network policies to control traffic between pods and clusters
+            Namespaces are a key isolation boundary for Kubernetes resources. They provide a reference for network policies, 
+            access control restrictions, and other important security controls. Separating workloads into namespaces can help 
+            contain attacks and limit the impact of mistakes or destructive actions by authorized users.
 
-By default, Kubernetes allows every pod to contact every other pod. Network segmentation policies are a key 
-security control that can prevent lateral movement across containers in the case that an attacker breaks in. 
-We covered how to set up Kubernetes network policies in two previous blog posts.
+            9) Use Kubernetes network policies to control traffic between pods and clusters
 
-Building Kubernetes network policies to control ingress traffic
-Building Kubernetes network policies to control egress traffic
+            By default, Kubernetes allows every pod to contact every other pod. Network segmentation policies are a key 
+            security control that can prevent lateral movement across containers in the case that an attacker breaks in. 
+            We covered how to set up Kubernetes network policies in two previous blog posts.
 
-10) Prevent overly permissive access to secrets
+            Building Kubernetes network policies to control ingress traffic
+            Building Kubernetes network policies to control egress traffic
 
-As a first step, make sure deployments mount only the secrets they actually require to prevent unnecessary exposure.
+            10) Prevent overly permissive access to secrets
 
-11) Assess the privileges used by containers
+            As a first step, make sure deployments mount only the secrets they actually require to prevent unnecessary exposure.
 
-The set of capabilities, role bindings, and privileges given to containers can greatly impact your security risk. 
-The goal here is to adhere to the principle of least privilege and provide the minimum privileges and capabilities that
-would allow the container to perform its intended function.
+            11) Assess the privileges used by containers
 
-Pod Security Policies are one way to control the security-related attributes of pods, including container privilege levels. 
-These can allow an operator to specify the following:
+            The set of capabilities, role bindings, and privileges given to containers can greatly impact your security risk. 
+            The goal here is to adhere to the principle of least privilege and provide the minimum privileges and capabilities that
+            would allow the container to perform its intended function.
 
-Do not run application processes as root.
-Do not allow privilege escalation.
-Use a read-only root filesystem.
-Use the default (masked) /proc filesystem mount
-Do not use the host network or process space.
-Drop unused and unnecessary Linux capabilities.
-Use SELinux options for more fine-grained process controls.
-Give each application its own Kubernetes Service Account.
-Do not mount the service account credentials in a container if it does not need to access the Kubernetes API.
+            Pod Security Policies are one way to control the security-related attributes of pods, including container privilege levels. 
+            These can allow an operator to specify the following:
 
-12) Assess image provenance, including registries
+                    Do not run application processes as root.
+                    Do not allow privilege escalation.
+                    Use a read-only root filesystem.
+                    Use the default (masked) /proc filesystem mount
+                    Do not use the host network or process space.
+                    Drop unused and unnecessary Linux capabilities.
+                    Use SELinux options for more fine-grained process controls.
+                    Give each application its own Kubernetes Service Account.
+                    Do not mount the service account credentials in a container if it does not need to access the Kubernetes API.
 
-As a rule of thumb, don’t deploy code from unknown sources. For Kubernetes, this means using images from 
-known/whitelisted registries only.
+            12) Assess image provenance, including registries
 
-13) Extend your image scanning to deploy phase
+            As a rule of thumb, don’t deploy code from unknown sources. For Kubernetes, this means using images from 
+            known/whitelisted registries only.
 
-As an extension of image scanning, enforce policies at the deploy phase based on scan results. One way to enforce
-would be to use the Validating Admission Controller, a feature of Kubernetes to reject deployment creation when 
-they specify images without scanning results or critical vulnerabilities, or if the images have been built over
-90 days ago.
+            13) Extend your image scanning to deploy phase
 
-Images that haven’t been scanned recently might contain vulnerabilities that have been newly disclosed since the 
-time of the last scan.
+            As an extension of image scanning, enforce policies at the deploy phase based on scan results. One way to enforce
+            would be to use the Validating Admission Controller, a feature of Kubernetes to reject deployment creation when 
+            they specify images without scanning results or critical vulnerabilities, or if the images have been built over
+            90 days ago.
 
-14) Use labels and annotations appropriately
+            Images that haven’t been scanned recently might contain vulnerabilities that have been newly disclosed since the 
+            time of the last scan.
 
-For example, consider labeling or annotating your deployments with the name, email alias, or Slack channel of the
-team responsible for an application. This will make it easier to alert the responsible team for triaging security
-issues.
+            14) Use labels and annotations appropriately
 
-15) Enable Kubernetes role-based access control (RBAC)
+            For example, consider labeling or annotating your deployments with the name, email alias, or Slack channel of the
+            team responsible for an application. This will make it easier to alert the responsible team for triaging security
+            issues.
 
-RBAC provides a method for controlling authorization to access a cluster’s Kubernetes API server, both for users 
-and service accounts in the cluster. Kubernetes RBAC is highly configurable, so make sure you’re not making any of
-these 5 Kubernetes RBAC mistakes.
+            15) Enable Kubernetes role-based access control (RBAC)
 
-There are many more build- and deploy-time security best practices that are beyond the scope of a single blog post.
-Start here and elevate your security by exploring additional resources listed at the end of this article.
+            RBAC provides a method for controlling authorization to access a cluster’s Kubernetes API server, both for users 
+            and service accounts in the cluster. Kubernetes RBAC is highly configurable, so make sure you’re not making any of
+            these 5 Kubernetes RBAC mistakes.
 
-Next we provide recommendations for securing your Kubernetes workloads during the runtime phase.
+            There are many more build- and deploy-time security best practices that are beyond the scope of a single blog post.
+            Start here and elevate your security by exploring additional resources listed at the end of this article.
+
+            Next we provide recommendations for securing your Kubernetes workloads during the runtime phase.
 
 === Kubernetes Security Best Practices: Runtime Phase  ===
 
