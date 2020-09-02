@@ -57,7 +57,8 @@
 
 
 - Aim for small images. 
-                - Create smaller images by cleaning up temporary files and avoiding the installation of unnecessary packages. 
+                - Create smaller images by cleaning up temporary files and avoiding the installation of 
+                  unnecessary packages. 
                   This reduces container size, build time, and networking time when copying container images.
 
 - Support arbitrary user IDs. 
