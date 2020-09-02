@@ -4,7 +4,7 @@
         - local machine 
         - cloud
         - on-prem datacenter 
-        - choose a managed Kubernetes cluster. 
+        - choose a managed Kubernetes cluster 
 
 - You can also create custom solutions across a wide range of cloud providers, or bare metal environments.
 - you can create a Kubernetes cluster in learning and production environments.
@@ -26,12 +26,13 @@
                                           - Kubespray
 
         3. Turnkey Cloud Solutions
-                            - Running Kubernetes on Alibaba Cloud
-                            - Running Kubernetes on AWS EC2
-                            - Running Kubernetes on Azure
-                            - Running Kubernetes on Google Compute Engine
-                            - Running Kubernetes on Multiple Clouds with IBM Cloud Private
-                            - Running Kubernetes on Tencent Kubernetes Engine
+                            - Running Kubernetes on 
+                                        -  Alibaba Cloud
+                                        -  AWS EC2
+                                        -  Azure
+                                        -  Google Compute Engine
+                                        -  Multiple Clouds with IBM Cloud Private
+                                        -  Tencent Kubernetes Engine
 
         4. On-Premises VMs
                             - Cloudstack

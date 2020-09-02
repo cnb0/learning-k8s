@@ -1,14 +1,13 @@
 ## [k8s.concepts](https://kubernetes.io/docs/concepts/)
 
-- Kubernetes is characterized as a declarative Container Orchestration Engine: 
-
-- In a declarative system, the user supplies a representation of the 
-  desired state of the system to the system. Then, the system considers 
-  the current state and the desired state to determine the
-  sequence of commands to transition from current state to desired state
+- Kubernetes is characterized as a declarative Container Orchestration Engine 
+      - In a declarative system, the user supplies a representation of the 
+        desired state of the system to the system. Then, the system considers 
+        the current state and the desired state to determine the
+        sequence of commands to transition from current state to desired state
   
-- Kubernetes iteratively determines the next command to execute based on the current state only. 
-  If and when no next command can be determined, Kubernetes reached a steady state.
+      - Kubernetes iteratively determines the next command to execute based on the current state only. 
+        If and when no next command can be determined, Kubernetes reached a steady state.
 
 - The Kubernetes Object Store is a set of Kubernetes Objects. 
   Kubernetes Objects are data records that come in different flavors, called kinds.
@@ -25,14 +24,16 @@
               -  Control Plane-Node Communication
               -  Controllers
               -  Cloud Controller Manager
+
     3.  Containers
               -  Containers overview
               -  Images
               -  Container Environment
               -  Runtime Class
               -  Container Lifecycle Hooks
+
     4.  Workloads
-              -  Pods
+              - Pods
                     - Pod Overview
                     - Pods
                     - Pod Lifecycle
@@ -41,7 +42,7 @@
                     - Pod Topology Spread Constraints
                     - Disruptions
                     - Ephemeral Containers
-              -  Controllers
+              - Controllers
                     - ReplicaSet
                     - Deployments
                     - StatefulSets
@@ -62,6 +63,7 @@
               - Network Policies
               - Adding entries to Pod /etc/hosts with HostAliases
               - IPv4/IPv6 dual-stack     
+
     6.  Storage
               - Volumes
               - Persistent Volumes
@@ -71,6 +73,7 @@
               - Volume Snapshot Classes
               - Dynamic Volume Provisioning
               - Node-specific Volume Limits
+              
     7.  Configuration
               - Configuration Best Practices
               - ConfigMaps
