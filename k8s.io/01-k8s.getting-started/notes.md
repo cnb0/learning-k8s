@@ -1,10 +1,13 @@
-[getting started](https://kubernetes.io/docs/setup/)
+## [getting started](https://kubernetes.io/docs/setup/)
 
-You can deploy a Kubernetes cluster on a local machine, cloud, on-prem datacenter, or choose a managed Kubernetes cluster. 
+- You can deploy a Kubernetes cluster on a
+        - local machine 
+        - cloud
+        - on-prem datacenter 
+        - choose a managed Kubernetes cluster. 
 
-You can also create custom solutions across a wide range of cloud providers, or bare metal environments.
-
-More simply, you can create a Kubernetes cluster in learning and production environments.
+- You can also create custom solutions across a wide range of cloud providers, or bare metal environments.
+- you can create a Kubernetes cluster in learning and production environments.
 
 1. Learning environment 
                            - Installing Kubernetes with Minikube
@@ -18,8 +21,9 @@ More simply, you can create a Kubernetes cluster in learning and production envi
 
         2. Installing Kubernetes with deployment tools
                             - Bootstrapping clusters with kubeadm
-                            - Installing Kubernetes with kops
-                            - Installing Kubernetes with Kubespray
+                            - Installing Kubernetes with 
+                                          - kops
+                                          - Kubespray
 
         3. Turnkey Cloud Solutions
                             - Running Kubernetes on Alibaba Cloud
