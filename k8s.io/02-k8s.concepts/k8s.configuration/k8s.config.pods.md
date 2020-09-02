@@ -1,4 +1,4 @@
-### - [configuring Pods](https://kubernetes.io/docs/concepts/configuration/)
+###  [Configuring Pods](https://kubernetes.io/docs/concepts/configuration/)
 
 ```
         Configuration Best Practices
