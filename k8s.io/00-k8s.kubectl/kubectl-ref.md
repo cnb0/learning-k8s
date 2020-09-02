@@ -40,7 +40,8 @@
             port-forward
             proxy
             top
-            CLUSTER MANAGEMENT
+ 
+ 4. CLUSTER MANAGEMENT
             api-versions
             certificate
             cluster-info
@@ -49,7 +50,7 @@
             taint
             uncordon
 
-4. KUBECTL SETTINGS AND USAGE
+5. KUBECTL SETTINGS AND USAGE
             alpha
             api-resources
             completion
