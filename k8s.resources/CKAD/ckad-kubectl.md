@@ -311,8 +311,8 @@ $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256
         $ kubectl get services --sort-by=.metadata.name
         
         $ kubectl get svc nginx -o yaml
-        $ kubectl get ep
         $ kubectl edit svc nginx
+        $ kubectl get ep
 
         $ kubectl run nginx --image=nginx --restart=Never --port=80 --expose
         $ kubectl expose deploy mydeploy --name=mysvc --type=NodePort --target-port=8080 --port=6262
