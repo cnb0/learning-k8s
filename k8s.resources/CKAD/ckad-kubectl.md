@@ -28,6 +28,13 @@
 ```
 ###  Explain structure of a Kubernetes API resource object (po,deployment,cm,sa,sc,secrets,svc,ingress,rs,pv,pvc ..)
 ```
+        
+        $ kubectl explain cm
+        $ kubectl explain secrets
+        $ kubectl explain sa
+        $ kubectl explain securitycontext
+        $ kubectl explain securitycontext
+               
         $ kubectl explain pod  
         $ kubectl explain pod --recursive
         $ kubectl explain pod.spec
@@ -38,12 +45,22 @@
         $ kubectl explain pod.spec.containers.readinessProbe
         $ kubectl explain pod.spec.containers.readinessProbe.exec
  
-        $ kubectl explain job.spec.parallelism
-        $ kubectl explain job.spec.completions
-                        
+                         
         $ kubectl explain deployment 
         $ kubectl explain deployment --recursive
         $ kubectl explain deployment.spec.strategy
+        
+        
+        $ kubectl explain svc
+        $ kubectl explain svc.spec
+        $ kubectl explain ep
+ 
+        $ kubectl explain job.spec.parallelism
+        $ kubectl explain job.spec.completions
+ 
+        $ kubectl explain ingress
+        $ kubectl explain egress
+        $ kubectl explain netpol 
 ```          
 
 ### - Delete all k8s objects/resources
@@ -266,12 +283,12 @@
    - Configure Pods and Containers 
             -> Configure 
                   - a Pod to Use a ConfigMap
-                  - a Security Context for a Pod or Container
                   - a Service Accounts for Pods
+                  - a Security Context for a Pod or Container
             -> Assign CPU Resources to Containers and Pods
    - Concepts > Configuration > Secrets
    - Inject Data Into Applications > Distribute Credentials Securely Using Secrets
-   - CRUD - ( ConfigMap(cm), secuirtycontext(sc), secret(secrets) and service account(sa), cpu/mem limits)
+   - CRUD ( ConfigMap(cm),secret(secrets), service account(sa), secuirtycontext and cpu/mem limits)
    
 
         $ kubectl get cm,sc,secrets,sa
