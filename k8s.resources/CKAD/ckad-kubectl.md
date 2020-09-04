@@ -1,9 +1,7 @@
 
 ## CKAD Learning experience 
 
-
-### - Environment Settings 
-
+###  Environment Settings 
 ```
         $ alias k=kubectl
         $ source <(kubectl completion bash)
@@ -28,7 +26,7 @@
         $ kubectl top nodes
         $ kubectl replace --force -f pod/yaml       # Force delete k8s resource object
 ```
-### - Explain structure of a Kubernetes API resource object (po,deployment,cm,rs,pv,pvc ..)
+###  Explain structure of a Kubernetes API resource object (po,deployment,cm,sa,sc,secrets,svc,ingress,rs,pv,pvc ..)
 ```
         $ kubectl explain pod  
         $ kubectl explain pod --recursive
@@ -61,18 +59,27 @@
 
         $ kubectl run nginx --image=nginx --restart=Never 
         $ kubectl run nginx --image=nginx --restart=Never --env=foo=bar
+        $ kubectl set image pod/nginx nginx=nginx:1.7.1 
 
         $ kubectl run busybox --image=busybox --restart=Never --namespace=myns
         $ kubectl run busybox --image=busybox --restart=Never 
         $ kubectl exec busybox -- printenv
         $ kubectl logs busybox -f     
+        
+  # deployment - start a single instance of nginx 
+        $ kubectl create deployment nginx --image=nginx 
 
-$ kubectl create deployment nginx --image=nginx  #deployment - start a single instance of nginx 
-$ kubectl run nginx --image=nginx --restart=Never  #pod
-$ kubectl create job nginx --image=nginx  #job
-$ kubectl create cronjob nginx --image=nginx --schedule="* * * * *"  #cronJob
+  # create a pod
+        $ kubectl run nginx   --image=nginx   --restart=Never  
+        $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o yaml -- /bin/sh -c 'echo Hello!'  
 
-$ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o yaml -- /bin/sh -c 'echo Hello!'  
+  # Create a job
+        $ kubectl create job nginx --image=nginx 
+   
+  # Create a Cronjob
+        $ kubectl create cronjob nginx --image=nginx --schedule="* * * * *"  
+
+        
 ```
   
 ### 1. Core Concepts - 13% ( Tasks )
@@ -89,21 +96,21 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
                  > Accessing Clusters using API
                  > Use Port Forwarding to Access Applications in a Cluster
       
-   $ kubectl get po --all-namespaces
-   $ kubectl get po -A
+           $ kubectl get po --all-namespaces
+           $ kubectl get po -A
 
  $ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl create -n mynamespace -f -
- $ kubectl set image pod/nginx nginx=nginx:1.7.1 
+
                                  
+   
    # Interactive POD debugging
-                    
-   $ kubectl run -i --tty alpine --image=alpine -- sh
-   $ kubectl attach POD_NAME -i
-   $ kubectl port-forward POD_NAME 5000:6000
-   $ kubectl exec POD_NAME -- ls /
-   $ kubectl exec POD_NAME -c my-container -- ls /
-   $ kubectl top pod POD_NAME --containers
-```
+           $ kubectl run -i --tty alpine --image=alpine -- sh
+           $ kubectl attach POD_NAME -i
+           $ kubectl port-forward POD_NAME 5000:6000
+           $ kubectl exec POD_NAME -- ls /
+           $ kubectl exec POD_NAME -c my-container -- ls /
+           $ kubectl top pod POD_NAME --containers
+        ```
 
 ### 2. Multi-container pods - 10% 
 - Understand Multi-Container Pod design patterns 
@@ -115,13 +122,13 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
         - Tasks -> Init Containers
         - Concepts -> Logging Architecture
 
-- run commands on 2 different containers in the same pod 
+   # run commands on 2 different containers in the same pod 
               
-    $ kubectl run busybox --image=busybox --restart=Never -o yaml --dry-run=client -- \ 
+           $ kubectl run busybox --image=busybox --restart=Never -o yaml --dry-run=client -- \ 
                 /bin/sh -c 'echo hello;sleep 3600' > pod.yaml
                 
-       - stream pod container logs(stdout, multi-container case)
-    $ kubectl logs -f my-pod -c my-container
+     # stream pod container logs(stdout, multi-container case)
+           $ kubectl logs -f my-pod -c my-container
 ```
 
 ### 3. Pod design - 20%
