@@ -226,16 +226,16 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
              $ kubectl rollout history deploy nginx
              $ kubectl rollout history deploy nginx --revision=6
 
-              # Jobs
+       # Jobs
             
-              $ kubectl get jobs -w
+             $ kubectl get jobs -w
 
-              # CronJobs
-                   - Tasks 
-                         - Automated Tasks with Cron Jobs
-                         - Parallel Jobs with Expansions
-                         - Course Parallel Processing with a Work Queue
-                         - Fine Parallel Processsing with a Work Queue              
+       # CronJobs
+              - Tasks 
+                 - Automated Tasks with Cron Jobs
+                 - Parallel Jobs with Expansions
+                 - Course Parallel Processing with a Work Queue
+                 - Fine   Parallel Processsing with a Work Queue              
                            
               $ kubectl create cronjob busybox --image=busybox --schedule="*/1 * * * *" -- \ 
                  /bin/sh -c 'date; echo Hello from the Kubernetes cluster'
@@ -263,21 +263,22 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
 
         $ kubectl get cm,sc,secrets,sa
 
-        $ kubectl create myconfig
-        $ kubectl get cm  myconfig
-        $ kubectl describe cm myconfig
+        $ kubectl create       myconfig
+        $ kubectl get      cm  myconfig
+        $ kubectl describe cm  myconfig
                         
-        $ kubectl create cm options --from-literal=key1=val1
-        $ kubectl create cm config1 --from-literal=key2=val2  --from-literal=key3=val3
-        $ kubectl get secret config1 -o yaml
+        $ kubectl create   cm options --from-literal=key1=val1
+        
+        $ kubectl create   cm myconfig --from-literal=key2=val2  --from-literal=key3=val3
+        $ kubectl describe cm myconfig
+        $ kubectl get      cm myconfig -o yaml
                                 
-        $ kubectl create secret generic mysecret --from-literal=password=mypass
-        $ kubectl get secret mysecret2 -o yaml
+        $ kubectl create secret generic my-secret --from-literal=password=mypass
+        $ kubectl get    secret my-secret -o yaml
 
         $ kubectl create sa myuser
-        $ kubectl get sa --all-namespaces
-               or 
-        $ kubectl get sa default -o yaml > sa.yaml
+        $ kubectl get    sa --all-namespaces
+        $ kubectl get    sa default -o yaml > sa.yaml
 
 $ kubectl run nginx --image=nginx --restart=Never --serviceaccount=myuser -o yaml --dry-run > pod.yaml
 $ kubectl run nginx --image=nginx --restart=Never --requests='cpu=100m,memory=256Mi' --limits='cpu=200m,memory=512Mi'
