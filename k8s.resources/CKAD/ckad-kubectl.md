@@ -32,8 +32,6 @@
         $ kubectl explain cm
         $ kubectl explain secrets
         $ kubectl explain sa
-        $ kubectl explain securitycontext
-        $ kubectl explain securitycontext
                
         $ kubectl explain pod  
         $ kubectl explain pod --recursive
@@ -45,11 +43,9 @@
         $ kubectl explain pod.spec.containers.readinessProbe
         $ kubectl explain pod.spec.containers.readinessProbe.exec
  
-                         
         $ kubectl explain deployment 
         $ kubectl explain deployment --recursive
         $ kubectl explain deployment.spec.strategy
-        
         
         $ kubectl explain svc
         $ kubectl explain svc.spec
