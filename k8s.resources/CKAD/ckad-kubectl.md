@@ -218,8 +218,11 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
 
              $ kubectl rollout undo deploy nginx
              $ kubectl rollout undo deploy nginx --to-revision=2
-
+          
+          # Scale deployment
              $ kubectl scale deploy nginx --replicas=5
+             
+          # Autoscale deployment - HPA
              $ kubectl autoscale deploy nginx --min=5 --max=10 --cpu-percent=80
 
              $ kubectl rollout history deploy nginx
