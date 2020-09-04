@@ -295,9 +295,7 @@ $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256
             - Debugging Services
             - Debugging Services Locally
             - Core Metrics Pipeline
-        
-       $ kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml > pod.yaml
-
+              
        $ kubectl describe pod nginx | grep -i readiness
        $ kubectl describe pod nginx | grep -i liveness
 
@@ -310,9 +308,8 @@ $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256
 - Demonstrate a basic understanding of NetworkPolicies
 
 ```
-   - Concepts -> Connecting Apps with Services
+    - Concepts -> Connecting Apps with Services
     - Tasks -> Declare Network Policy
-        
         
         $ kubectl run curl --image=radial/busyboxplus:curl  -it
         $ kubectl get services --sort-by=.metadata.name
@@ -326,7 +323,7 @@ $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256
         
         $ kubectl expose rs nginx --port=80 --target-port=8000
  
-$ kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -O- http://nginx:80 --timeout 2    
+$ kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -o- http://nginx:80 --timeout 2    
 
 $ kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- sh \
        wget -O- http://nginx:80 --timeout 2  
