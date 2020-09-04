@@ -107,9 +107,9 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
 
 ### 2. Multi-container pods - 10% 
 - Understand Multi-Container Pod design patterns 
-        - ambassador
-        - adapter
-        - sidecar
+        * ambassador
+        * adapter
+        * sidecar
 
 ```
         - Tasks -> Init Containers
@@ -243,9 +243,9 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
 ### 4. Configuration - 18%  ( Tasks )
 
 - Understand
-        - ConfigMaps
-        - SecurityContexts
-        - ServiceAccounts
+        * ConfigMaps
+        * SecurityContexts
+        * ServiceAccounts
 - Create & consume Secrets
 - Define an application’s resource requirements
 
@@ -284,10 +284,10 @@ $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256
 
 ### 5. Observability - 18%
    - Understand 
-          - LivenessProbes and ReadinessProbes
-          - Container logging
-          - How to monitor applications in Kubernetes
-          - Debugging in Kubernetes
+          * LivenessProbes and ReadinessProbes
+          * Container logging
+          * How to monitor applications in Kubernetes
+          * Debugging in Kubernetes
 
 ```
       Tasks - App Introspection and Debugging
@@ -339,7 +339,7 @@ $ kubectl run busybox --image=busybox --rm -it --restart=Never -- sh \
 ```
 
 ### 7. State persistence - 8% ( Tasks - PV/PVC )
-- Understand PersistentVolumeClaims for storage
+- Understand pv and pvc for storage
 
 ```
  - Configure Pods and Containers 
