@@ -306,9 +306,12 @@ $ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kub
         $ kubectl get    sa --all-namespaces
         $ kubectl get    sa default -o yaml > sa.yaml
 
+# adding serviceaccount for a pod
 $ kubectl run nginx --image=nginx --restart=Never --serviceaccount=myuser -o yaml --dry-run=client > pod.yaml
+
+# config cpu/memory request/limits for a pod
 $ kubectl run nginx --image=nginx --restart=Never --requests='cpu=100m,memory=256Mi' --limits='cpu=200m,memory=512Mi'
-$ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256Mi --limits cpu=200m,memory=512Mi  
+$ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256Mi   --limits cpu=200m,memory=512Mi  
 ```
 
 ### 5. Observability - 18%
