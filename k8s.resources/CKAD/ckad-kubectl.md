@@ -126,8 +126,8 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
 
 ### 3. Pod design - 20%
 - Understand 
-            - Deployments and how to perform rolling updates
-            - Deployments and how to perform rollbacks
+     * Deployments and how to perform rolling updates
+     * Deployments how to perform rollbacks
 - Understand Jobs and CronJobs
 - Understand how to use Labels, Selectors, and Annotations
 ```
