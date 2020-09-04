@@ -106,7 +106,10 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
 ```
 
 ### 2. Multi-container pods - 10% 
-- Understand Multi-Container Pod design patterns (e .g. ambassador, adapter, sidecar
+- Understand Multi-Container Pod design patterns 
+        - ambassador
+        - adapter
+        - sidecar
 
 ```
         - Tasks -> Init Containers
@@ -122,8 +125,9 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
 ```
 
 ### 3. Pod design - 20%
-- Understand Deployments and how to perform rolling updates
-- Understand Deployments and how to perform rollbacks
+- Understand 
+            - Deployments and how to perform rolling updates
+            - Deployments and how to perform rollbacks
 - Understand Jobs and CronJobs
 - Understand how to use Labels, Selectors, and Annotations
 ```
@@ -238,11 +242,12 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
 ```
 ### 4. Configuration - 18%  ( Tasks )
 
-- Understand ConfigMaps
-- Understand SecurityContexts
-- Define an application’s resource requirements
+- Understand
+        - ConfigMaps
+        - SecurityContexts
+        - ServiceAccounts
 - Create & consume Secrets
-- Understand ServiceAccounts
+- Define an application’s resource requirements
 
 ```
    - Configure Pods and Containers 
@@ -278,10 +283,11 @@ $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256
 ```
 
 ### 5. Observability - 18%
-- Understand LivenessProbes and ReadinessProbes
-- Understand container logging
-- Understand how to monitor applications in Kubernetes
-- Understand debugging in Kubernetes
+   - Understand 
+          - LivenessProbes and ReadinessProbes
+          - Container logging
+          - How to monitor applications in Kubernetes
+          - Debugging in Kubernetes
 
 ```
       Tasks - App Introspection and Debugging
