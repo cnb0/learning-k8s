@@ -63,9 +63,7 @@
         $ kubectl run nginx --image=nginx --restart=Never --env=foo=bar
 
         $ kubectl run busybox --image=busybox --restart=Never --namespace=myns
-
         $ kubectl run busybox --image=busybox --restart=Never 
-        $ kubectl describe pod busybox 
         $ kubectl exec busybox -- printenv
         $ kubectl logs busybox -f     
 
@@ -74,9 +72,7 @@ $ kubectl run nginx --image=nginx --restart=Never  #pod
 $ kubectl create job nginx --image=nginx  #job
 $ kubectl create cronjob nginx --image=nginx --schedule="* * * * *"  #cronJob
 
-$ kubectl run busybox --image=busybox --restart=OnFailure --dry-run -o yaml -- /bin/sh -c 'echo Hello!'  
-$ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * ?" -- dry-run=client -o yaml -- \
-          /bin/sh -c 'echo Hello world!' 
+$ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o yaml -- /bin/sh -c 'echo Hello!'  
 ```
   
 ### 1. Core Concepts - 13% ( Tasks )
