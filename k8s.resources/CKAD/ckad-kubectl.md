@@ -308,25 +308,28 @@ $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256
     - Tasks -> Declare Network Policy
         
         $ kubectl run curl --image=radial/busyboxplus:curl  -it
-        $ kubectl get services --sort-by=.metadata.name
         
-        $ kubectl get svc nginx -o yaml
+        $ kubectl get  svc --sort-by=.metadata.name
+        $ kubectl get  svc nginx -o yaml
         $ kubectl edit svc nginx
+        
         $ kubectl get ep
 
         $ kubectl run nginx --image=nginx --restart=Never --port=80 --expose
         $ kubectl expose deploy mydeploy --name=mysvc --type=NodePort --target-port=8080 --port=6262
-        
+      
         $ kubectl expose rs nginx --port=80 --target-port=8000
  
-$ kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -o- http://nginx:80 --timeout 2    
+$ kubectl run busybox --image=busybox --rm -it --restart=Never -- sh \
+       wget -o- http://nginx:80 --timeout 2    
 
 $ kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- sh \
        wget -o- http://nginx:80 --timeout 2  
        
 $ kubectl run busybox --image=busybox --rm -it --restart=Never -- sh \
-        wget -o- IP:80
-        wget -O- SERVICE_CLUSTER_IP:6262
+       wget -o- IP:80
+       wget -o- SERVICE_CLUSTER_IP:6262
+
 ```
 
 ### 7. State persistence - 8% ( Tasks - PV/PVC )
