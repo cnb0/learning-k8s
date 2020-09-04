@@ -267,8 +267,9 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
         $ kubectl get cm  myconfig
         $ kubectl describe cm myconfig
                         
-        $ kubectl create cm options --from-literal=var5=val5
-        $ kubectl create configmap  config1    --from-literal=foo=lala  --from-literal=foo2=lolo
+        $ kubectl create cm options --from-literal=key1=val1
+        $ kubectl create cm config1 --from-literal=key2=val2  --from-literal=key3=val3
+        $ kubectl get secret config1 -o yaml
                                 
         $ kubectl create secret generic mysecret --from-literal=password=mypass
         $ kubectl get secret mysecret2 -o yaml
