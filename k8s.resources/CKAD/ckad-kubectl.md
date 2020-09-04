@@ -138,15 +138,16 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
  
              $ kubectl get events --sort-by=.metadata.creationTimestamp
              $ kubectl get events --namespace myns --sort-by='{.lastTimestamp}'
-             $ kubectl get event --field-selector=involvedObject.name=random-logger
-             $ kubectl get pods --field-selector=status.phase=Running
+             $ kubectl get events --field-selector=involvedObject.name=random-logger
+             $ kubectl get pods   --field-selector=status.phase=Running
 
              $ kubectl diff -f ./my-pod.yaml
-             $ kubectl scale --replicas=3 rs/foo     
              $ kubectl delete pods,services -l name=myLabel         
 
-             $ kubectl autoscale deployment foo --min=2 --max=10
-           
+             $ kubectl scale deploy nginx --replicas=5
+             $ kubectl scale rs/nginx     --replicas=3      
+             $ kubectl autoscale deployment nginx --min=2 --max=10
+          
 
       # Lables/Selectors/Annotations
 
@@ -175,39 +176,41 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
          
        # Deployments 
 
-             $ kubectl create deployment nginx  --image=nginx:1.7.8  --dry-run=client -o yaml > deploy.yaml
-             $ kubectl get deploy nginx -o yaml
+             $ kubectl create   deployment nginx  --image=nginx:1.7.8  --dry-run=client -o yaml > deploy.yaml
+             $ kubectl get      deploy nginx -o yaml
              $ kubectl describe deploy nginx
 
-             # Rolling update "www" containers of "frontend" deploy,upd the image
+          # Rolling update "www" containers of "frontend" deploy,update the image
              $ kubectl set image deployment/frontend www=image:v2      
 
-             # Check the history of deployments including the revision 
-             $ kubectl rollout history deployment/frontend             
-
-             # Rollback to the previous deployment
-             $ kubectl rollout undo deployment/frontend    
-
-             # Rollback to a specific revision
-             $ kubectl rollout undo deployment/frontend --to-revision=2   
-        
-             # Watch rolling update status of "frontend" deploy until finish
+          # Watch rolling update status of "frontend" deploy until finish
              $ kubectl rollout status -w deployment/frontend
 
-             # Rolling restart of the "frontend" deployment
+          # Check the history of deployments including the revision 
+             $ kubectl rollout history deployment/frontend             
+          
+          # Rollback to the previous deployment
+             $ kubectl rollout undo deployment/frontend    
+
+          # Rollback to a specific revision
+             $ kubectl rollout undo deployment/frontend --to-revision=2   
+                  
+          # Rolling restart of the "frontend" deployment
              $ kubectl rollout restart deployment/frontend             
 
-
-             $ kubectl get rs -l run=nginx # if you created deployment by 'run' command
-             $ kubectl get rs -l app=nginx # if you created deployment by 'create' command
-
-             $ kubectl get po -l run=nginx # if you created deployment by 'run' command
-             $ kubectl get po -l app=nginx # if you created deployment by 'create' command
-
+          # if you created deployment by 'run' command
+             $ kubectl get po -l run=nginx
+             $ kubectl get rs -l run=nginx      
+             
+          # if you created deployment by 'create' command
+             $ kubectl get rs -l app=nginx      
+             $ kubectl get po -l app=nginx
+              
              $ kubectl set image deploy nginx nginx=nginx:1.7.9
-                          or
+             or
              $ kubectl edit deploy nginx  
-
+             $ kubectl describe deploy nginx | grep Image:
+            
              $ kubectl rollout status deploy nginx
 
              $ kubectl rollout history deploy nginx
@@ -216,16 +219,15 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
              $ kubectl rollout undo deploy nginx
              $ kubectl rollout undo deploy nginx --to-revision=2
 
-             $ kubectl describe deploy nginx | grep Image:
-
              $ kubectl scale deploy nginx --replicas=5
              $ kubectl autoscale deploy nginx --min=5 --max=10 --cpu-percent=80
 
-             $ kubectl rollout pause deploy nginx
-             $ kubectl rollout resume deploy nginx
              $ kubectl rollout history deploy nginx
              $ kubectl rollout history deploy nginx --revision=6
 
+             $ kubectl rollout pause  deploy nginx
+             $ kubectl rollout resume deploy nginx
+             
        # Jobs
             
              $ kubectl get jobs -w
@@ -247,7 +249,7 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
     * SecurityContexts
     * ServiceAccounts
 - Create & consume Secrets
-- Define an application’s resource requirements
+- Define an application’s cpu/memory requirements
 
 ```
    - Configure Pods and Containers 
@@ -258,7 +260,7 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
             -> Assign CPU Resources to Containers and Pods
    - Concepts > Configuration > Secrets
    - Inject Data Into Applications > Distribute Credentials Securely Using Secrets
-   - CRUD - ( ConfigMap(cm), service context(sc), secret(secrets) and service account(sa), cpu/mem limits)
+   - CRUD - ( ConfigMap(cm), secuirtycontext(sc), secret(secrets) and service account(sa), cpu/mem limits)
    
 
         $ kubectl get cm,sc,secrets,sa
@@ -280,7 +282,7 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
         $ kubectl get    sa --all-namespaces
         $ kubectl get    sa default -o yaml > sa.yaml
 
-$ kubectl run nginx --image=nginx --restart=Never --serviceaccount=myuser -o yaml --dry-run > pod.yaml
+$ kubectl run nginx --image=nginx --restart=Never --serviceaccount=myuser -o yaml --dry-run=client > pod.yaml
 $ kubectl run nginx --image=nginx --restart=Never --requests='cpu=100m,memory=256Mi' --limits='cpu=200m,memory=512Mi'
 $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256Mi --limits cpu=200m,memory=512Mi  
 ```
