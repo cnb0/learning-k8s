@@ -84,7 +84,8 @@
 
   # create a pod
         $ kubectl run nginx   --image=nginx   --restart=Never  
-        $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o yaml -- /bin/sh -c 'echo Hello!'  
+        $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o yaml -- \
+          /bin/sh -c 'echo Hello!'  
 
   # Create a job
         $ kubectl create job nginx --image=nginx 
@@ -111,7 +112,7 @@
            $ kubectl get po --all-namespaces
            $ kubectl get po -A
 
-  $ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl create -n mynamespace -f -
+$ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl create -n mynamespace -f -
 
 # Interactive POD debugging
            $ kubectl run -i --tty alpine --image=alpine -- sh
@@ -124,9 +125,9 @@
 
 ### 2. Multi-container pods - 10% 
 - Understand Multi-Container Pod design patterns 
-        * ambassador
-        * adapter
-        * sidecar
+     * ambassador
+     * adapter
+     * sidecar
 
 ```
        - Tasks -> Init Containers
