@@ -175,7 +175,7 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --schedule="0/5 * * * 
          
        # Deployments 
 
-         $ kubectl create deployment nginx  --image=nginx:1.7.8  --dry-run=client -o yaml > deploy.yaml
+             $ kubectl create deployment nginx  --image=nginx:1.7.8  --dry-run=client -o yaml > deploy.yaml
              $ kubectl get deploy nginx -o yaml
              $ kubectl describe deploy nginx
 
@@ -322,11 +322,12 @@ $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256
         $ kubectl edit svc nginx
 
         $ kubectl run nginx --image=nginx --restart=Never --port=80 --expose
-       
-        $ kubectl expose deploy mydeploy --port=6262 --target-port=8080
+        $ kubectl expose deploy mydeploy --name=mysvc --type=NodePort --target-port=8080 --port=6262
+        
         $ kubectl expose rs nginx --port=80 --target-port=8000
  
 $ kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -O- http://nginx:80 --timeout 2    
+
 $ kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- sh \
        wget -O- http://nginx:80 --timeout 2  
        
