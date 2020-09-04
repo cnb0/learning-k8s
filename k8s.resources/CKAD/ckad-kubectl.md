@@ -139,8 +139,7 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
              $ kubectl get events --sort-by=.metadata.creationTimestamp
              $ kubectl get events --namespace myns --sort-by='{.lastTimestamp}'
              $ kubectl get events --field-selector=involvedObject.name=random-logger
-             $ kubectl get pods   --field-selector=status.phase=Running
-
+                          
              $ kubectl diff -f ./my-pod.yaml
              $ kubectl delete pods,services -l name=myLabel         
 
@@ -149,13 +148,15 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
              $ kubectl autoscale deployment nginx --min=2 --max=10
           
 
-      # Lables/Selectors/Annotations
+      # Lables/Selectors 
 
              $ kubectl run nginx1 --image=nginx --restart=Never --labels="app=v1"
              $ kubectl run nginx2 --image=nginx --restart=Never --labels="app=frontend,env=dev"
 
-             $ kubectl get pods --show-labels
-             $ kubectl label pods my-pod new-label=awesome 
+             $ kubectl get pods   --field-selector=status.phase=Running
+
+             $ kubectl get   pods --show-labels
+             $ kubectl label pods my-pod tier=backend 
              
              $ kubectl label po nginx1 app=v2 --overwrite
              $ kubectl get po -L app
