@@ -322,11 +322,11 @@ $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256
 $ kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -o- http://nginx:80 --timeout 2    
 
 $ kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- sh \
-       wget -O- http://nginx:80 --timeout 2  
+       wget -o- http://nginx:80 --timeout 2  
        
 $ kubectl run busybox --image=busybox --rm -it --restart=Never -- sh \
             # inside in a container 
-        wget -O- IP:80
+        wget -o- IP:80
         wget -O- SERVICE_CLUSTER_IP:6262
 ```
 
