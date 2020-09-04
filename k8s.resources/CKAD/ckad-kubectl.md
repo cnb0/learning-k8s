@@ -284,10 +284,10 @@ $ kubectl run nginx --image=nginx --restart=Never --requests cpu=100m,memory=256
 
 ### 5. Observability - 18%
    - Understand 
-          * LivenessProbes and ReadinessProbes
-          * Container logging
-          * How to monitor applications in Kubernetes
-          * Debugging in Kubernetes
+      * LivenessProbes and ReadinessProbes
+      * Container logging
+      * How to monitor applications in Kubernetes
+      * Debugging in Kubernetes
 
 ```
       Tasks - App Introspection and Debugging
