@@ -205,7 +205,7 @@ $ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kub
              $ kubectl set image deployment/frontend www=image:v2      
 
           # Watch rolling update status of "frontend" deploy until finish
-             $ kubectl rollout status -w deployment/frontend
+             $ kubectl rollout status deployment/frontend -w
 
           # Check the history of deployments including the revision 
              $ kubectl rollout history deployment/frontend             
