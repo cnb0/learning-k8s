@@ -251,9 +251,10 @@ $ kubectl run busybox --image=busybox --restart=OnFailure --dry-run=client -o ya
 
 ```
    - Configure Pods and Containers 
-            -> Configure a Pod to Use a ConfigMap
-            -> Configure a Security Context for a Pod or Container
-            -> Configure Service Accounts for Pods
+            -> Configure 
+                  - a Pod to Use a ConfigMap
+                  - a Security Context for a Pod or Container
+                  - a Service Accounts for Pods
             -> Assign CPU Resources to Containers and Pods
    - Concepts > Configuration > Secrets
    - Inject Data Into Applications > Distribute Credentials Securely Using Secrets
