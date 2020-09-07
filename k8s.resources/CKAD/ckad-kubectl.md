@@ -293,11 +293,14 @@ $ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kub
         $ kubectl get      cm  myconfig
         $ kubectl describe cm  myconfig
                         
-        $ kubectl create   cm options --from-literal=key1=val1
-        
+        $ kubectl create   cm myconfig --from-literal=key1=val1
         $ kubectl create   cm myconfig --from-literal=key2=val2  --from-literal=key3=val3
-        $ kubectl describe cm myconfig
+        $ kubectl create   cm myconfig --from-file=my-config.txt \  
+                                       --from-literal=key4=value4 \  
+                                       --from-literal=key5=value5
+      
         $ kubectl get      cm myconfig -o yaml
+        $ kubectl describe cm myconfig
                                 
         $ kubectl create secret generic my-secret --from-literal=password=mypass
         $ kubectl get    secret my-secret -o yaml
