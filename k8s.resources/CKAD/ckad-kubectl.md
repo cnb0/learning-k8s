@@ -306,6 +306,7 @@ $ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kub
         $ kubectl describe cm  myconfig
                                 
         $ kubectl create secret generic my-secret --from-literal=password=mypass
+        $ kubectl create secret generic my-secret-tls --from-file=kuard.crt --from-file=kuard.key
         $ kubectl get    secret my-secret -o yaml
 
         $ kubectl create sa myuser
