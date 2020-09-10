@@ -301,6 +301,9 @@ $ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kub
         $ kubectl create   cm  myconfig --from-file=my-config.txt \  
                                         --from-literal=key4=value4 \  
                                         --from-literal=key5=value5
+        
+        $ kubectl create cm myconfig --from-env-file=/file/path
+        $ kubectl create cm myconfig --from-file=config.txt
       
         $ kubectl get      cm  myconfig -o yaml
         $ kubectl describe cm  myconfig
