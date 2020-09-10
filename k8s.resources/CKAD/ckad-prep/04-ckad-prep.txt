@@ -1,12 +1,8 @@
-ex1.
-Basic pod, namespace 
-https://github.com/fahmifahim/kubernetes/blob/master/01.CKAD_exam_concepts_practices.md#exercise-1
+1.Basic pod, namespace 
 $ kubectl create namespace ckad-prep 
 
+2. ConfigMap with environment file
 
-ex2. 
-ConfigMap with environment file
-https://github.com/fahmifahim/kubernetes/blob/master/01.CKAD_exam_concepts_practices.md#exercise-2-configmap
 $ kubectl create configmap db-config --from-env-file=config.txt
 $ vim pod.yaml (to use configmap)  
 spec:
@@ -47,9 +43,8 @@ spec:
     - name: secret-ref 
       mountPath: /somepath2 
 
-ex3. 
-Secret (keyword: distribute credentials securely using secret)
-https://github.com/fahmifahim/kubernetes/blob/master/01.CKAD_exam_concepts_practices.md#exercise-3-secret
+3. Secret (keyword: distribute credentials securely using secret)
+
 $ kubectl create secret generic db-credentials --from-literal=db-user-name='user1'
 $ kubectl create secret generic db-credentials2 --from-literal=db-pwd='password'
 $ vim pod.yaml (use secret in the pod as environment)
@@ -79,9 +74,8 @@ spec:
         name: db-credentials        # the env variable will be `db-user`. method same as ConfigMap
 
 
-ex4.
-SecurityContext
-https://github.com/fahmifahim/kubernetes/blob/master/01.CKAD_exam_concepts_practices.md#exercise-4-security-context
+4.SecurityContext
+
 $ vim pod.yaml (define security context in pod )
 spec:
   securityContext:
@@ -108,9 +102,8 @@ spec:
         add: ["NET_ADMIN", "SYS_TIME"]
 
 
-ex5. 
-ResourceQuota
-https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/
+5. ResourceQuota
+
 $ vim quota.yaml
 apiVersion: v1
 kind: ResourceQuota
@@ -145,9 +138,8 @@ $ kubectl describe quota
 $ kubectl top pod <pod-name> --containers 
 
 
-ex6. 
-Service Account
-https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/
+6.Service Account
+
 # Create service account 
 $ kubectl create serviceaccount backend-team 
 
@@ -156,9 +148,8 @@ $ kubectl run test-pod1 --image nginx --restart Never --serviceaccount backend-t
 $ kubectl exec -it test-pod1 -- bash
   $ cat /var/run/secrets/kubernetes.io/serviceaccount/token 
 
-ex7. 
-InitContainer 
-https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
+7. InitContainer 
+
 # Define Init Container: 
 spec:
   volumes:
@@ -184,7 +175,7 @@ spec:
     - name: config-dir
       mountPath: /test/dir    
 
-!! wget command 
+# wget command 
 $ kubectl run TEST --image busybox --restart Never --dry-run -o yaml --command -- wget -O test.json www.ibm.com/test.json 
 # YAML format: 
   command: 
@@ -194,8 +185,7 @@ $ kubectl run TEST --image busybox --restart Never --dry-run -o yaml --command -
   - www.ibm.com/test.json
 
 
-ex8. 
-AdapterContainer
+8. AdapterContainer
 $ kubectl run TEST --image busybox --restart Never --dry-run -o yaml -- /bin/sh -c 'while true; do echo Hello World; sleep 30; done' 
 # YAML format: 
   args: 
@@ -219,8 +209,7 @@ spec:
     - sleep 20; while true; do while read LINE; do echo "$LINE" | cut -f2 -d"|" >> $(date +%Y-%m-%d-%H-%M-%S)-transformed.txt; done < /var/logs/diskspace.txt; sleep 20; done;
 
 
-ex9. 
-Liveness Readiness Probe
+9.Liveness Readiness Probe
 https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 
 spec: 
@@ -247,26 +236,22 @@ spec:
       periodSeconds: 10
 
 
-ex10. 
-Debugging misconfigured pod 
+10. Debugging misconfigured pod 
 
-ex11. 
-Labels Annotations 
+11. Labels Annotations 
 $ kubectl get pods --show-labels
 $ kubectl label pods <name> label-key=label-value 
 $ kubectl annotate pods <name> annotation-key=annotation-value 
 
 
-ex12.
-Deployment 
+12.Deployment 
 $ kubectl create deployment <name> --image nginx 
 $ kubectl set image deployment <name> nginx=nginx:latest --record 
 $ kubectl rollout history deployment <name> --revision=2
 $ kubectl rollout status deployment <name>
 $ kubectl scale deployment <name> --replicas 5
 
-ex13. 
-CronJob
+13. CronJob
 # YAML format for Cronjob 
 apiVersion: batch/v1beta1
 kind: CronJob
@@ -289,8 +274,7 @@ spec:
           restartPolicy: OnFailure
 
 
-ex15.
-Network Policy 
+15.Network Policy 
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -312,8 +296,8 @@ spec:
       port: 3306
 
 
-ex16.
-Persistent Volume and Claim 
+16.Persistent Volume and Claim 
+
 # Declare PV in advance 
 apiVersion: v1
 kind: PersistentVolume
@@ -330,7 +314,9 @@ spec:
   hostPath:
     path: "/data/config"
 
+
 # Declare PVC to bind with the PV 
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
