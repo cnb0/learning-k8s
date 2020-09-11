@@ -1,10 +1,14 @@
 18% - Observability
+## Liveness and readiness probes
+
+
 * understanding liveness and readiness probes
 * understanding container logging 
 * understand how to monitor applications in kubernetes
 * understanding debugging in kubernetes
-### Bookmark below links 
 * [probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-command)
+* kubernetes.io > Documentation > Tasks > Configure Pods and Containers > [Configure Liveness and Readiness Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)
+
 #### Create a nginx pod with liveness probe that runs cat /var/log/app.log command
 #### make the pod run for 15 sec and then delete the file /var/log/app.log to make pod fail on liveness
 #### write the pod events into a file events.txt  
