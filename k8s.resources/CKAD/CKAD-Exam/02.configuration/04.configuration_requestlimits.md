@@ -1,0 +1,13 @@
+18% - Configuration 
+* Understanding Configmaps
+* Understand SecurityContexts
+* Define application resource requirements
+* Create and consume secrets
+* Understand service accounts
+### Bookmark below
+
+#### create an nginx pod with requests as cpu=50m memory=56Mi and limits as cpu=100m and memory=128Mi
+```bash
+k run mypodreqlimit --image=nginx --restart=Never --requests=cpu=50m,memory=56Mi --limits=cpu=100m,memory=128Mi
+k describe po mypodreqlimits 
+```

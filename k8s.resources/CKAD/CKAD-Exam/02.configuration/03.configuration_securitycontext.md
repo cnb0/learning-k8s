@@ -1,0 +1,96 @@
+18% - Configuration 
+* Understanding Configmaps
+* Understand SecurityContexts
+* Define application resource requirements
+* Create and consume secrets
+* Understand service accounts
+### Bookmark below 
+* [securitycontext from taks](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
+#### create a pod with securitycontext run as user 101 
+```bash
+k run mypod --image=nginx --restar=Never --dry-run -o yaml > pod.yaml
+```
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: mypod
+  name: mypod
+spec:
+  securityContext:
+    runAsUser: 101
+    runAsGroup: 201
+    fsGroup: 301
+  containers:
+  - image: busybox # If you use nginx it might not work if some of the config file and dir need root access 
+    name: mypod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
+```
+#### Set Security context at container level with run as user 222 
+```bash
+k run mypod --image=nginx --restar=Never --dry-run -o yaml > pod.yaml
+```
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: mypod
+  name: mypod
+spec:
+  securityContext:
+    runAsUser: 101
+    runAsGroup: 201
+    fsGroup: 301
+  containers:
+    securityContext:
+      runAsUser: 222 # this would override the pod runAsUser and you would see when you use id command 
+  - image: busybox # If you use nginx it might not work if some of the config file and dir need root access 
+    name: mypod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
+```
+```
+k exec -it mypod -- id
+```
+#### Set security context on a container level with below capabilities "NET_ADMIN", "SYS_TIME
+```bash
+k run mypod --image=nginx --restar=Never --dry-run -o yaml > pod.yaml
+```
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: mypod
+  name: mypod
+spec:
+  securityContext:
+    runAsUser: 101
+    runAsGroup: 201
+    fsGroup: 301
+  containers:
+    securityContext:
+      capabilities:
+        add: ["NET_ADMIN","SYS_TIME"] # Give the capabilities here  
+  - image: busybox # If you use nginx it might not work if some of the config file and dir need root access 
+    name: mypod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
+```
+```
+k exec -it mypod -- /bin/sh
+cd /proc/1
+cat status
+```

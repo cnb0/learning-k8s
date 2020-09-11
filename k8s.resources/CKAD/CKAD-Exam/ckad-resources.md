@@ -10,14 +10,6 @@ List of resources and notes for passing the Certified Kubernetes Application Dev
 - [TMUX Cheat Sheet - TMUX is useful, especially for CKA](https://gist.github.com/MohamedAlaa/2961058)
 
 
-## Current Kubernetes Version (EXAM)
-Version: 1.14
-
-## Important vi Tips
-
-  - 'dG' - Deletes contents from cursor to end of file. This is very useful when editing YAML files.
-  - 'ZZ' - Save and exit quickly.
-
 ## kubectl Tips
 To set nano as your editor for 'kubectl edit'
 ```
