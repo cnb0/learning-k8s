@@ -84,9 +84,9 @@ Master and Worker nodes ports
 
 | Description | Kubectl Command |
 | ------------- | ------------- |
-| Create | `kubectl run nginx --generator=run-pod/v1 --image=nginx`|
-| Create in particular namespace | `kubectl run nginx --generator=run-pod/v1 --image=nginx -n NAMEPSPACE` |
-| Dry run,print object without creating it | `kubectl run POD_NAME --generator=run-pod/v1 --image=nginx --dry-run -o yaml` |
+| Create | `kubectl run nginx   --image=nginx`|
+| Create in particular namespace | `kubectl run nginx  --image=nginx -n NAMEPSPACE` |
+| Dry run,print object without creating it | `kubectl run POD_NAME   --image=nginx --dry-run -o yaml` |
 | Create from File | `kubectl create -f pod.yaml` |
 | Create from File in particular namespace |  `kubectl create -f pod.yaml -n NAMEPSPACE` |
 | List pods | `kubectl get po` or `kubectl get pod` or `kubectl get pods` |
