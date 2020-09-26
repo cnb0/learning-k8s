@@ -78,5 +78,9 @@
                     $ kubectl create configmap nginxconfigmap --from-file=default.conf
                     $ kubectl create secret tls nginxsecret \
                          --key /tmp/nginx.key --cert /tmp/nginx.crt
+
+ - Exposing the Service 
+
+
 ```
 
