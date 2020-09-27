@@ -8,6 +8,7 @@ How can you attach metadata to an object? Do you know how to do it in one way or
 How do you query the API http endpoint?
 How many http api groups does the HTTP endpoint have?
 Can you use the kubectl proxy command?
+
 How does kubernetes interface with the container runtime?
 What is CRI? How many shim there are? How do they work? How do I check which shim I am using (if I am using one)?
 What are the kubelet steps of communication with the container runtime?
@@ -18,6 +19,7 @@ How do you label a pod/node
 What types of selectors do you have
 What operators each selectors allow?
 What do containers in a pod share?
+
 What does the restart value mean in the get pod command?
 How do deployment works?
 What triggers a rollout? What doesn't?
@@ -31,6 +33,7 @@ What are services? How do they work? How many type of services there are?
 What mechanism of service discovery does k8s implements?
 Why using a name when defining the ports?
 Can service without ClusterIP be created?
+
 Can you create a service with no selectors? What happens?
 Can you expose multiple ports? What do you need to do in this case?
 Can you use SRV?
@@ -45,6 +48,7 @@ What are the lifecycle hooks and what they do? What limitations do they have?
 How schedule a specific pod to a specific node
 What are the component of the cluster and where they run
 How does a piece of information get from the command line to the yaml to the container/app
+
 How can you scale up and down a deployments
 How do kubernetes manage self healing
 How to evict a node from pod from an upgrade? how to put it back online?
@@ -59,6 +63,7 @@ How to allocate persistant storage? what are the 3 access mode?
 Difference between claim and volume
 What are the two types of lifecyle for volumes?
 How do you provide an application a persistante volume?
+
 Which piece accept request in behalf of the cluster? which piece direct it around?
 How is name resolution handled inside a pod?
 What is the downward api?
