@@ -19,6 +19,7 @@
         - k8s API object primitives 
         
 1. Cluster Architecture, Installation & Configuration – 25%
+
          - Manage role based access control (RBAC)
          - Use Kubeadm to install a basic cluster
          - Manage a HA cluster
