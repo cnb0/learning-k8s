@@ -2,12 +2,14 @@
 ## Certified Kubernetes Administrator (CKA) 2020
 
 - A certified K8s administrator can work proficiently to 
+
         - design
         - install
         - configure 
         - manage a Kubernetes production-grade cluster  
 
-- They will have an understanding of key concepts such as 
+- We will have an understanding of key concepts such as 
+
         - The ability to establish basic use-cases for end users
         - Application lifecycle
         - troubleshooting applications and k8s cluster
