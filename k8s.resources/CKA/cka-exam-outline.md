@@ -1,13 +1,15 @@
 
 ## Certified Kubernetes Administrator (CKA) 2020
 
-- A certified K8s administrator can work proficiently to 
+### - A certified K8s administrator can work proficiently to 
+
         - design
         - install
         - configure 
         - manage a Kubernetes production-grade cluster  
 
-- They will have an understanding of key concepts such as 
+###  - We will have an understanding of key concepts such as 
+
         - The ability to establish basic use-cases for end users
         - Application lifecycle
         - troubleshooting applications and k8s cluster
@@ -18,7 +20,8 @@
         - logging and monitoring
         - k8s API object primitives 
         
-1. Cluster Architecture, Installation & Configuration – 25%
+###  1. Cluster Architecture, Installation & Configuration – 25%
+
          - Manage role based access control (RBAC)
          - Use Kubeadm to install a basic cluster
          - Manage a HA cluster
@@ -26,7 +29,7 @@
          - Perform a version upgrade on a k8s cluster using Kubeadm
          - Implement etcd backup and restore
 
-2. Services & Networking – 20% 
+### 2. Services & Networking – 20% 
 
          - Understand 
                     - Host networking configuration on the cluster nodes
@@ -36,7 +39,7 @@
          - Know how to configure and use CoreDNS
          - Choose an appropriate CNI  plugin
 
-3. Troubleshooting – 30%
+### 3. Troubleshooting – 30%
 
         - Evaluate cluster and node logging
         - Understand how to monitor applications
@@ -46,7 +49,7 @@
                   - application failure
                   - networking
 
-4. Workloads & Scheduling – 15%
+### 4. Workloads & Scheduling – 15%
 
             - Understand deployments 
             - how to perform rolling update and rollbacks
@@ -56,7 +59,7 @@
             - Understand how resource limits can affect Pod scheduling
             - Awareness of manifest management and common templating tools
 
-5. Storage – 10%
+### 5. Storage – 10%
 
             - Understand 
                 - storage classes 
