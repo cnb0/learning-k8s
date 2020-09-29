@@ -25,6 +25,34 @@
         $ kubectl describe node 
         $ kubectl top nodes
         $ kubectl replace --force -f pod/yaml       # Force delete k8s resource object
+  ```      
+ 
+ ### k8s components 
+```       
+        $ kubectl get componentstatuses
+        
+        $ cat        /var/log/kube-apiserver.log
+        $ kubectl    logs kube-apiserver-k8s-master-01 -n kube-system
+        $ journalctl -u kube-apiserver
+        
+        $ cat /var/log/kube-scheduler.log
+        $ cat /var/log/kube-controller-manager.log
+        $ cat /var/log/kubelet.log
+        $ cat /var/log/kube-proxy.log
+        
+        $ journalctl -u kube-scheduler
+        $ journalctl -u kube-controller-manager
+        $ journalctl -u kubelet
+        $ journalctl -u kube-proxy
+        
+     - list the logs of cni 
+        $ journalctl -u flanneld
+        $ kubectl logs kube-flannel-ds-amd64-9mrnj -n kube-system
+        
+     - Container runtime
+        $ journalctl -u docker.service
+        $ cat /var/log/docker.log
+ 
 ```
 ###  Explain structure of a Kubernetes API resource object (po,deployment,cm,sa,sc,secrets,svc,ingress,rs,pv,pvc ..)
 ```
@@ -78,6 +106,9 @@
         $ kubectl run busybox --image=busybox --restart=Never 
         $ kubectl exec busybox -- printenv
         $ kubectl logs busybox -f     
+        
+  # display all the logs from the pods created from this deployment?
+        $ kubectl logs -l app=nginx --all-containers=true
         
   # deployment - start a single instance of nginx 
         $ kubectl create deployment nginx --image=nginx 
@@ -365,6 +396,15 @@ $ kubectl run nginx --image=nginx --restart=Never --serviceaccount=myuser -o yam
         $ kubectl edit svc nginx
         
         $ kubectl get ep
+        
+     - Gather the events from the service from this deployment
+        $ kubectl describe svc nginx-service
+
+     -  Acquire the list of endpoints associated with this service
+         Endpoints:         10.244.1.73:80,10.244.1.74:80,10.244.2.53:80
+
+     -  How are the endpoints determined?
+          Selector:          app=nginx
 
         $ kubectl run nginx --image=nginx --restart=Never --port=80 --expose
         $ kubectl expose deploy mydeploy --name=mysvc --type=NodePort --target-port=8080 --port=6262
