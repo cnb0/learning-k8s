@@ -3,11 +3,48 @@
 
 ```
 
+
+
 - Troubleshoot 
-                - control plane failure (kube-apiserver,kube-controller-manager,kube-scheduler,kubelet,kube-proxy )
-                - worker node failure   ( node )
-                - application failure (Pod ,replicaset)
-                - networking failure ( services , endpoints , ingress/egress, ingress controller)
+                - Control plane failure 
+                      - kube-apiserver
+                      - kube-controller-manager
+                      - kube-scheduler
+                      - kubelet
+                      - kube-proxy 
+                - Worker node failure ( node )
+                - Application failure (Pod ,ReplicaSet)
+                - Networking failure (Services, Endpoints, Ingress/Egress, Ingress controller)
+
+
+
+- Application Introspection and Debugging
+- Auditing
+
+- Troubleshoot 
+      - Applications
+      - Clusters
+- Debug 
+    - StatefulSet
+    - Init Containers
+    - Pods and ReplicaSets
+    - Running Pods
+    - Services
+- Get a Shell to a Running Container
+- Determine the Reason for Pod Failure
+- Developing and debugging services locally
+
+- Monitor Node Health
+- Debugging Kubernetes nodes with crictl
+
+- Events in Stackdriver
+- Logging 
+      - Using Elasticsearch and Kibana
+      - Using Stackdriver
+
+- Resource metrics pipeline
+- Tools for Monitoring Resources
+
 
     
 - Application Introspection and Debugging
