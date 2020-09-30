@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: ambassador
+  name: my-ingress
+spec:
+  rules:
+    - host: example.com
+      http:
+        paths:
+        - path: /hello
+          backend:
+            serviceName: hello-world
+            servicePort: 3000
+        - path: /dog
+          backend:
+            serviceName: dogpic-service
+            servicePort: 3000
+  backend:
+    serviceName: hello-world
+    servicePort: 3000

@@ -14,8 +14,8 @@
 - To upgrade a Kubernetes cluster to a newer version
          $ kubeadm upgrade plan
 
-         $ apt-get upgrade -y kubeadm=1.12.0-00
-         $ kubeadm upgrade apply v1.12.0
+         $ sudo apt-get upgrade -y kubeadm=1.12.0-00
+         $ sudo kubeadm upgrade apply v1.12.0
          $ kubectl get nodes -o wide 
          
          $ sudo apt-get upgrade -y kubelet=1.12.0-00
