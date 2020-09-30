@@ -231,6 +231,8 @@ $ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kub
              $ kubectl create   deployment nginx  --image=nginx:1.7.8  --dry-run=client -o yaml > deploy.yaml
              $ kubectl get      deploy nginx -o yaml
              $ kubectl describe deploy nginx
+             
+             $ kubectl apply -f <deploy.yaml> --record
 
           # Rolling update "www" containers of "frontend" deploy,update the image
              $ kubectl set image deployment/frontend www=image:v2      
