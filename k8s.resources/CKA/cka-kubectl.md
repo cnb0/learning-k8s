@@ -2,6 +2,7 @@
 
 
 # kubectl cluster cli
+```
 kubectl api-resources
 kubectl api-versions
 kubectl cluster-info
@@ -15,7 +16,7 @@ kubectl get cs
 kubectl get csr
 kubectl certificate approve <CSR>
 kubectl certificate approve `kubectl get csr --no-headers |awk '{print $1}'`
-
+```
 
 # master 
 
@@ -37,6 +38,7 @@ kubectl certificate approve `kubectl get csr --no-headers |awk '{print $1}'`
 
 
 # debugging utils
+```
 kubectl run -it --rm  alpine     --image=alpine                    -- /bin/sh
 kubectl run -it --rm  bbc        --image=busybox:1.30.1-musl       -- /bin/sh -c 'sleep 3699d'
 kubectl run -it --rm  curl       --image=radial/busyboxplus:curl   -- /bin/sh
@@ -75,6 +77,7 @@ ls -l  /etc/cni/net.d/
 kubectl apply -f <deploy.yaml> --record
 # spec.revisionHistoryLimit
 
+```
 
 # logs 
 
