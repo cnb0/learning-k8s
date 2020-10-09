@@ -1,5 +1,81 @@
 # Certified Kubernetes Administrator (CKA) Exam Preparation
 
+
+- Creating a cluster with kubeadm
+       Provisioning compute resources
+       Install Docker on the hosts
+       Install kubeadm, kubelet and kubectl on the hosts
+       Initialize the control plane node
+       Join the workers
+- Control Plane components
+      Explore the Control Plane services
+- Accessing the cluster
+      Install kubectl on your dev machine
+      Access the cluster from the dev machine
+- Kubernetes Resources
+     Namespaces
+     Labels and selectors
+     Annotations
+- The workloads
+    Pod specs
+    Container Specs
+    Pod Controllers
+    ReplicaSet controller
+    Deployment controller
+    Update and Rollback
+    Deployment Strategies
+- Configuring applications
+     Arguments to the command
+     Environment Variables
+     Configuration file from ConfigMap
+     Configuration file from Secret
+     Configuration file from Pod fields
+     Configuration file from container resources fields
+     Configuration file from different sources
+- Scaling an application
+    Manual scaling
+    Auto-scaling
+- Application Self-Healing
+    Controller to the rescue
+    Liveness probes
+Resource limits and Quality of Service classes
+- Scheduling Pods
+    Using label selectors to schedule Pods on specific nodes
+    DaemonSets
+    Static Pods
+    Resource requests
+    Running multiple schedulers
+- Discovery and Load-balancing
+      Services
+      Services Types
+      Ingress
+- Security
+     Authentication
+     Authorization
+     Security Contexts
+     Network policies
+     Working with private Docker registries
+- Storage
+    Persistent Volumes
+    Claiming a Persistent volume
+    Using auto-provisioned persistent volumes
+- Monitoring and Logging
+    Basic logging
+- Upgrading the cluster
+      Upgrade the controller
+      Upgrade the workers
+      Upgrading the operating system
+      Backup a cluster
+      Restore a cluster
+- kubectl
+     Managing kubeconfig file
+     Generic commands
+     Creating applications resources
+     Managing clusters
+     Getting Documentation
+
+
+
 ## 5% - Logging/Monitoring
  
 - [ ] Understand how to monitor all cluster components.
