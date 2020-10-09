@@ -1,6 +1,6 @@
 # Certified Kubernetes Administrator (CKA) Exam Preparation
 
-
+```
 - Creating a cluster with kubeadm
        Provisioning compute resources
        Install Docker on the hosts
@@ -74,7 +74,7 @@ Resource limits and Quality of Service classes
      Managing clusters
      Getting Documentation
 
-
+```
 
 ## 5% - Logging/Monitoring
  
