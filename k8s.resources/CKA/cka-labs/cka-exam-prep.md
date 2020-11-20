@@ -950,7 +950,4 @@ Personally, **I found CKA more difficult than CKAD exam**, not for the level of 
 
 Preparing for CKA program was quite challenging, but once you get the final result and realize how much you have learnt about this amazing Cloud Native world and Microservices, you won't regret it!
 
-![Image of CKA](https://github.com/mgonzalezo/CKA-Preparation/blob/main/cka-mgonzalezo.JPG)
-
-![Image of CKAD](https://github.com/mgonzalezo/CKA-Preparation/blob/main/ckad-mgonzalezo.JPG)
 
