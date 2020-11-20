@@ -1,11 +1,19 @@
 ### Minikube options 
 ```
-minikube start --cpus 4 --memory 8192 --kubernetes-version=1.18.0
+minikube start --container-runtime=docker --cpus 4 --memory 8192 --kubernetes-version=1.18.0 --driver=kvm2
+
+#minikube start --container-runtime=docker --cpus 4 --memory 8192 --kubernetes-version=1.19.2 --driver=kvm2 --network-plugin=cni
+#minikube start --container-runtime=docker --cpus 4 --memory 8192 --kubernetes-version=1.19.0 --driver=kvm2 --network-plugin=cni
 
 ## RBAC enabled
-minikube start --cpus 6 --memory 8192 --extra-config=apiserver.Authorization.Mode=RBAC
+#minikube start --cpus 6 --memory 8192  –extra-config=apiserver.authorization-mode
+#minikube start --container-runtime=docker --cpus 6 --memory 8192
 
-minikube start --container-runtime=docker --cpus 6 --memory 8192
+#minikube start --cpus 4 --memory 8192 --kubernetes-version=1.18.0
+
+## RBAC enabled
+#minikube start --cpus 6 --memory 8192 --extra-config=apiserver.Authorization.Mode=RBAC
+#minikube start --container-runtime=docker --cpus 6 --memory 8192
 ```
 
 
