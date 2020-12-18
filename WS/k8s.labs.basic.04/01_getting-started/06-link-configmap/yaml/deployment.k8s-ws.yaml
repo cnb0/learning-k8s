@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: k8s-ws
+  name: k8s-ws
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-ws
+  template:
+    metadata:
+      labels:
+        app: k8s-ws
+    spec:
+      volumes:
+      - name: prop-vol
+        configMap:
+          name: app-properties
+      containers:
+      - image: nodyd/k8s-ws
+        name: k8s-ws
+        env:
+        - name: DB_CON_STRING
+          value: "mongodb://mongodb-injected-env"
+        volumeMounts:
+        - name: prop-vol
+          mountPath: /properties

@@ -1,0 +1,9 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: k8s-ws
+spec:
+  backend:
+    serviceName: mysvc
+    servicePort: 80
+

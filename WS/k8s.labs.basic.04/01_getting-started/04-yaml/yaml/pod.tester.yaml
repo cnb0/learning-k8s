@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: tester
+  name: tester
+spec:
+  containers:
+  - image: nodyd/k8s-ws
+    name: tester

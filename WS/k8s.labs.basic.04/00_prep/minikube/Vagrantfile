@@ -1,0 +1,65 @@
+Vagrant.configure("2") do |config|
+  # define system 
+  config.vm.box = "ubuntu/bionic64"
+
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 2048
+    v.cpus = 2
+  end
+  config.vm.network "public_network", ip: "192.168.178.150"
+
+
+  # install system
+  config.vm.provision "shell", 
+    privileged: true,
+    inline: <<-SHELL
+        apt update 
+        apt install -y docker.io conntrack curl git bash-completion zsh
+        sudo gpasswd -a vagrant docker
+        curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+        chmod +x ./kubectl
+        mv ./kubectl /usr/local/bin/kubectl
+        curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+        chmod +x minikube
+        mkdir -p /usr/local/bin/
+        install minikube /usr/local/bin/
+        rm minikube
+    SHELL
+	
+  # prepare user
+  config.vm.provision "file", 
+    source: "ssh-key.pub", 
+    destination: "/home/vagrant/.ssh/ssh-key.pub"
+  config.vm.provision "file", 
+    source: "start-minikube.sh", 
+    destination: "/home/vagrant/start-minikube.sh"	
+  config.vm.provision "shell", 
+    privileged: false,
+    inline: <<-SHELL
+        cat /home/vagrant/.ssh/ssh-key.pub >> /home/vagrant/.ssh/authorized_keys
+        chmod 755 /home/vagrant/start-minikube.sh
+        echo 'source <(kubectl completion bash)' >>~/.bashrc
+    SHELL
+  config.vm.provision "shell", 
+    privileged: false,
+    inline: <<-SHELL
+        mkdir -p ~/git
+        cd ~/git
+        git clone https://github.com/NodyHub/dot-files.git
+        cd ~/git/dot-files
+        ./deploy.sh
+        sudo chsh -s /usr/bin/zsh vagrant
+        echo 'source <(kubectl completion zsh)' >> ~/.zshrc
+    SHELL
+
+
+  # get ws content
+  config.vm.provision "shell", 
+    privileged: false,
+    inline: <<-SHELL
+        mkdir -p ~/git
+        cd ~/git
+        git clone https://github.com/NodyHub/k8s-basic-ws.git
+    SHELL
+
+end
