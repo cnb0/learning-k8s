@@ -18,5 +18,6 @@ Service Discovery
      Various ways how to access our random-generator REST service
 
 Self Awareness
-     Using the Downward API for setting environment variables and mount resource fields as files with the random-generator service.
+     Using the Downward API for setting environment variables and mount resource
+     fields as files with the random-generator service.
 ```
