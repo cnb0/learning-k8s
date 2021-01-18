@@ -1,12 +1,24 @@
 
-## Certified Kubernetes Administrator (CKA) 2020
+## Certified k8s Administrator (CKA) 2020
+
+- Topics include 
+        - k8s architecture
+        - Installation 
+        - Application lifecycle management (Images,Containers,Pods)
+        - Jobs and CronJobs
+        - Networking 
+        - Storage 
+        - Security
+        - Scheduling 
+        - Logging maintenance
+        - Troubleshooting of k8s components
 
 ### - A certified K8s administrator can work proficiently to 
 
         - design
         - install
         - configure 
-        - manage a Kubernetes production-grade cluster  
+        - manage a k8s production-grade cluster  
 
 ###  - We will have an understanding of key concepts such as 
 
