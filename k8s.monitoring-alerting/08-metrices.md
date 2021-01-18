@@ -7,10 +7,12 @@ $kubectl get -o wide nodes
 The output lists, the underlying OS-IMAGE, internal IP, and other useful information
 
 NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME
-aks-agentpool-26533852-0 Ready agent 34d v1.11.5 10.240.0.4 <none> Ubuntu 16.04.5 LTS   4.15.0-1036-azure   docker://3.0.1
+aks-agentpool-26533852-0 Ready agent 34d v1.11.5 10.240.0.4 <none> Ubuntu 16.04.5 
+  LTS   4.15.0-1036-azure   docker://3.0.1
 
 
-2. find out which nodes are consuming the most resources -It shows the CPU and memory usage of the nodes:
+2. find out which nodes are consuming the most resources -
+   It shows the CPU and memory usage of the nodes:
   $kubectl top nodes
 
 3. From Cloud provider  UI -   Cluster , Nodes , Controllers , Container insights
