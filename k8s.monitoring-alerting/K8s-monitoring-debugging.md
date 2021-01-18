@@ -5,7 +5,10 @@
 
 ```
 Application Introspection and Debugging
-Auditing with Falco
+
+Troubleshoot 
+    - Applications
+    - Clusters
 
 Debug 
     - StatefulSet
@@ -24,12 +27,10 @@ Logging Using
 Debugging Kubernetes nodes with crictl
 Monitor Node Health
 Resource metrics pipeline
-
 Tools for Monitoring Resources
-Troubleshoot 
-    - Applications
-    - Clusters
-Troubleshooting
+Auditing with Falco
+
+ 
 
 ```
 
