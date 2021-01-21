@@ -1,6 +1,6 @@
 
 ## Certified k8s Administrator (CKA) 2020
-
+```
 - Topics include 
         - k8s architecture
         - Installation 
@@ -12,7 +12,7 @@
         - Scheduling 
         - Logging maintenance
         - Troubleshooting of k8s components
-
+```
 ### - A certified K8s administrator can work proficiently to 
 
         - design
