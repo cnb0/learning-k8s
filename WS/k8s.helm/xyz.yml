@@ -1,0 +1,25 @@
+version: "3"
+services:
+  fronend:
+    build: ./frontend
+    image: somkiat/frontend:0.1
+    ports:
+      - 9999:80
+
+  backend:
+    build: ./backend
+    image: somkiat/backend:0.1
+
+  mongo:
+    build: ./database
+    image: somkiat/mongo:0.1
+    container_name: mongo
+    environment:
+      MONGO_INITDB_DATABASE: mongo-test
+#     volumes:
+#       - data:/data/db
+#       - configdb:/data/configdb
+
+# volumes:
+#   data:
+#   configdb:

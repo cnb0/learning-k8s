@@ -1,0 +1,14 @@
+version: "3"
+services:
+  fronend:
+    image: somkiat/frontend:0.1
+    ports:
+      - 9999:80
+
+  backend:
+    image: somkiat/backend:0.1
+
+  mongo:
+    image: somkiat/mongo:0.1
+    environment:
+      MONGO_INITDB_DATABASE: mongo-test

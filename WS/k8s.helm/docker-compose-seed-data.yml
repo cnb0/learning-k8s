@@ -1,0 +1,12 @@
+version: "3"
+services:
+  backend:
+    build: ./backend
+    user: "0:0"
+    ports:
+      - 3000:3000
+  mongo:
+    build: ./database
+    user: "0:0"
+    environment: 
+      MONGO_INITDB_DATABASE: mongo-test
