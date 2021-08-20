@@ -1,0 +1,21 @@
+replicaCount: 3
+image:
+  repository: nginx
+  tag: 1.16
+  pullPolicy: IfNotPresent
+nameOverride: ""
+fullnameOverride: ""
+service:
+  type: ClusterIP
+  port: 80
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+  - host: chart-example.local
+    paths: []
+  tls: []
+resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
