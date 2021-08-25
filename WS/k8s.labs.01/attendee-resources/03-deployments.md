@@ -33,7 +33,7 @@ The difference is that this manifest file can live in source control (which is g
 Create the namespace using the manifest:
 
 ```
-$ kubectl apply -f attendee-resources/workshop-04/00-sock-shop-ns.yaml
+  kubectl apply -f attendee-resources/workshop-04/00-sock-shop-ns.yaml
 ```
 
 step 2 - create the services
@@ -52,19 +52,19 @@ are running, they can talk to each other.
 Use kubectl to create all the services in our sock-shop namespace:
 
 ```
-$ kubectl apply -f attendee-resources/workshop-04/services
+  kubectl apply -f attendee-resources/workshop-04/services
 ```
 
 Check the services were created:
 
 ```
-$ kubectl -n=sock-shop get svc
+ kubectl -n=sock-shop get svc
 ```
 
 Notice how if we use the default namespace, we cannot see our services:
 
 ```
-$ kubectl get svc
+  kubectl get svc
 ```
 
 
@@ -73,9 +73,9 @@ step 3 - create the deployments
 create deployments for the entire stack using kubectl apply:
 
 ```
-$ kubectl apply -f attendee-resources/workshop-04/deployments --record
-$ watch kubectl -n=sock-shop get deploy
-$ kubectl -n=sock-shop describe deployments
+ kubectl apply -f attendee-resources/workshop-04/deployments --record
+ watch kubectl -n=sock-shop get deploy
+ kubectl -n=sock-shop describe deployments
 ```
 
 step 4 - view the site
@@ -86,7 +86,7 @@ uses a load balancer to view our site using its IP address.
 First let’s get the IP address for the load balancer:
 
 ```
-$ kubectl -n=sock-shop get svc
+ kubectl -n=sock-shop get svc
 ```
 
 Grab the EXTERNAL-IP field of the front-end service and open your browser to that address.
@@ -112,14 +112,14 @@ from
 Now use kubectl apply to send the updated manifest to the API server:
 
 ```
-$ kubectl apply -f attendee-resources/workshop-04/deployments/front-end-dep.yaml --record
+ kubectl apply -f attendee-resources/workshop-04/deployments/front-end-dep.yaml --record
 ```
 
 
 Check the deployment:
 
 ```
-$ kubectl -n=sock-shop describe deploy front-end
+ kubectl -n=sock-shop describe deploy front-end
 ```
 
 
@@ -137,7 +137,7 @@ Change the image field in the
 Now re-apply the reverted deployment manifest:
 
 ```
-$ kubectl apply -f attendee-resources/workshop-04/deployments/front-end-dep.yaml --record
+ kubectl apply -f attendee-resources/workshop-04/deployments/front-end-dep.yaml --record
 ```
 
 
