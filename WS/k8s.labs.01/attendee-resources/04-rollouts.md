@@ -18,8 +18,8 @@ starting with a canary release.
 Copy the existing `attendee-resources/workshop-04/deployments/front-end-dep.yaml` file
 
 ```
-$ mkdir -p attendee-resources/workshop-05a
-$ cp attendee-resources/workshop-04/deployments/front-end-dep.yaml \
+ mkdir -p attendee-resources/workshop-05a
+ cp attendee-resources/workshop-04/deployments/front-end-dep.yaml \
   attendee-resources/workshop-05a/front-end-dep.canary.yaml
 ```
 
@@ -52,13 +52,13 @@ step 2 - push the deployment
 Create our canary deployment:
 
 ```
-$ kubectl apply -f attendee-resources/workshop-05a/front-end-dep.canary.yaml
+ kubectl apply -f attendee-resources/workshop-05a/front-end-dep.canary.yaml
 ```
 
 Check the status
 
 ```
-$ watch kubectl -n=sock-shop  get deploy
+ watch kubectl -n=sock-shop  get deploy
 ```
 
 We should now see both front-end and front-end-canary deployments running alongside each other.
@@ -84,5 +84,5 @@ Revert the deployment
 Now we know the canary deployment didn’t work out we can simply re-apply the old version again.
 
 ```
-$ kubectl delete -f attendee-resources/workshop-05a/front-end-dep.canary.yaml
+ kubectl delete -f attendee-resources/workshop-05a/front-end-dep.canary.yaml
 ```
