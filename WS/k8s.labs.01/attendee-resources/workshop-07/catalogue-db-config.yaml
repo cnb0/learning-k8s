@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: catalogue-db
+  namespace: sock-shop
+data:
+  MYSQL_DATABASE: socksdb
