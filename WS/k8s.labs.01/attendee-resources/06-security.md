@@ -103,7 +103,7 @@ if you’ve got a lot of variables to set.
         envFrom:
         - configMapRef:
             name: catalogue-db
-            ```
+  ```
 Once we’ve finished making our edits we should have a new catalogue-db Deployment
 that looks like this (make sure you’ve removed the old environment variables).
 
