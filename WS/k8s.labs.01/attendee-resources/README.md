@@ -26,8 +26,6 @@
                 - Logging & Monitoring
                 - Know what is happening in your cluster
 
-### 08. Packaging
-                - Write a Helm chart -Write a simple helm chart for the Sock Shop and deploy it
 
 ```
 
