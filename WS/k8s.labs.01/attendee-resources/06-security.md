@@ -107,6 +107,7 @@ if you’ve got a lot of variables to set.
 Once we’ve finished making our edits we should have a new catalogue-db Deployment
 that looks like this (make sure you’ve removed the old environment variables).
 
+
 ```
 apiVersion: apps/v1
 kind: Deployment
@@ -140,7 +141,7 @@ spec:
         ports:
         - name: mysql
           containerPort: 3306
-          ```
+```
 
 Apply the updated catalogue-db-dep.yaml file and wait for the new pods to run.
 Find the new pod names with the following:
