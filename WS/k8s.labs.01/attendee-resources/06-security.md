@@ -39,7 +39,7 @@ We can use a config map for settings that are less sensitive.
 Apply your ConfigMap:
 
 ```
-$kubectl apply -f catalogue-db-config.yaml
+ kubectl apply -f catalogue-db-config.yaml
 ```
 
 Create a Secret
@@ -65,13 +65,13 @@ Check the password value using:
 
 Apply the secret so it’s available when we update the deployment later.
 
-`$ kubectl apply -f catalogue-db-secret.yaml`
+` kubectl apply -f catalogue-db-secret.yaml`
 
 Update our catalogue-db deployment
 
 We’re doing to be making some edits to one of the manifest in an earlier workshop. Let’s make a copy here to work with.
 
-`$ cp ../workshop-04/deployments/catalogue-db-dep.yaml `
+` cp ../workshop-04/deployments/catalogue-db-dep.yaml `
 
 ConfigMaps and Secrets can be used as either environment variables or volume mounts. 
 MySQL is easily configured with environment variables so we’re going to use that option
@@ -152,7 +152,7 @@ variables that have been set. You should see that the database name and password
 have been set inside the new container.
 
 ```
-$ kubectl exec -it catalogue-db-XXXXXX-XXXXX env -n sock-shop | grep MYSQL
+ kubectl exec -it catalogue-db-XXXXXX-XXXXX env -n sock-shop | grep MYSQL
 
 MYSQL_ROOT_PASSWORD=super-secure-password
 MYSQL_DATABASE=socksdb
