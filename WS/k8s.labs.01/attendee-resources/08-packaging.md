@@ -1,4 +1,7 @@
-### 08.Packaging - Write a Helm chart
+
+
+### 08. Packaging
+                - Write a Helm chart -Write a simple helm chart for the Sock Shop and deploy it
 
 Write a simple helm chart for the Sock Shop and deploy it
 In this workshop we’re going to package the sock-shop as a Helm chart. 
