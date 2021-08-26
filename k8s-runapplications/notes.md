@@ -1,5 +1,5 @@
 
-## [Run applications on K8s](https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/)
+## [Run applications on K8s](https://kubernetes.io/docs/tasks/run-application/)
 
 ```
 Run a Stateless Application Using a Deployment
