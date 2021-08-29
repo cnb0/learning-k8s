@@ -40,7 +40,7 @@ many of the methods are also backed by concrete code examples.
             Enabling Active Development
             Enabling Testing and Debugging
             Setting Up a Development Environment Best Practices
-            Summary
+             
 
 3. Monitoring and Logging in Kubernetes
             Metrics Versus Logs
