@@ -1,7 +1,8 @@
-### K8s Up and Running
+ 
 
 ```
 1. Getting Started with Kubernetes
+
         1.1. Using Kubernetes Without Installation
         1.2. Installing the Kubernetes CLI, kubectl
         1.3. Installing Minikube to Run a Local Kubernetes Instance
@@ -10,6 +11,7 @@
         1.6. Accessing the Dashboard in Minikube
 
 2. Creating a Kubernetes Cluster
+
         2.1. Installing kubeadm to Create a Kubernetes Cluster
         2.2. Bootstrapping a Kubernetes Cluster Using kubeadm
         2.3. Downloading a Kubernetes Release from GitHub
@@ -20,6 +22,7 @@
         2.8. Creating a Kubernetes Cluster on Azure Container Service (ACS)
 
 3. Learning to Use the Kubernetes Client
+
         3.1. Listing Resources
         3.2. Deleting Resources
         3.3. Watching Resource Changes with kubectl
@@ -27,6 +30,7 @@
         3.5. Asking kubectl to Explain Resources and Fields
 
 4. Creating and Modifying Fundamental Workloads
+
         4.1. Creating a Deployment Using kubectl run
         4.2. Creating Objects from File Manifests
         4.3. Writing a Pod Manifest from Scratch
@@ -34,6 +38,7 @@
         4.5. Updating a Deployment
 
 5. Working with Services
+
         5.1. Creating a Service to Expose Your Application
         5.2. Verifying the DNS Entry of a Service
         5.3. Changing the Type of a Service
@@ -41,6 +46,7 @@
         5.5. Making Services Accessible from Outside the Cluster
 
 6. Exploring the Kubernetes API and Key Metadata
+
         6.1. Discovering API Endpoints of the Kubernetes API Server
         6.2. Understanding the Structure of a Kubernetes Manifest
         6.3. Creating Namespaces to Avoid Name Collisions
@@ -50,6 +56,7 @@
         6.7. Annotating a Resource with One Command
 
 7. Managing Specialized Workloads
+
         7.1. Running a Batch Job
         7.2. Running a Task on a Schedule Within a Pod
         7.3. Running Infrastructure Daemons per Node
@@ -57,6 +64,7 @@
         7.5. Influencing Pods’ Startup Behavior
 
 8. Volumes and Configuration Data
+
         8.1. Exchanging Data Between Containers via a Local Volume
         8.2. Passing an API Access Key to a Pod Using a Secret
         8.3. Providing Configuration Data to an Application
@@ -65,18 +73,21 @@
         8.6. Dynamically Provisioning Persistent Storage on GKE
 
 9. Scaling
+
         9.1. Scaling a Deployment
         9.2. Automatically Resizing a Cluster in GKE
         9.3. Automatically Resizing a Cluster in AWS
         9.4. Using Horizontal Pod Autoscaling on GKE
 
 10. Security
+
         10.1. Providing a Unique Identity for an Application
         10.2. Listing and Viewing Access Control Information
         10.3. Controlling Access to Resources
         10.4. Securing Pods
 
 11. Monitoring and Logging
+
         11.1. Accessing the Logs of a Container
         11.2. Recover from a Broken State with a Liveness Probe
         11.3. Controlling Traffic Flow to a Pod Using a Readiness Probe
@@ -86,6 +97,7 @@
         11.7. Using Elasticsearch–Fluentd–Kibana (EFK) on Minikube
 
 12. Maintenance and Troubleshooting
+
         12.1. Enabling Autocomplete for kubectl
         12.2. Removing a Pod from a Service
         12.3. Accessing a ClusterIP Service Outside the Cluster
@@ -97,12 +109,14 @@
         12.9. Managing etcd
 
 13. Developing Kubernetes
+
         13.1. Compiling from Source
         13.2. Compiling a Specific Component
         13.3. Using a Python Client to Interact with the Kubernetes API
         13.4. Extending the API Using Custom Resource Definitions (CRDs)
 
 14. The Ecosystem
+
         14.1. Installing Helm, the Kubernetes Package Manager
         14.2. Using Helm to Install Applications
         14.3. Creating Your Own Chart to Package Your Application with Helm
