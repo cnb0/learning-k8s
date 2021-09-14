@@ -1,0 +1,556 @@
+Home
+Available Documentation Versions
+Getting started
+Learning environment
+Production environment
+            Container runtimes
+            Installing Kubernetes with deployment tools
+            Bootstrapping clusters with kubeadm
+            Installing kubeadm
+            Troubleshooting kubeadm
+            Creating a cluster with kubeadm
+            Customizing components with the kubeadm API
+            Options for Highly Available topology
+            Creating Highly Available clusters with kubeadm
+            Set up a High Availability etcd cluster with kubeadm
+            Configuring each kubelet in your cluster using kubeadm
+            Dual-stack support with kubeadm
+            Installing Kubernetes with kops
+            Installing Kubernetes with Kubespray
+            Turnkey Cloud Solutions
+            Windows in Kubernetes
+            Intro to Windows support in Kubernetes
+            Guide for scheduling Windows containers in Kubernetes
+Best practices
+            Considerations for large clusters
+            Running in multiple zones
+            Validate node setup
+            Enforcing Pod Security Standards
+            PKI certificates and requirements
+Concepts
+                    Overview
+                    What is Kubernetes?
+                    Kubernetes Components
+                    The Kubernetes API
+                    Working with Kubernetes Objects
+                    Understanding Kubernetes Objects
+                    Kubernetes Object Management
+                    Object Names and IDs
+                    Namespaces
+                    Labels and Selectors
+                    Annotations
+                    Field Selectors
+                    Finalizers
+                    Owners and Dependents
+                    Recommended Labels
+                    Cluster Architecture
+                    Nodes
+                    Control Plane-Node Communication
+                    Controllers
+                    Cloud Controller Manager
+                    Garbage Collection
+                    Containers
+                    Images
+                    Container Environment
+                    Runtime Class
+                    Container Lifecycle Hooks
+                    Workloads
+                    Pods
+                    Pod Lifecycle
+                    Init Containers
+                    Pod Topology Spread Constraints
+                    Disruptions
+                    Ephemeral Containers
+                    Workload Resources
+                    Deployments
+                    ReplicaSet
+                    StatefulSets
+                    DaemonSet
+                    Jobs
+                    TTL Controller for Finished Resources
+                    CronJob
+                    ReplicationController
+                    Services, Load Balancing, and Networking
+                    Service
+                    Topology-aware traffic routing with topology keys
+                    DNS for Services and Pods
+                    Connecting Applications with Services
+                    Ingress
+                    Ingress Controllers
+                    EndpointSlices
+                    Service Internal Traffic Policy
+                    Topology Aware Hints
+                    Network Policies
+                    IPv4/IPv6 dual-stack
+                    Storage
+                    Volumes
+                    Persistent Volumes
+                    Volume Snapshots
+                    CSI Volume Cloning
+                    Storage Classes
+                    Volume Snapshot Classes
+                    Dynamic Volume Provisioning
+                    Storage Capacity
+                    Ephemeral Volumes
+                    Node-specific Volume Limits
+                    Volume Health Monitoring
+                    Configuration
+                    Configuration Best Practices
+                    ConfigMaps
+                    Secrets
+                    Managing Resources for Containers
+                    Organizing Cluster Access Using kubeconfig Files
+                    Security
+                    Overview of Cloud Native Security
+                    Pod Security Standards
+                    Pod Security Admission
+                    Controlling Access to the Kubernetes API
+                    Policies
+                    Limit Ranges
+                    Resource Quotas
+                    Pod Security Policies
+                    Process ID Limits And Reservations
+                    Node Resource Managers
+                    Scheduling, Preemption and Eviction
+                    Kubernetes Scheduler
+                    Assigning Pods to Nodes
+                    Pod Overhead
+                    Taints and Tolerations
+                    Pod Priority and Preemption
+                    Node-pressure Eviction
+                    API-initiated Eviction
+                    Resource Bin Packing for Extended Resources
+                    Scheduling Framework
+                    Scheduler Performance Tuning
+                    Cluster Administration
+                    Certificates
+                    Managing Resources
+                    Cluster Networking
+                    Logging Architecture
+                    Metrics For Kubernetes System Components
+                    System Logs
+                    Traces For Kubernetes System Components
+                    Proxies in Kubernetes
+                    API Priority and Fairness
+                    Installing Addons
+                    Extending Kubernetes
+                    Extending the Kubernetes API
+                    Custom Resources
+                    Kubernetes API Aggregation Layer
+                    Compute, Storage, and Networking Extensions
+                    Network Plugins
+                    Device Plugins
+                    Operator pattern
+                    Service Catalog
+Tasks
+                Install Tools
+                Install and Set Up kubectl on Linux
+                Install and Set Up kubectl on macOS
+                Install and Set Up kubectl on Windows
+                Administer a Cluster
+                Administration with kubeadm
+                Certificate Management with kubeadm
+                Configuring a cgroup driver
+                Upgrading kubeadm clusters
+                Adding Windows nodes
+                Upgrading Windows nodes
+                Migrating from dockershim
+                Check whether Dockershim deprecation affects you
+                Migrating telemetry and security agents from dockershim
+                Certificates
+                Manage Memory, CPU, and API Resources
+                Configure Default Memory Requests and Limits for a Namespace
+                Configure Default CPU Requests and Limits for a Namespace
+                Configure Minimum and Maximum Memory Constraints for a Namespace
+                Configure Minimum and Maximum CPU Constraints for a Namespace
+                Configure Memory and CPU Quotas for a Namespace
+                Configure a Pod Quota for a Namespace
+                Install a Network Policy Provider
+                Use Antrea for NetworkPolicy
+                Use Calico for NetworkPolicy
+                Use Cilium for NetworkPolicy
+                Use Kube-router for NetworkPolicy
+                Romana for NetworkPolicy
+                Weave Net for NetworkPolicy
+                Access Clusters Using the Kubernetes API
+                Access Services Running on Clusters
+                Advertise Extended Resources for a Node
+                Autoscale the DNS Service in a Cluster
+                Change the default StorageClass
+                Change the Reclaim Policy of a PersistentVolume
+                Cloud Controller Manager Administration
+                Configure Quotas for API Objects
+                Control CPU Management Policies on the Node
+                Control Topology Management Policies on a node
+                Customizing DNS Service
+                Debugging DNS Resolution
+                Declare Network Policy
+                Developing Cloud Controller Manager
+                Enable Or Disable A Kubernetes API
+                Enabling Service Topology
+                Enabling Topology Aware Hints
+                Encrypting Secret Data at Rest
+                Guaranteed Scheduling For Critical Add-On Pods
+                IP Masquerade Agent User Guide
+                Limit Storage Consumption
+                Migrate Replicated Control Plane To Use Cloud Controller Manager
+                Namespaces Walkthrough
+                Operating etcd clusters for Kubernetes
+                Reconfigure a Node's Kubelet in a Live Cluster
+                Reserve Compute Resources for System Daemons
+                Running Kubernetes Node Components as a Non-root User
+                Safely Drain a Node
+                Securing a Cluster
+                Set Kubelet parameters via a config file
+                Set up a High-Availability Control Plane
+                Share a Cluster with Namespaces
+                Upgrade A Cluster
+                Use Cascading Deletion in a Cluster
+                Using a KMS provider for data encryption
+                Using CoreDNS for Service Discovery
+                Using NodeLocal DNSCache in Kubernetes clusters
+                Using sysctls in a Kubernetes Cluster
+                Utilizing the NUMA-aware Memory Manager
+                Configure Pods and Containers
+                Assign Memory Resources to Containers and Pods
+                Assign CPU Resources to Containers and Pods
+                Configure GMSA for Windows Pods and containers
+                Configure RunAsUserName for Windows pods and containers
+                Create a Windows HostProcess Pod
+                Configure Quality of Service for Pods
+                Assign Extended Resources to a Container
+                Configure a Pod to Use a Volume for Storage
+                Configure a Pod to Use a PersistentVolume for Storage
+                Configure a Pod to Use a Projected Volume for Storage
+                Configure a Security Context for a Pod or Container
+                Configure Service Accounts for Pods
+                Pull an Image from a Private Registry
+                Configure Liveness, Readiness and Startup Probes
+                Assign Pods to Nodes
+                Assign Pods to Nodes using Node Affinity
+                Configure Pod Initialization
+                Attach Handlers to Container Lifecycle Events
+                Configure a Pod to Use a ConfigMap
+                Share Process Namespace between Containers in a Pod
+                Create static Pods
+                Translate a Docker Compose File to Kubernetes Resources
+                Enforce Pod Security Standards by Configuring the Built-in Admission Controller
+                Enforce Pod Security Standards with Namespace Labels
+                Migrate from PodSecurityPolicy to the Built-In PodSecurity Admission Controller
+                Manage Kubernetes Objects
+                Declarative Management of Kubernetes Objects Using Configuration Files
+                Declarative Management of Kubernetes Objects Using Kustomize
+                Managing Kubernetes Objects Using Imperative Commands
+                Imperative Management of Kubernetes Objects Using Configuration Files
+                Update API Objects in Place Using kubectl patch
+                Managing Secrets
+                Managing Secrets using kubectl
+                Managing Secrets using Configuration File
+                Managing Secrets using Kustomize
+                Inject Data Into Applications
+                Define a Command and Arguments for a Container
+                Define Dependent Environment Variables
+                Define Environment Variables for a Container
+                Expose Pod Information to Containers Through Environment Variables
+                Expose Pod Information to Containers Through Files
+                Distribute Credentials Securely Using Secrets
+                Run Applications
+                Run a Stateless Application Using a Deployment
+                Run a Single-Instance Stateful Application
+                Run a Replicated Stateful Application
+                Scale a StatefulSet
+                Delete a StatefulSet
+                Force Delete StatefulSet Pods
+                Horizontal Pod Autoscaler
+                Horizontal Pod Autoscaler Walkthrough
+                Specifying a Disruption Budget for your Application
+                Accessing the Kubernetes API from a Pod
+                Run Jobs
+                Running Automated Tasks with a CronJob
+                Coarse Parallel Processing Using a Work Queue
+                Fine Parallel Processing Using a Work Queue
+                Indexed Job for Parallel Processing with Static Work Assignment
+                Parallel Processing using Expansions
+                Access Applications in a Cluster
+                Deploy and Access the Kubernetes Dashboard
+                Accessing Clusters
+                Configure Access to Multiple Clusters
+                Use Port Forwarding to Access Applications in a Cluster
+                Use a Service to Access an Application in a Cluster
+                Connect a Frontend to a Backend Using Services
+                Create an External Load Balancer
+                List All Container Images Running in a Cluster
+                Set up Ingress on Minikube with the NGINX Ingress Controller
+                Communicate Between Containers in the Same Pod Using a Shared Volume
+                Configure DNS for a Cluster
+                Monitoring, Logging, and Debugging
+                Application Introspection and Debugging
+                Auditing
+                Debug a StatefulSet
+                Debug Init Containers
+                Debug Pods and ReplicationControllers
+                Debug Running Pods
+                Debug Services
+                Debugging Kubernetes nodes with crictl
+                Determine the Reason for Pod Failure
+                Developing and debugging services locally
+                Get a Shell to a Running Container
+                Monitor Node Health
+                Resource metrics pipeline
+                Tools for Monitoring Resources
+                Troubleshoot Applications
+                Troubleshoot Clusters
+                Troubleshooting
+                Extend Kubernetes
+                Configure the Aggregation Layer
+                Use Custom Resources
+                Extend the Kubernetes API with CustomResourceDefinitions
+                Versions in CustomResourceDefinitions
+                Set up an Extension API Server
+                Configure Multiple Schedulers
+                Use an HTTP Proxy to Access the Kubernetes API
+                Set up Konnectivity service
+                TLS
+                Configure Certificate Rotation for the Kubelet
+                Manage TLS Certificates in a Cluster
+                Manual Rotation of CA Certificates
+                Manage Cluster Daemons
+                Perform a Rolling Update on a DaemonSet
+                Perform a Rollback on a DaemonSet
+                Service Catalog
+                Install Service Catalog using Helm
+                Install Service Catalog using SC
+                Networking
+                Adding entries to Pod /etc/hosts with HostAliases
+                Validate IPv4/IPv6 dual-stack
+                Configure a kubelet image credential provider
+                Extend kubectl with plugins
+                Manage HugePages
+                Schedule GPUs
+Tutorials
+                Hello Minikube
+                Learn Kubernetes Basics
+                Create a Cluster
+                Using Minikube to Create a Cluster
+                Interactive Tutorial - Creating a Cluster
+                Deploy an App
+                Using kubectl to Create a Deployment
+                Interactive Tutorial - Deploying an App
+                Explore Your App
+                Viewing Pods and Nodes
+                Interactive Tutorial - Exploring Your App
+                Expose Your App Publicly
+                Using a Service to Expose Your App
+                Interactive Tutorial - Exposing Your App
+                Scale Your App
+                Running Multiple Instances of Your App
+                Interactive Tutorial - Scaling Your App
+                Update Your App
+                Performing a Rolling Update
+                Interactive Tutorial - Updating Your App
+                Configuration
+                Example: Configuring a Java Microservice
+                Externalizing config using MicroProfile, ConfigMaps and Secrets
+                Interactive Tutorial - Configuring a Java Microservice
+                Configuring Redis using a ConfigMap
+                Stateless Applications
+                Exposing an External IP Address to Access an Application in a Cluster
+                Example: Deploying PHP Guestbook application with Redis
+                Stateful Applications
+                StatefulSet Basics
+                Example: Deploying WordPress and MySQL with Persistent Volumes
+                Example: Deploying Cassandra with a StatefulSet
+                Running ZooKeeper, A Distributed System Coordinator
+                Clusters
+                Restrict a Container's Access to Resources with AppArmor
+                Restrict a Container's Syscalls with seccomp
+                Services
+                Using Source IP
+Reference
+                Glossary
+                API Overview
+                Kubernetes API Concepts
+                Server-Side Apply
+                Client Libraries
+                Kubernetes Deprecation Policy
+                Deprecated API Migration Guide
+                Kubernetes API health endpoints
+                API Access Control
+                Authenticating
+                Authenticating with Bootstrap Tokens
+                Certificate Signing Requests
+                Using Admission Controllers
+                Dynamic Admission Control
+                Managing Service Accounts
+                Authorization Overview
+                Using RBAC Authorization
+                Using ABAC Authorization
+                Using Node Authorization
+                Webhook Mode
+                Well-Known Labels, Annotations and Taints
+                Kubernetes API
+                Workload Resources
+                Pod
+                PodTemplate
+                ReplicationController
+                ReplicaSet
+                Deployment
+                StatefulSet
+                ControllerRevision
+                DaemonSet
+                Job
+                CronJob
+                HorizontalPodAutoscaler
+                HorizontalPodAutoscaler v2beta2
+                PriorityClass
+                Service Resources
+                Service
+                Endpoints
+                EndpointSlice
+                Ingress
+                IngressClass
+                Config and Storage Resources
+                ConfigMap
+                Secret
+                Volume
+                PersistentVolumeClaim
+                PersistentVolume
+                StorageClass
+                VolumeAttachment
+                CSIDriver
+                CSINode
+                CSIStorageCapacity v1beta1
+                Authentication Resources
+                ServiceAccount
+                TokenRequest
+                TokenReview
+                CertificateSigningRequest
+                Authorization Resources
+                LocalSubjectAccessReview
+                SelfSubjectAccessReview
+                SelfSubjectRulesReview
+                SubjectAccessReview
+                ClusterRole
+                ClusterRoleBinding
+                Role
+                RoleBinding
+                Policy Resources
+                LimitRange
+                ResourceQuota
+                NetworkPolicy
+                PodDisruptionBudget
+                PodSecurityPolicy v1beta1
+                Extend Resources
+                CustomResourceDefinition
+                MutatingWebhookConfiguration
+                ValidatingWebhookConfiguration
+                Cluster Resources
+                Node
+                Namespace
+                Event
+                APIService
+                Lease
+                RuntimeClass
+                FlowSchema v1beta1
+                PriorityLevelConfiguration v1beta1
+                Binding
+                ComponentStatus
+                Common Definitions
+                DeleteOptions
+                LabelSelector
+                ListMeta
+                LocalObjectReference
+                NodeSelectorRequirement
+                ObjectFieldSelector
+                ObjectMeta
+                ObjectReference
+                Patch
+                Quantity
+                ResourceFieldSelector
+                Status
+                TypedLocalObjectReference
+                Common Parameters
+                Kubernetes Issues and Security
+                Kubernetes Issue Tracker
+                Kubernetes Security and Disclosure Information
+                Setup tools
+                Kubeadm
+                kubeadm init
+                kubeadm join
+                kubeadm upgrade
+                kubeadm config
+                kubeadm reset
+                kubeadm token
+                kubeadm version
+                kubeadm alpha
+                kubeadm certs
+                kubeadm init phase
+                kubeadm join phase
+                kubeadm kubeconfig
+                kubeadm reset phase
+                kubeadm upgrade phase
+                Implementation details
+                Component tools
+                Feature Gates
+                kubelet
+                kube-apiserver
+                kube-controller-manager
+                kube-proxy
+                kube-scheduler
+                Kubelet authentication/authorization
+                TLS bootstrapping
+                kubectl
+                Overview of kubectl
+                JSONPath Support
+                kubectl
+                kubectl Cheat Sheet
+                kubectl Commands
+                kubectl for Docker Users
+                kubectl Usage Conventions
+                Configuration APIs
+                Client Authentication (v1beta1)
+                kube-apiserver Audit Configuration (v1)
+                kube-apiserver Configuration (v1alpha1)
+                kube-proxy Configuration (v1alpha1)
+                kube-scheduler Configuration (v1beta1)
+                kube-scheduler Configuration (v1beta2)
+                kube-scheduler Policy Configuration (v1)
+                kubeadm Configuration (v1beta2)
+                kubeadm Configuration (v1beta3)
+                Kubelet Configuration (v1beta1)
+                WebhookAdmission Configuration (v1)
+                Scheduling
+                Scheduling Policies
+                Scheduler Configuration
+                Other Tools
+Contribute
+                Suggesting content improvements
+                Contributing new content
+                Overview
+                Opening a pull request
+                Documenting for a release
+                Blogs and case studies
+                Reviewing changes
+                Reviewing pull requests
+                For approvers and reviewers
+                Localizing Kubernetes documentation
+                Participating in SIG Docs
+                Roles and responsibilities
+                PR wranglers
+                Documentation style overview
+                Content guide
+                Style guide
+                Writing a new topic
+                Page content types
+                Content organization
+                Custom Hugo Shortcodes
+                Reference Docs Overview
+                Contributing to the Upstream Kubernetes Code
+                Quickstart
+                Generating Reference Documentation for the Kubernetes API
+                Generating Reference Documentation for kubectl Commands
+                Generating Reference Pages for Kubernetes Components and Tools
+                Advanced contributing
+                Viewing Site Analytics
+                Docs smoke test page
+                
