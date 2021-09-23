@@ -313,11 +313,11 @@
 | Name                               | Command                                                  |
 | ---------------------------------- | -------------------------------------------------------- |
 | Get networkpolicy                  | `kubectl get networkpolicy <networkpolicy_name>`         |
-| Get networkpolicy in yaml          | `kubectl get networkpolicy <networkpolicy_name> -o yaml |
-| Get networkpolicy wide information | `kubectl get networkpolicy <networkpolicy_name> -o wide |
-| Edit networkpolicy                 | `kubectl edit networkpolicy <networkpolicy_name>        |
-| Describe networkpolicy             | `kubectl describe networkpolicy <networkpolicy_name>    |
-| Delete networkpolicy               | `kubectl delete networkpolicy <networkpolicy_name>      |
+| Get networkpolicy in yaml          | `kubectl get networkpolicy <networkpolicy_name> -o yaml`  |
+| Get networkpolicy wide information | `kubectl get networkpolicy <networkpolicy_name> -o wide` |
+| Edit networkpolicy                 | `kubectl edit networkpolicy <networkpolicy_name>`        |
+| Describe networkpolicy             | `kubectl describe networkpolicy <networkpolicy_name>`    |
+| Delete networkpolicy               | `kubectl delete networkpolicy <networkpolicy_name>`      |
 
 
 ## Endpoints Commands
