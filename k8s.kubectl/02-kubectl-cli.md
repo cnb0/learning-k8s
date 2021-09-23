@@ -1,7 +1,5 @@
-#### Kubernetes kubectl cheatsheet
-
-
 ### [Kubernetes Components](https://kubernetes.io/docs/concepts/overview/components/)
+
 #### Control Plane Components (Master Nodes)
 | Component Name                    | Summary | Runs As | 
 |-------------------------|--------------------------------------------------------------------------------------------------------| ----------- | 
