@@ -44,12 +44,14 @@
 | docker.service            | `/etc/systemd/system/docker.service` |
 
 ### Check health of cluster
+
 | Description | command |
 | ----------- | ------- |
 | Check cluster health | `kubectl get componentstatus` |
 | Check etcd health | `kubectl get --raw=/healthz/etcd` |
 
 ### Kubelet and Docker commands 
+
 | Description | Command or File location|
 | ------------ | -------------- |
 | Check Kubelet status | `service kubelet status` or `systemctl status kubelet.service` |
@@ -61,7 +63,7 @@
 | Stop Docker daemon | `service docker stop` or `systemctl stop docker.service` |
 | Tail Docker daemon logs | `journalctl -u docker.service -f` |
 
-## Node Commands
+### Node Commands
 
 | Name             | Command                                |
 | ---------------- | -------------------------------------- |
@@ -73,12 +75,43 @@
 | Uncordon node    | `kubectl uncordon node <node_name>`    |
 
 
-## Monitoring Usage Commands
+### Monitoring Usage Commands
 
 | Name                                | Command                        |
 | ----------------------------------- | ------------------------------ |
 | Get node cpu and memory utilization | `kubectl top node <node_name>` |
 | Get pod cpu and memory utilization  | `kubectl top pods <pod_name>`  |
+
+
+### Cluster
+
+| Name                                | Command                        |
+| ----------------------------------- | ------------------------------ |
+|Display addresses of the master and services|`kubectl cluster-info` |                       
+|Dump cluster state to STDOUT|`kubectl cluster-info dump`    |       
+|Dump cluster state to a file|`kubectl cluster-info dump --output-directory=</file/path>`|
+|Compares the current cluster state against the statethat the cluster would be in if the manifest was applied|`kubectl diff -f ./my-manifest.yaml`|
+|List all images running in a cluster|kubectl get pods -A -o=custom-columns='DATA:spec.containers[*].image'|
+
+
+### Kubectl context
+
+| Name                                | Command                        |
+| ----------------------------------- | ------------------------------ |
+| Show merged kubeconfig settings | `kubectl config view` |
+|Use multiple kubeconfig |`KUBECONFIG=~/.kube/config1:~/.kube/config2:~/.kube/config3`|
+|Get a list of users|kubectl config view -o jsonpath='{.users[*].name}'|
+|Display the first user|kubectl config view -o jsonpath='{.users[].name}'|
+|Get the password for the "admin" user|kubectl config view -o jsonpath='{.users[?(@.name == "admin")].user.password}'|
+|Display the current context|`kubectl config current-context`|
+|Display list of contexts|`kubectl config get-contexts`|
+|Set the default context to `<cluster>`|`kubectl config use-context <cluster>`|
+|Sets a user entry in kubeconfig|`kubectl config set-credentials <username> [options]`|
+|Sets a user with a client key|`kubectl config set-credentials <user> --client-key=~/.kube/admin.key`|
+|Sets a user with basic auth|`kubectl config set-credentials --username=<username> --password=<password>`|
+|Sets a user with client certificate|`kubectl config set-credentials <user> --client-certificate=<path/to/cert> --embed-certs=true`|
+|Set a context utilizing a specific config file|`kubectl config --kubeconfig=<config/path> use-context <cluster>`|
+|Set a context utilizing a specific username and namespace|`kubectl config set-context gce --user=cluster-admin --namespace=foo  && kubectl config use-context gce`|
 
 
 ### [Namespace Usage Commands](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)
@@ -113,6 +146,11 @@
 
 
 ### Abbreviations / Short forms of resource types
+
+| Verb Description | Kubectl Command |
+| ------------- | ------------- |
+| List | `kubectl api-resources`|
+| List namespaces | `kubectl api-resources --namespaced=true`|
 
 |      Resource type       |   Abbreviations   |
 |--------------------------|-------------------|
