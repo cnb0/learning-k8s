@@ -61,6 +61,18 @@
 | Stop Docker daemon | `service docker stop` or `systemctl stop docker.service` |
 | Tail Docker daemon logs | `journalctl -u docker.service -f` |
 
+## Node Commands
+
+| Name             | Command                                |
+| ---------------- | -------------------------------------- |
+| Describe node    | `kubectl describe node `<node_name>`    |
+| Get node in yaml | `kubectl get node <node_name> -o yaml` |
+| Get node         | `kubectl get node <node_name>`         |
+| Drain node       | `kubectl drain node <node_name>`       |
+| Cordon node      | `kubectl cordon node <node_name>`      |
+| Uncordon node    | `kubectl uncordon node <node_name>`    |
+
+
 ## Monitoring Usage Commands
 
 | Name                                | Command                        |
@@ -98,18 +110,36 @@
 | Get particular namespace | `kubectl get ns TEST` |
 | Verbose Debug information/describe service | `kubectl describe ns/TEST` |
 
-## Node Commands
 
-| Name             | Command                                |
-| ---------------- | -------------------------------------- |
-| Describe node    | `kubectl describe node `<node_name>`    |
-| Get node in yaml | `kubectl get node <node_name> -o yaml` |
-| Get node         | `kubectl get node <node_name>`         |
-| Drain node       | `kubectl drain node <node_name>`       |
-| Cordon node      | `kubectl cordon node <node_name>`      |
-| Uncordon node    | `kubectl uncordon node <node_name>`    |
+
+### Abbreviations / Short forms of resource types
+
+|      Resource type       |   Abbreviations   |
+|--------------------------|-------------------|
+| componentstatuses        | cs                |
+| configmaps               | cm                |
+| daemonsets               | ds                |
+| deployments              | deploy            |
+| endpoints                | ep                |
+| event                    | ev                |
+| horizontalpodautoscalers | hpa               |
+| ingresses                | ing               |
+| limitranges              | limits            |
+| namespaces               | ns                |
+| nodes                    | no                |
+| persistentvolumeclaims   | pvc               |
+| persistentvolumes        | pv                |
+| pods                     | po                |
+| podsecuritypolicies      | psp               |
+| replicasets              | rs                |
+| replicationcontrollers   | rc                |
+| resourcequotas           | quota             |
+| serviceaccount           | sa                |
+| services                 | svc               |
+
 
 ### [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/#what-is-a-pod) 
+
 | NAME  | SHORTNAMES | APIGROUP | NAMESPACED | KIND | VERBS |
 | ------------- | ------------- | ------- | -------- | --------- | -------- |
 | `pods`  | `po`  | -  | `true` | `Pod` | `[create delete deletecollection get list patch update watch]` |
@@ -170,7 +200,7 @@
 | Select node,pod and deployment by using labels | `kubectl get <node/pod/deployment> -l <key>=<value>`             |
 | Delete all resources by using labels           | `kubectl delete all -l <key>=<value>`                              |
 
-## ConfigMaps Commands
+### ConfigMaps Commands
 
 | Name                  | Command                                          |
 | --------------------- | ------------------------------------------------ |
@@ -180,7 +210,7 @@
 | Describe configmap    | `kubectl describe configmap <configmap_name>`    |
 | Delete configmap      | `kubectl delete configmap <configmap_name>`      |
 
-## Secret Commands
+### Secret Commands
 
 | Name               | Command                                    |
 | ------------------ | ------------------------------------------ |
@@ -192,6 +222,7 @@
 
 
 ### [ReplicaSet](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/) 
+
 | NAME  | SHORTNAMES | APIGROUP | NAMESPACED | KIND | VERBS |
 | ------------- | ------------- | ------- | -------- | --------- | -------- |
 | `replicasets`  | `rs`  | `apps`,`extensions` | `true` | `ReplicaSet` | `[create delete deletecollection get list patch update watch]` |
@@ -221,6 +252,7 @@
 
 
 ### [Deployments,Scale,Rolling Updates & Rollbacks](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+
 | NAME  | SHORTNAMES | APIGROUP | NAMESPACED | KIND | VERBS |
 | ------------- | ------------- | ------- | -------- | --------- | -------- |
 | `deployments`  | `deploy`  | `apps`,`extensions` | `true` | `Deployment` | `[create delete deletecollection get list patch update watch]` |
@@ -308,7 +340,7 @@
 
 
 
-## Network Policy Commands
+### Network Policy Commands
 
 | Name                               | Command                                                  |
 | ---------------------------------- | -------------------------------------------------------- |
@@ -320,13 +352,13 @@
 | Delete networkpolicy               | `kubectl delete networkpolicy <networkpolicy_name>`      |
 
 
-## Endpoints Commands
+### Endpoints Commands
 
 | Name          | Command                                  |
 | ------------- | ---------------------------------------- |
 | Get endpoints | kubectl get endpoints `<endpoints_name>` |
 
-## Ingress Commands
+### Ingress Commands
 
 | Name                         | Command                                   |
 | ---------------------------- | ----------------------------------------- |
@@ -345,7 +377,7 @@
 | `daemonsets`  | `ds`  | `apps`,`extensions` | `true` | `DaemonSet` | `[create delete deletecollection get list patch update watch]` |
 
 
-## DaemonSet Commands
+### DaemonSet Commands
 
 | Name                  | Command                                          |
 | --------------------- | ------------------------------------------------ |
@@ -397,11 +429,12 @@
 
 
 ### [CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/)
+
 | NAME  | SHORTNAMES | APIGROUP | NAMESPACED | KIND | VERBS |
 | ------------- | ------------- | ------- | -------- | --------- | -------- |
 | `cronjobs`  | `cj`  | `batch` | `true` | `CronJob` | `[create delete deletecollection get list patch update watch]`
 
-## Cronjob Commands
+### Cronjob Commands
 
 | Name                | Command                                      |
 | ------------------- | -------------------------------------------- |
@@ -423,7 +456,7 @@
 | Verbose Debug information/describe cronjob | `kubectl describe cj/CRRONJOB_NAME` |
 
 
-## StatefulSet Commands
+### StatefulSet Commands
 
 | Name                    | Command                                              |
 | ----------------------- | ---------------------------------------------------- |
@@ -434,9 +467,7 @@
 | Delete statefuleset     | `kubectl delete statefulset <statefulset_name>`      |
 
 
-
-
-## Persistence Volume Commands
+### Persistence Volume Commands
 
 | Name                           | Command                                           |
 | ------------------------------ | ------------------------------------------------- |
@@ -446,7 +477,7 @@
 | Describe persistence volume    | `kubectl describe pv `<persistencevolume_name>`    |
 | Delete persistence volume      | `kubectl delete pv `<persistencevolume_name>`      |
 
-## Persistence Volume Claim Commands
+### Persistence Volume Claim Commands
 
 | Name                                 | Command                                                  |
 | ------------------------------------ | -------------------------------------------------------- |
@@ -458,7 +489,7 @@
 
 
 
-## Role-Based Access Control (RBAC) Commands
+### Role-Based Access Control (RBAC) Commands
 
 | Name                                                           | Command                                                                                                                                   |
 | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -469,10 +500,10 @@
 | Verify if current user is able to do something with resource   | `kubectl auth can-i <verb> <resource>`                                                                                                  |
 | Verify if specified user is able to do something with resource | `kubectl auth can-i <verb> <resource> --as <user/service_account>`                                                                    |
 | Create service account                                         | `kubectl create serviceaccount <serviceaccount_name>`                                                                                     |
-| Create role and define resource privilleges                    | `kubectl create role `<role_name>` --resource=`<object>` --verb=`<verb>`                                                                   |
-| Create cluster role and define cluster resource privilleges    | `kubectl create clusterrole `<clusterrole_name>` --resource=`<object>` --verb=`<verb>`                                                     |
-| Create role binding with service account                       | `kubectl create rolebinding `<rolebinding_name>` --role `<role_name>` --serviceaccount `<serviceaccount_name>`                             |
-| Create cluster role binding with service account               | `kubectl create clusterrolebinding `<clusterrolebinding_name>` --clusterrole `<clusterrole_name>` --serviceaccount `<serviceaccount_name>` |
-| Create role binding with user                                  | `kubectl create rolebinding `<rolebinding_name>` --role `<role_name>` --user `<user_name>`                                                 |
-| Create cluster role binding with user                          | `kubectl create clusterrolebinding `<clusterrolebinding_name>` --clusterrole `<clusterrole_name>` --user `<user_name>`                     |
+| Create role and define resource privilleges                    | `kubectl create role <role_name> --resource=`<object> --verb=`<verb>`                                                                   |
+| Create cluster role and define cluster resource privilleges    | `kubectl create clusterrole <clusterrole_name> --resource=<object> --verb=<verb>`                                                     |
+| Create role binding with service account                       | `kubectl create rolebinding <rolebinding_name>` --role <role_name> --serviceaccount`   `<serviceaccount_name>`                             |
+| Create cluster role binding with service account               | `kubectl create clusterrolebinding <clusterrolebinding_name> --clusterrole <clusterrole_name>` --serviceaccount `<serviceaccount_name>` |
+| Create role binding with user                                  | `kubectl create rolebinding <rolebinding_name> --role `<role_name>` --user <user_name>`                                                 |
+| Create cluster role binding with user                          | `kubectl create clusterrolebinding <clusterrolebinding_name> --clusterrole`  `<clusterrole_name>` --user `<user_name>`                     |
 
