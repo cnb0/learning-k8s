@@ -1,0 +1,18 @@
+
+## Quick start guide for VirtualBox , Docker , Kubernetes setup
+
+0. Virtual Box Install
+
+     - [virtual box](https://www.virtualbox.org/wiki/Downloads)
+
+1. Docker Install
+
+     - [Docker install][https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04]]
+     - [Docker Setup](https://docs.docker.com/get-docker/)
+
+
+2. Kubernetes setup ( Single node and MultiNode )
+     
+     - [minikube setup](https://minikube.sigs.k8s.io/docs/start/)
+     - [kubectl setup](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+     - [kubeadm setup](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)

@@ -3,9 +3,13 @@
     - [Docker](https://www.docker.com/)
     - [Docker github](https://github.com/docker)
     - [Portainer](https://www.portainer.io/installation/)
+    - [Docker Setup](https://github.com/cnb0/learning-docker/blob/master/WS/01.docker.labs/Lab-01-install-On-Ubuntu.md)
 - Kubernetes 
      - [kubernetes](https://kubernetes.io/)
      - [Kubernetes github](https://github.com/kubernetes/kubernetes)
+     - [minikube setup](https://minikube.sigs.k8s.io/docs/start/)
+     - [kubectl setup](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+     - [kubeadm setup](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
      
 #### 2. Conferences  dockercon and kubecon
      - [kubecon](https://www.cncf.io/community/kubecon-cloudnativecon-events/)
