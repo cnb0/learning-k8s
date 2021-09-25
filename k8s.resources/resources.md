@@ -8,8 +8,9 @@
      - [Kubernetes github](https://github.com/kubernetes/kubernetes)
      
 #### 2. Conferences  dockercon and kubecon
+
      - [kubecon](https://www.cncf.io/community/kubecon-cloudnativecon-events/)
-     - [dockercon](https://www.docker.com/dockercon/)https://github.com/docker/for-linux/issues)
+     - [dockercon](https://www.docker.com/dockercon/](https://github.com/docker/for-linux/issues)
      
 #### 3. Certifications  and study guide  for docker
 - [Docker Certification](https://success.docker.com/certification)
