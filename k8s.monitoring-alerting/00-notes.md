@@ -1,5 +1,5 @@
 ## Use cases of Kubernetes monitoring
-```
+
 
 A Kubernetes cluster has multiple components and layers, and across each of them we will find different 
 failure points that we need to monitor. 
@@ -26,6 +26,7 @@ These are some typical use cases for Kubernetes monitoring.
 3.Monitoring Kubernetes applications
 
 1. Monitoring Kubernetes clusters and nodes
+2. 
             - By monitoring the cluster, you get an across-the-board view of the
               overall platform health and capacity. 
      
@@ -40,6 +41,7 @@ These are some typical use cases for Kubernetes monitoring.
                                  run out of resources?
       
 2. Monitoring Kubernetes deployments and pods
+3. 
             - Looking at the Kubernetes constructs like namespaces, deployments, ReplicaSets or DaemonSets, 
                we can understand whether our applications have been properly deployed. For example:
 
@@ -52,6 +54,7 @@ These are some typical use cases for Kubernetes monitoring.
                                What is the actual usage against those?
 
 3.Monitoring Kubernetes applications
+
           - But at the end of the day, your applications are what matter most.
             What is it that you want to look at here? 
             This is the part which is similar to what you may be used to:
