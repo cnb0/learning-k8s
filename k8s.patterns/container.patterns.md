@@ -3,7 +3,7 @@
 ## Container Patterns  - SOLID principles for cloud native applications
 
 
-```
+
 
 - Cloud native applications anticipate failure; they run and scale reliably 
   even when their infrastructure experiences outages.
