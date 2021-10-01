@@ -2,9 +2,6 @@
 
 Best practices for application development on Kubernetes.
 
-
-
-
 ## Health checks
 
 Kubernetes offers two mechanisms to track the lifecycle of your containers and Pods: liveness and readiness probes.
@@ -550,7 +547,8 @@ The content of Secret resources should be mounted into containers as volumes rat
 
 This is to prevent that the secret values appear in the command that was used to start the container, which may be inspected by individuals that shouldn't have access to the secret values.
 
-```
+
+ 
 - Kubernetes allocates CPU and memory resources to containers on the basis of requests and limits.
 - A container’s requests are the minimum amounts of resources it needs to run. Its limits specify the 
   maximum amount it’s allowed to use.
@@ -575,4 +573,4 @@ This is to prevent that the secret values appear in the command that was used to
 - Find and clean up resources that aren’t being used (but check with their owners).
 - Reserved instances can save you money if you can plan your usage long-term.
 - Preemptible instances can save you money right now, but be ready for them to vanish at short notice. 
-- Use node affinities to keep failure-sensitive Pods away from preemptible nodes. ```
+- Use node affinities to keep failure-sensitive Pods away from preemptible nodes.  
