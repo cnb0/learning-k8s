@@ -18,16 +18,17 @@ Motivated to develop container-native applications and
 implement fully containerized CI
 
 k8s Application Essentials, 
+
         - Familiarity with the Bash shell
         – Filesystem navigation and manipulation
         – Command line text editors like vim or nano
         – Common tooling like curl, wget and ping
         • Familiarity with YAML and JSON notation
         • Basic familiarity with common software development patterns and 
-        tools like version control, testing, continuous integration and
-        logging
+        tools like version control, testing, continuous integration and logging
 
 Objectives :
+
         • Rapid code-build-test iteration cycles
         • Developer-local k8s environments
         • IDE and debugger container integration
@@ -48,6 +49,7 @@ Objectives :
 
 
 - Cloud Native Development
+
         - Container Development Environments
         - The Container Lifecycle
         - Containerizing Applications
