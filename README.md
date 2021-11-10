@@ -1,5 +1,10 @@
 #  k8s-learning
 
+ 
+## 1. Give a man a Container and you keep him busy for a day 
+## 2. Teach a man Kubernetes and you keep him busy for a lifetime
+ 
+
 ### Kubernetes is not a “CI/CD”, “Micro-service” focused container cloud 
 
 - kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services. 
